@@ -18,16 +18,16 @@ AD DS 大部分目錄變更可透過多主機複寫，但部分操作需要由�
 
 查詢 FSMO 角色：
 
-`cmd
+```cmd
 netdom query fsmo
-`
+```
 
 PowerShell 查詢：
 
-`powershell
+```powershell
 Get-ADForest | Select-Object SchemaMaster,DomainNamingMaster
 Get-ADDomain | Select-Object PDCEmulator,RIDMaster,InfrastructureMaster
-`
+```
 
 理解重點：
 - 一個樹系只有一個 Schema Master 與 Domain Naming Master。
@@ -48,17 +48,17 @@ Get-ADDomain | Select-Object PDCEmulator,RIDMaster,InfrastructureMaster
 
 檢查複寫摘要：
 
-`cmd
+```cmd
 repadmin /replsummary
 repadmin /showrepl
-`
+```
 
 PowerShell 檢查複寫夥伴：
 
-`powershell
+```powershell
 Get-ADReplicationPartnerMetadata -Target * -Scope Forest |
   Select-Object Server,Partner,LastReplicationSuccess,LastReplicationResult
-`
+```
 
 常見複寫問題：
 - DNS 無法解析其他 DC。
@@ -82,11 +82,11 @@ Subnet 必須正確對應到 AD Site。若子網路沒有正確建立或對應�
 
 檢查命令：
 
-`powershell
+```powershell
 Get-ADReplicationSite -Filter *
 Get-ADReplicationSubnet -Filter *
 Get-ADReplicationSiteLink -Filter *
-`
+```
 
 實務建議：
 - 依真實網路拓樸規劃 Site，而不是單純依部門名稱建立。
