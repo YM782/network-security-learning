@@ -1,189 +1,95 @@
-# Computer Fundamentals（計算機底層基礎）
 
-本課程從硬體、作業系統與程式執行流程開始。學習目標不是背誦名詞，而是能解釋一個程式如何從儲存裝置載入、進入記憶體、由 CPU 執行，並透過作業系統使用硬體資源。
+# 01 — Computer Fundamentals（計算機底層基礎）
 
-## 1. Computer Architecture（計算機架構）
+> 本模組是一套從硬體執行、記憶體管理、作業系統核心，到程式載入與除錯的技術課程。每章包含原理、可觀察證據、命令、實驗、常見誤區與驗收題，不以名詞清單代替教學。
 
-一台一般電腦可先理解為幾個主要部分：
+## 學習目標
 
-| Component（元件） | English term | Function（功能） |
+完成本模組後，你應能：
+
+1. 解釋 CPU 如何透過暫存器、指令集與執行單元執行程式。
+2. 區分實體記憶體、虛擬位址、頁表、TLB、快取與磁碟。
+3. 解釋使用者模式、核心模式、中斷、例外與系統呼叫的關係。
+4. 區分程式、程序、執行緒、排程與上下文切換。
+5. 追蹤 C 程式從原始碼、編譯、連結、載入到執行的基本流程。
+6. 使用 Linux 與 Windows 工具觀察系統狀態，並根據證據排查問題。
+
+## 課程地圖
+
+| 章節 | 主題 | 必須掌握的成果 |
 |---|---|---|
-| 中央處理器 | CPU | 執行指令、進行運算與控制 |
-| 暫存器 | Registers | CPU 內部極快速的小型儲存位置 |
-| 快取記憶體 | Cache | 暫存近期或常用資料，減少存取 RAM 的延遲 |
-| 主記憶體 | RAM | 暫時保存正在執行的程式與資料 |
-| 儲存裝置 | SSD / HDD | 長期保存作業系統、程式與檔案 |
-| 主機板 | Motherboard | 連接 CPU、記憶體、儲存裝置與周邊 |
-| 匯流排／互連 | Bus / Interconnect | 傳輸資料、位址與控制訊號 |
+| [01 CPU 架構與指令執行](01-CPU-Architecture.md) | ISA、微架構、暫存器、指令週期、快取與管線 | 能解釋指令處理流程，讀懂基本 CPU 資訊 |
+| [02 記憶體階層與虛擬記憶體](02-Memory-and-Virtual-Memory.md) | RAM、Cache、MMU、頁表、TLB、Page Fault、保護機制 | 能區分虛擬位址與實體位址，檢查程序映射 |
+| [03 核心、使用者模式與系統呼叫](03-Kernel-and-System-Calls.md) | Kernel、特權級、System Call、中斷、例外 | 能用 strace 觀察程式與核心互動 |
+| [04 程序、執行緒與排程](04-Processes-Threads-and-Scheduling.md) | Process、Thread、狀態、排程、Context Switch | 能追蹤程序樹、執行緒與資源使用 |
+| [05 程式編譯、載入與 ELF](05-Program-Lifecycle-and-ELF.md) | 編譯、組譯、連結、ELF、動態載入 | 能檢查測試程式的檔案格式與載入資訊 |
+| [06 動手實驗與故障排查](06-Labs-and-Troubleshooting.md) | 系統盤點、記憶體、程序、系統呼叫與除錯 | 完成可重現、有紀錄的實驗 |
 
-### CPU（中央處理器）
+## 建議環境
 
-CPU 會依照程式指令執行運算。初學時可先理解 Instruction Cycle（指令週期）：
+- 宿主機：Windows 10/11。
+- 虛擬機：VMware Workstation 中的 Kali Linux 或其他 Debian 系 Linux。
+- 權限：一般實驗先使用普通使用者；只有安裝套件或讀取受限資訊時才使用 sudo。
+- 工具：GCC、binutils、procps、psmisc、strace、GDB；Windows 端可使用 PowerShell、工作管理員與 Microsoft Sysinternals。
+- 實驗原則：只操作自己的電腦與隔離虛擬機；不要為了學習而修改宿主機核心、停用安全機制或執行來源不明的二進位檔。
 
-1. Fetch（擷取）：取得下一條指令。
-2. Decode（解碼）：判斷指令要做什麼。
-3. Execute（執行）：進行運算、資料搬移或控制流程。
-4. Write Back（寫回）：必要時將結果寫回暫存器或記憶體。
-
-現代 CPU 會使用 Pipeline（管線）、Branch Prediction（分支預測）、Out-of-Order Execution（亂序執行）等技術，因此實際執行並非簡單地一次只做一條指令。
-
-### Registers（暫存器）
-
-暫存器位於 CPU 內部，容量小但速度非常快。不同架構有不同暫存器名稱與用途，例如一般用途暫存器、指令指標／程式計數器、堆疊指標與狀態暫存器。
-
-### Cache（快取）
-
-CPU 通常具有多層快取，例如 L1、L2、L3。一般而言，越靠近核心的快取越快、容量越小。快取利用 Locality（區域性）原理：
-- Temporal locality（時間區域性）：剛使用過的資料可能很快再次使用。
-- Spatial locality（空間區域性）：某個位置附近的資料可能也會被使用。
-
-## 2. Memory Hierarchy（記憶體階層）
-
-可粗略理解為：暫存器 → L1/L2/L3 Cache → RAM → SSD/HDD。越靠近 CPU 通常速度越快、容量越小、成本越高。
-
-### RAM vs. Storage（記憶體與儲存裝置）
-
-- RAM（Random Access Memory，隨機存取記憶體）：程式執行時使用的主要工作空間，斷電後一般不保留資料。
-- SSD/HDD：長期保存檔案與程式，關機後資料仍存在。
-- Virtual Memory（虛擬記憶體）：作業系統提供給程式的位址空間抽象；不等於「把硬碟當成 RAM」。系統可能透過 Paging（分頁）及 Swap／Pagefile（交換空間／分頁檔）管理記憶體壓力。
-
-## 3. Operating System（作業系統）
-
-作業系統負責管理 CPU、記憶體、檔案、裝置與程序，並提供程式使用硬體的共同介面。
-
-### Kernel and User Mode（核心模式與使用者模式）
-
-- User Mode（使用者模式）：一般應用程式執行的受限制環境。
-- Kernel Mode（核心模式）：作業系統核心執行具較高權限的程式碼。
-- System Call（系統呼叫）：應用程式請求核心提供服務的介面，例如開啟檔案、建立程序或進行網路 I/O。
-
-應用程式通常不能任意直接操作硬體，而是透過系統 API 與系統呼叫請求作業系統代為處理。
-
-## 4. Process and Thread（程序與執行緒）
-
-- Process（程序）：正在執行的程式實例，具有自己的虛擬位址空間與系統資源。
-- Thread（執行緒）：程序中的執行流程。同一程序內的多個執行緒通常共享該程序的位址空間，但各自有執行堆疊與暫存器狀態。
-- Context Switch（情境切換）：CPU 從一個執行緒切換到另一個執行緒時，作業系統需要保存與還原執行狀態。
-
-注意：多執行緒不代表一定更快；共享資料可能產生 Race Condition（競爭條件）與 Deadlock（死結）。
-
-## 5. Boot Process（開機流程）
-
-以一般 UEFI 電腦為例，概念流程如下：
-
-1. 電源啟動，硬體初始化。
-2. UEFI 韌體執行硬體檢查與啟動項目選擇。
-3. 載入 Bootloader（開機載入程式）。
-4. Bootloader 載入作業系統核心。
-5. 核心初始化記憶體、驅動程式與裝置。
-6. 啟動第一個使用者空間程序與系統服務。
-7. 顯示登入畫面或桌面。
-
-實際細節會依 Windows、Linux、UEFI 設定與發行版而不同。
-
-## 6. Linux Inspection Commands（Linux 檢查命令）
-
-在自己的 Kali 或其他 Linux 虛擬機中執行：
+### Kali 安裝實驗工具
 
 ```bash
-# 核心與作業系統資訊
-uname -a
 cat /etc/os-release
-
-# CPU 資訊
-lscpu
-
-# 記憶體概況
-free -h
-
-# 磁碟與分割區
-lsblk
-df -h
-
-# 程序清單
-ps aux
-
-# 即時程序與資源使用
-top
-
-# 本次開機日誌
-journalctl -b
+uname -a
+command -v gcc readelf objdump strace gdb
 ```
 
-### What to Observe（觀察重點）
+若缺少工具，可在 Kali/Debian 中安裝：
 
-- `lscpu`：CPU 架構、核心與執行緒數量。
-- `free -h`：總記憶體、已使用與可用記憶體；Linux 的 buff/cache 不應直接視為浪費。
-- `lsblk`：磁碟、分割區與掛載關係。
-- `ps aux`：程序擁有者、PID、CPU 與記憶體使用情況。
-- `journalctl -b`：本次開機的系統日誌。
-
-## 7. Windows Inspection Commands（Windows 檢查命令）
-
-在自己的 Windows 電腦或測試虛擬機中，使用 PowerShell：
-
-```powershell
-# 系統資訊
-Get-ComputerInfo
-
-# CPU
-Get-CimInstance Win32_Processor |
-  Select-Object Name, NumberOfCores, NumberOfLogicalProcessors
-
-# 記憶體模組
-Get-CimInstance Win32_PhysicalMemory |
-  Select-Object Capacity, Speed, Manufacturer
-
-# 程序
-Get-Process
-
-# 服務
-Get-Service
-
-# 系統事件記錄（最近 20 筆 System 錯誤）
-Get-WinEvent -LogName System -MaxEvents 20 |
-  Select-Object TimeCreated, Id, LevelDisplayName, ProviderName
+```bash
+sudo apt update
+sudo apt install build-essential binutils procps psmisc strace gdb
 ```
 
-## 8. Lab 1 — Observe Your Own VM（實驗一：觀察自己的虛擬機）
+安裝前確認虛擬機有足夠磁碟空間，並在重要變更前建立 VMware Snapshot。
 
-**目的：** 將硬體、記憶體與程序概念對應到真實系統。
+## 每章固定學習方法
 
-**步驟：**
-1. 在 Kali 執行 `lscpu`，記錄 CPU 架構、核心與執行緒數。
-2. 執行 `free -h`，記錄總記憶體與可用記憶體。
-3. 執行 `lsblk`，記錄磁碟與分割區。
-4. 執行 `ps aux --sort=-%mem | head`，查看記憶體使用量較高的程序。
-5. 開啟一個應用程式，再執行 `ps aux`，觀察程序變化。
-6. 將結果寫入實驗紀錄，不要公開貼上包含個人識別資訊的完整輸出。
+1. **先理解原理**：先讀懂資料流與元件關係，不要先背命令。
+2. **再觀察系統**：執行命令，記錄自己的實際輸出；不同 CPU、核心與發行版的結果可能不同。
+3. **完成實驗**：每次只改一個變數，保留命令、輸出與觀察。
+4. **解釋結果**：不只貼截圖，還要說明每個欄位代表什麼。
+5. **故障排查**：先確認現象、收集證據，再提出假設與驗證。
+6. **完成驗收題**：不看筆記也能說明原理，才算掌握。
 
-**預期成果：** 能指出 CPU、RAM、磁碟與程序資訊，並解釋各欄位的意義。
+## 重要概念邊界
 
-## 9. Troubleshooting（故障排查）
+- **CPU 架構（ISA）不等於 CPU 微架構**：ISA 定義軟體可見的指令與狀態；微架構是處理器實現 ISA 的內部設計。
+- **程序不等於執行緒**：程序提供資源與虛擬位址空間；執行緒是排程器可派發的執行單位。
+- **虛擬位址不等於實體位址**：一般程式看到的是虛擬位址，硬體 MMU 與作業系統共同完成轉換。
+- **系統呼叫不等於一般函式呼叫**：系統呼叫透過受控入口切換到核心執行特權操作。
+- **核心模式不等於 root 使用者**：root 是高權限使用者身分；核心模式是 CPU 的執行特權狀態，兩者不是同一概念。
 
-| 現象 | 可能原因 | 檢查方式 |
-|---|---|---|
-| 虛擬機很慢 | 配置資源不足、宿主機負載高、磁碟 I/O 忙碌 | 檢查 Task Manager、`top`、`free -h` |
-| 可用記憶體偏低 | 程序佔用、快取、記憶體洩漏 | 比較 `free -h`、`ps aux` 與長時間變化 |
-| 磁碟空間不足 | 日誌、快取或映像檔累積 | `df -h`、`du -h -d 1` |
-| 找不到命令 | 套件未安裝或 PATH 不正確 | `command -v 命令名稱` |
-| 權限不足 | 目前使用者沒有相應權限 | `whoami`、`id`、檢查檔案權限 |
+## 主要原始資料與對照方式
 
-排錯原則：先觀察、記錄錯誤訊息，再一次只改一項設定；不要在不理解原因時直接刪除系統檔案。
+| 原始資料 | 本課程使用方式 |
+|---|---|
+| [OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/) | 對照程序、位址空間、記憶體、執行緒與持久化章節 |
+| [MIT xv6 教材](https://mit-pdos.github.io/xv6-riscv-book/) 與 [原始碼](https://github.com/mit-pdos/xv6-riscv) | 用小型教學作業系統理解核心、系統呼叫、記憶體與排程 |
+| [Intel 64 and IA-32 Manuals](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html) | 查閱 x86-64 架構、暫存器、指令與系統程式設計 |
+| [Linux man-pages](https://man7.org/linux/man-pages/) | 核對 Linux 系統呼叫、函式與命令介面 |
+| [Linux Kernel Documentation](https://docs.kernel.org/) | 對照 Linux 核心子系統與實作文件 |
+| [Microsoft Learn — Processes and Threads](https://learn.microsoft.com/en-us/windows/win32/procthread/about-processes-and-threads) | 對照 Windows 程序、執行緒與虛擬位址空間 |
+| [Microsoft Sysinternals](https://learn.microsoft.com/en-us/sysinternals/) | 使用 Process Explorer、VMMap 等工具觀察 Windows |
 
-## 10. Knowledge Check（知識測驗）
+**使用原則：** 本倉庫提供原創中文講解與實驗設計；原始教材、程式碼、圖表與商標仍歸原作者或權利人所有。引用或重新散布內容前，必須遵守原專案授權。外部文件可能更新，學習時以原始來源當前版本為準。
 
-1. CPU Cache 與 RAM 有什麼差異？
-2. 為什麼程式需要透過作業系統核心請求部分硬體服務？
-3. Process 與 Thread 的主要差異是什麼？
-4. Virtual Memory 是否等於 RAM？
-5. `ps aux` 與 `free -h` 分別能觀察什麼？
+## 模組驗收清單
 
-## Sources（資料來源）
+- [ ] 能畫出 CPU、RAM、儲存裝置與作業系統之間的基本關係。
+- [ ] 能說明 ISA 與微架構的差別。
+- [ ] 能解釋虛擬位址、頁表、TLB 與 Page Fault。
+- [ ] 能解釋使用者模式與核心模式的差別。
+- [ ] 能用 strace 找出測試程式發出的部分系統呼叫。
+- [ ] 能用 ps、pstree、top -H 觀察程序與執行緒。
+- [ ] 能使用 readelf 與 objdump 檢查自己的測試程式。
+- [ ] 完成第 06 章所有實驗，並保存實驗紀錄。
 
-- OSSU Computer Science: https://github.com/ossu/computer-science
-- Operating Systems: Three Easy Pieces: https://pages.cs.wisc.edu/~remzi/OSTEP/
-- Linux man-pages: https://man7.org/linux/man-pages/
-- Microsoft Learn — Windows architecture: https://learn.microsoft.com/windows/
-
-本頁為原創教學整理。架構細節請以處理器、作業系統與官方技術文件為準。
+> 完成標準不是「看過」，而是能在自己的虛擬機重現結果、解釋結果，並在結果不同時找到原因。
