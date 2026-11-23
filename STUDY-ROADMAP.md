@@ -184,6 +184,42 @@ nmap -sV -oN lab-scan.txt <LAB_TARGET_IP>
 5. Security findings and remediation guidance（安全發現與修復建議）。
 6. Final assessment report（最終安全測試報告）。
 
+## Extension Tracks（延伸學習階段）
+
+完成第 12 個月的授權測試與作品集後，可繼續以下三個階段。若每週只有 10–12 小時，建議每個階段安排 4–6 週，依實驗完成度調整。
+
+### Month 13 — Incident Response and Digital Forensics（第 13 個月：事件應變與數位鑑識）
+
+- NIST CSF 2.0 and SP 800-61 Rev.3（NIST 資安框架與事件應變指南）。
+- Incident triage, severity, evidence preservation and chain of custody（事件分流、分級、證據保全與證據保管鏈）。
+- Windows Event Log, PowerShell and Linux journal analysis（Windows 事件日誌、PowerShell 與 Linux 日誌分析）。
+- Containment, eradication, recovery and lessons learned（遏止、根除、復原與事後檢討）。
+
+**Lab：** 完成 [Windows Incident Response Lab](12-Incident-Response/02-Windows-Incident-Response-Lab.md)，提交時間線、雜湊清單與事件報告。  
+**Checkpoint：** 能區分事實、假設與已確認發現，並解釋為何證據保全與授權決策不可省略。
+
+### Month 14 — SIEM and Detection Engineering（第 14 個月：SIEM 與偵測工程）
+
+- Log sources, collection, parsing, normalization and enrichment（日誌來源、收集、解析、正規化與資料豐富化）。
+- Detection rules, correlation, false positives and coverage（偵測規則、事件關聯、誤報與覆蓋率）。
+- Wazuh architecture, Windows Agent and Sysmon（Wazuh 架構、Windows Agent 與 Sysmon）。
+- Microsoft Sentinel, KQL, analytics rules and incidents（Microsoft Sentinel、KQL、分析規則與事件案件）。
+- MTTD, MTTA, MTTR and log source health（偵測、確認、回應時間與日誌來源健康度）。
+
+**Lab：** 完成 [Wazuh SIEM Lab](13-SIEM-and-Detection/02-Wazuh-Lab.md)，收集 Windows Security 與 Sysmon 事件，撰寫一條偵測規則並分析誤報。  
+**Checkpoint：** 能說明 SIEM 資料流程，並從原始日誌走到可調查的告警。
+
+### Month 15 — Cloud Security（第 15 個月：雲端安全）
+
+- IaaS, PaaS, SaaS and shared responsibility（雲端服務模型與共同責任）。
+- AWS IAM, Azure Entra ID, RBAC, MFA and workload identities（AWS／Azure 身分、權限與工作負載身分）。
+- VPC／VNet, network segmentation and private access（雲端網路分段與私人存取）。
+- Storage security, encryption, secrets and key management（儲存安全、加密、秘密與金鑰管理）。
+- Cloud audit logs, threat detection, incident response and cost controls（雲端稽核日誌、威脅偵測、事件應變與成本控制）。
+
+**Lab：** 完成 [Cloud Security Lab](14-Cloud-Security/02-Cloud-Security-Lab.md)，選擇 AWS 或 Azure，完成身分、網路、儲存與日誌安全檢查。  
+**Checkpoint：** 能畫出雲端安全架構、解釋責任邊界，並提交不含任何秘密或真實資產資料的稽核報告。
+
 ## Weekly Study Balance（每週時間分配）
 
 | Activity（學習內容） | Hours（小時） |
