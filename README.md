@@ -12,8 +12,9 @@
 2. [01 — 認識電腦](01-COMPUTER-BASICS/README.md)
 3. [02 — Windows、VMware 與 Kali](02-WINDOWS-VMWARE-KALI/README.md)
 4. [03 — Linux 命令列入門](03-LINUX-BASICS/README.md)
-5. [24 週詳細學習路線](STUDY-ROADMAP.md)
-6. [資料來源和網站使用順序](SOURCES.md)
+5. [04 — 電腦網路基礎](04-NETWORKING-BASICS/README.md)
+6. [24 週詳細學習路線](STUDY-ROADMAP.md)
+7. [資料來源和網站使用順序](SOURCES.md)
 
 ## 課程目錄
 
@@ -22,7 +23,7 @@
 | [01 電腦基礎](01-COMPUTER-BASICS/README.md) | CPU、RAM、SSD、作業系統、程序和工作管理員實驗 | 現在 |
 | [02 Windows / VMware / Kali](02-WINDOWS-VMWARE-KALI/README.md) | 宿主機、虛擬機、快照、網路模式、Kali 檢查 | 現在 |
 | [03 Linux 入門](03-LINUX-BASICS/README.md) | 終端機、路徑、檔案、權限、程序和套件管理 | 基礎 |
-| [04 網路基礎](04-NETWORKING-BASICS/README.md) | IP、DNS、DHCP、路由、TCP/UDP、HTTP | 基礎 |
+| [04 網路基礎](04-NETWORKING-BASICS/README.md) | 網路設備、IP、DNS、DHCP、路由、TCP/UDP、HTTP、Wireshark | 基礎 |
 | [05 程式設計](05-PROGRAMMING-BASICS/README.md) | Python、檔案、JSON、日誌 | 初級 |
 | [06 安全概念](06-CYBERSECURITY-FUNDAMENTALS/README.md) | CIA、威脅、漏洞、風險、權限 | 初級 |
 | [07 安全工具](07-SECURITY-TOOLS/README.md) | Wireshark、Nmap、Burp、Goby 等 | 初級至中級 |
@@ -35,14 +36,14 @@
 
 ## 教材重寫進度
 
-目前已完成前三個基礎模組的第一輪重寫。其他模組仍需逐篇擴充；未標記完成的內容仍屬初版筆記，不代表已達到完整教材標準。
+目前已完成前四個基礎模組的第一輪重寫。其他模組仍需逐篇擴充；未標記完成的內容仍屬初版筆記，不代表已達到完整教材標準。
 
 | 模組 | 狀態 |
 |---|---|
 | 01 電腦基礎 | 已重寫 4 篇完整課程 |
 | 02 Windows / VMware / Kali | 已重寫 3 篇完整課程 |
 | 03 Linux 入門 | 已重寫 4 篇完整課程 |
-| 04 網路基礎 | 待重寫 |
+| 04 網路基礎 | 已重寫 5 篇完整課程 |
 | 05–10 | 待按順序深化 |
 | 11–13 | 待按先修能力深化 |
 
