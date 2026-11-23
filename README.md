@@ -1,70 +1,54 @@
 
-# 網路安全學習路線｜從零基礎到綜合網路安全
+# 網路安全學習路線｜零基礎到綜合網路安全
 
-> **本倉庫重新整理：初學者優先。** 不要求你一開始就懂程式、Linux、網路或駭客工具。請照順序學習，不必一次看完整個倉庫。
+> **內容深入，難度循序漸進。** 每個主題拆成小課，包含白話原理、逐條命令、預期觀察、常見錯誤、實驗和驗收題。
 
-## 你的學習目標
-
-從計算機和作業系統基礎開始，逐步掌握：
-
-- Windows、VMware、Kali Linux 的日常使用
-- Linux 命令列與 Windows PowerShell
-- 電腦網路、IP、DNS、TCP/UDP、HTTP/HTTPS
-- Python 與 Web 基礎
-- 資訊安全基本概念與安全防護
-- Wireshark、Nmap、Burp Suite、Goby 等工具
-- Web 安全、漏洞驗證、滲透測試流程與報告
-- 後續再進入 Windows/Active Directory、內網安全、SIEM、事件應變與雲端安全
+## 最終學習目標
+從電腦基礎開始，逐步掌握 Windows、Linux、網路、程式和資訊安全，最終能理解並參與 Web 安全、授權滲透測試、內網安全、防禦監控、事件應變和漏洞研究。
 
 ## 從這裡開始
+1. [00 — 如何使用課程](00-START-HERE/README.md)
+2. [01 — 認識電腦](01-COMPUTER-BASICS/README.md)
+3. [24 週詳細學習路線](STUDY-ROADMAP.md)
+4. [資料來源和網站使用順序](SOURCES.md)
 
-| 順序 | 課程 | 你會學會什麼 |
+## 課程目錄
+| 模組 | 內容 | 建議階段 |
 |---|---|---|
-| 00 | [如何使用本課程](00-START-HERE/README.md) | 學習方法、節奏、實驗紀錄方式 |
-| 01 | [認識電腦](01-COMPUTER-BASICS/README.md) | CPU、記憶體、硬碟、作業系統的基本用途 |
-| 02 | [Windows、VMware 與 Kali](02-WINDOWS-VMWARE-KALI/README.md) | 認識自己的電腦和安全實驗環境 |
-| 03 | [Linux 入門](03-LINUX-BASICS/README.md) | 目錄、檔案、命令、權限和軟體安裝 |
-| 04 | [網路基礎](04-NETWORKING-BASICS/README.md) | IP、MAC、DNS、連接埠、TCP/UDP、HTTP |
-| 05 | [程式設計入門](05-PROGRAMMING-BASICS/README.md) | 讀懂簡單 Python、HTML 與 HTTP |
-| 06 | [網路安全入門](06-CYBERSECURITY-FUNDAMENTALS/README.md) | 威脅、漏洞、風險、加密與防護 |
-| 07 | [安全工具入門](07-SECURITY-TOOLS/README.md) | 了解工具用途，先在自己的環境練習 |
-| 08 | [Web 安全](08-WEB-SECURITY/README.md) | 網站如何運作，以及常見安全問題 |
-| 09 | [滲透測試入門](09-PENTESTING-BASICS/README.md) | 授權、範圍、測試流程、證據與報告 |
-| 10 | [防禦與監控](10-DEFENSIVE-SECURITY/README.md) | Windows 日誌、防火牆、告警與事件處理 |
-| 11 | [初級實驗清單](11-PRACTICE-LABS/README.md) | 每一階段都能實際操作的練習 |
-| 12 | [故障排查手冊](12-TROUBLESHOOTING/README.md) | 常見錯誤如何逐步定位 |
-| 13 | [進階資料庫](13-ADVANCED-LATER/README.md) | 等基礎完成後再使用的專業資源 |
+| [01 電腦基礎](01-COMPUTER-BASICS/README.md) | CPU、RAM、SSD、作業系統、程序 | 現在 |
+| [02 Windows / VMware / Kali](02-WINDOWS-VMWARE-KALI/README.md) | 宿主機、虛擬機、快照、網路模式 | 現在 |
+| [03 Linux 入門](03-LINUX-BASICS/README.md) | 終端機、路徑、檔案、權限、程序 | 基礎 |
+| [04 網路基礎](04-NETWORKING-BASICS/README.md) | IP、DNS、DHCP、路由、TCP/UDP、HTTP | 基礎 |
+| [05 程式設計](05-PROGRAMMING-BASICS/README.md) | Python、檔案、JSON、日誌 | 初級 |
+| [06 安全概念](06-CYBERSECURITY-FUNDAMENTALS/README.md) | CIA、威脅、漏洞、風險、權限 | 初級 |
+| [07 安全工具](07-SECURITY-TOOLS/README.md) | Wireshark、Nmap、Burp、Goby 等 | 初級至中級 |
+| [08 Web 安全](08-WEB-SECURITY/README.md) | HTTP、Cookie、Session、常見漏洞 | 中級 |
+| [09 滲透測試](09-PENTESTING-BASICS/README.md) | 授權、範圍、驗證、證據、報告 | 中級 |
+| [10 防禦監控](10-DEFENSIVE-SECURITY/README.md) | Windows 日誌、防火牆、告警 | 初級至中級 |
+| [11 實作實驗](11-PRACTICE-LABS/README.md) | 按順序完成的練習 | 全程 |
+| [12 故障排查](12-TROUBLESHOOTING/README.md) | Linux、網路、VMware 和工具錯誤 | 全程 |
+| [13 進階資料庫](13-ADVANCED-LATER/README.md) | 作業系統底層、內網和漏洞研究 | 以後 |
 
-完整進度安排請看 [24 週學習路線](STUDY-ROADMAP.md)，外部資料請看 [資料來源與使用順序](SOURCES.md)。
+## 每一課的教學標準
+- 本課目標和先修要求。
+- 白話解釋與工作原理。
+- 英文術語旁附繁體中文。
+- 操作前準備和逐條命令說明。
+- 預期結果、常見錯誤和安全排查。
+- 動手實驗、課後題和完成標準。
+- 對應官方文件、GitHub 專案或線上課程。
 
-## 每一課固定採用這個教學格式
+## 建議節奏
+每次 30–45 分鐘，每週 3–5 次。看不懂就停下來問；一個主題可以學一週或更久。24 週是參考，不是期限。
 
-1. **先用白話解釋**：這是什麼？它解決什麼問題？
-2. **生活例子**：用容易理解的例子建立概念。
-3. **必要英文詞彙**：英文名稱旁邊附繁體中文。
-4. **操作前準備**：說明在哪個系統、哪個視窗操作。
-5. **逐條命令解釋**：每個參數的意思都要說清楚。
-6. **預期觀察**：說明可能看到什麼；實際輸出可能因版本不同而不同。
-7. **常見錯誤**：如何判斷、如何安全排查。
-8. **小練習與驗收**：確認理解後才進入下一課。
-
-## 適合目前的學習節奏
-
-- 每次 30–45 分鐘即可，不需要每天完成很多章。
-- 每一課最多先學 2–4 個新概念。
-- 每次只執行一小組命令，先理解輸出再繼續。
-- 一個章節可以重複學幾天，不以速度判斷能力。
-- 先能說清楚「這個命令做什麼」，再記住命令。
-- 不需要現在就學組合語言、CPU 微架構、核心原始碼或漏洞利用細節。
+## 外部學習平台
+- [Cisco Networking Academy](https://www.netacad.com/)：網路和網路安全入門。
+- [TryHackMe Pre Security](https://tryhackme.com/path/outline/presecurity)：互動式零基礎課程。
+- [OverTheWire Bandit](https://overthewire.org/wargames/bandit/)：Linux 命令列闖關。
+- [PortSwigger Web Security Academy](https://portswigger.net/web-security/)：Web 安全免費實驗。
+- [HTB Academy](https://academy.hackthebox.com/)：基礎完成後的專業訓練。
 
 ## 實驗安全規則
+只測試自己的設備、自己建立的虛擬機或明確授權的靶場。故意有漏洞的靶場必須隔離，不要暴露到公網。不要把密碼、Token、VPN 訂閱連結、私人日誌或敏感設定檔上傳 GitHub。
 
-- 只測試自己的電腦、自己的虛擬機，或明確授權的靶場。
-- 不掃描、不登入、不測試陌生網站、公司網路或他人的設備。
-- 初期所有掃描和測試都限制在 localhost 或自己建立的隔離實驗環境。
-- 故意有漏洞的靶場必須隔離，不要暴露到公網，也不要接入公司或家庭重要設備所在的網路。
-- 不要把密碼、Token、VPN 訂閱連結、個人 IP、私人日誌或其他敏感資料上傳 GitHub。
-
-## 本倉庫的定位
-
-這是你的**繁體中文學習導航與實驗筆記**，不是把其他作者的整套教材複製進來。每個外部專案都會標示原始連結、用途、適合階段和注意事項；原始內容及授權仍歸原作者所有。
+本倉庫提供繁體中文導覽、自製筆記和練習；外部教材仍以原作者的內容、授權和版本為準。
