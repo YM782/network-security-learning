@@ -1,6 +1,6 @@
 # 網路安全學習路線｜零基礎到綜合網路安全
 
-> **目標：建立一套真正可跟著操作的繁體中文教材。** 不以 Markdown 數量或字數充當品質；每個主題要能讓初學者理解原理、完成實驗、看懂輸出並排查常見問題。
+> **目標：建立一套真正可跟著操作的繁體中文教材。** 不以 Markdown 數量或字數充當品質；每個主題要能讓初學者理解原理、完成實驗、看懂輸出、排查常見問題，並逐步學會閱讀真實漏洞研究文章。
 
 ## 最終學習目標
 
@@ -14,18 +14,34 @@
 4. [03 — Linux 命令列入門](03-LINUX-BASICS/README.md)
 5. [04 — 電腦網路基礎](04-NETWORKING-BASICS/README.md)
 6. [05 — Python 程式設計基礎](05-PROGRAMMING-BASICS/README.md)
-7. [24 週詳細學習路線](STUDY-ROADMAP.md)
-8. [資料來源和網站使用順序](SOURCES.md)
+7. [真實漏洞研究方法](VULNERABILITY-RESEARCH-PLAYBOOK.md)
+8. [漏洞研究報告模板](VULNERABILITY-REPORT-TEMPLATE.md)
+9. [24 週詳細學習路線](STUDY-ROADMAP.md)
+10. [資料來源和網站使用順序](SOURCES.md)
+
+## 真實漏洞研究入口
+
+前五個模組已加入五篇真實漏洞研究案例。你將從記憶體生命週期、Windows 服務權限、Linux 核心資料管理、HTTP 協議解析和 Fuzzing 五個角度，學習研究人員如何提出假設、收集證據、建立最小重現、定位根因和理解修補。
+
+| 模組 | 真實案例 | 核心研究能力 |
+|---|---|---|
+| 01 電腦基礎 | Android Binder UAF（CVE-2019-2215） | 記憶體生命週期、版本差異、變體分析 |
+| 02 Windows / VMware / Kali | PrintNightmare（CVE-2021-34527） | 服務、權限邊界、修補與配置 |
+| 03 Linux | Dirty Pipe（CVE-2022-0847） | Page Cache、最小重現、git bisect |
+| 04 網路 | HTTP Request Smuggling | 代理鏈、協議解析差異、低風險驗證 |
+| 05 Python | dav1d Fuzzing（CVE-2024-1580） | 測試空間、輸入邊界、覆蓋率、Sanitizer |
+
+**建議先讀原理，再讀案例；先理解根因，再看 PoC。** 不要把能執行別人的 PoC 當成掌握漏洞。
 
 ## 課程目錄
 
 | 模組 | 內容 | 建議階段 |
 |---|---|---|
-| [01 電腦基礎](01-COMPUTER-BASICS/README.md) | CPU、RAM、SSD、作業系統、程序和工作管理員實驗 | 現在 |
-| [02 Windows / VMware / Kali](02-WINDOWS-VMWARE-KALI/README.md) | 宿主機、虛擬機、快照、網路模式、Kali 檢查 | 現在 |
-| [03 Linux 入門](03-LINUX-BASICS/README.md) | 終端機、路徑、檔案、權限、程序和套件管理 | 基礎 |
+| [01 電腦基礎](01-COMPUTER-BASICS/README.md) | CPU、RAM、SSD、作業系統、程序、記憶體生命週期 | 現在 |
+| [02 Windows / VMware / Kali](02-WINDOWS-VMWARE-KALI/README.md) | 宿主機、虛擬機、快照、網路模式、Windows 服務和權限 | 現在 |
+| [03 Linux 入門](03-LINUX-BASICS/README.md) | 終端機、檔案、權限、程序、核心資料管理 | 基礎 |
 | [04 網路基礎](04-NETWORKING-BASICS/README.md) | 網路設備、IP、DNS、DHCP、路由、TCP/UDP、HTTP、Wireshark | 基礎 |
-| [05 Python 程式設計](05-PROGRAMMING-BASICS/README.md) | Python 3、資料型別、控制流程、函式、檔案、JSON、CSV、Regex、離線日誌分析 | 初級 |
+| [05 Python 程式設計](05-PROGRAMMING-BASICS/README.md) | Python 3、資料型別、控制流程、函式、檔案、JSON、CSV、Regex、Fuzzing | 初級 |
 | [06 安全概念](06-CYBERSECURITY-FUNDAMENTALS/README.md) | CIA、威脅、漏洞、風險、權限 | 初級 |
 | [07 安全工具](07-SECURITY-TOOLS/README.md) | Wireshark、Nmap、Burp、Goby 等 | 初級至中級 |
 | [08 Web 安全](08-WEB-SECURITY/README.md) | HTTP、Cookie、Session、常見漏洞 | 中級 |
@@ -37,15 +53,15 @@
 
 ## 教材重寫進度
 
-目前已完成前五個基礎模組的第一輪重寫，共 22 篇較完整的課程。其他模組仍需逐篇擴充；未標記完成的內容仍屬初版筆記，不代表已達到完整教材標準。
+前五個基礎模組目前共有 27 篇課程與真實案例文件：22 篇基礎課程，加上 5 篇真實案例分析。其他模組仍需逐篇擴充；未標記完成的內容仍屬初版筆記，不代表已達到完整教材標準。
 
 | 模組 | 狀態 |
 |---|---|
-| 01 電腦基礎 | 已重寫 4 篇完整課程 |
-| 02 Windows / VMware / Kali | 已重寫 3 篇完整課程 |
-| 03 Linux 入門 | 已重寫 4 篇完整課程 |
-| 04 網路基礎 | 已重寫 5 篇完整課程 |
-| 05 Python 程式設計 | 已重寫 6 篇完整課程 |
+| 01 電腦基礎 | 4 篇基礎課程 + 1 篇真實案例 |
+| 02 Windows / VMware / Kali | 3 篇基礎課程 + 1 篇真實案例 |
+| 03 Linux 入門 | 4 篇基礎課程 + 1 篇真實案例 |
+| 04 網路基礎 | 5 篇基礎課程 + 1 篇真實案例 |
+| 05 Python 程式設計 | 6 篇基礎課程 + 1 篇真實案例 |
 | 06–10 | 待按順序深化 |
 | 11–13 | 待按先修能力深化 |
 
@@ -58,7 +74,7 @@
 5. 預期輸出及如何閱讀結果。
 6. 從準備環境到完成驗證的完整實驗。
 7. 常見錯誤、可能原因和安全排查步驟。
-8. 實際應用場景及安全意義。
+8. 真實案例的線索、假設、證據、根因和修補。
 9. 基礎、理解和實操測驗。
 10. 官方文件和可信的延伸資源。
 

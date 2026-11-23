@@ -11,6 +11,8 @@
 | 3 | VMware、Host/Guest、虛擬 CPU/RAM/磁碟、快照 | 建立 Kali 快照 | 能說明宿主機和客體系統 |
 | 4 | NAT、Host-only、Bridged、Kali 基本操作 | 查看 ip addr、ip route | 能解釋網卡模式 |
 
+**真實案例閱讀：** Android Binder UAF（CVE-2019-2215）。重點是理解指標、物件生命週期和修補落差，不需要執行漏洞利用。
+
 ## 第二階段：Linux 命令列（第 5–8 週）
 
 | 週次 | 詳細內容 | 實作任務 | 驗收 |
@@ -20,6 +22,8 @@
 | 7 | 使用者、群組、擁有者、rwx、sudo | whoami、id、ls -l、chmod | 能解釋基本權限 |
 | 8 | 套件、程序、服務、磁碟和記憶體 | apt update、ps、top、df -h、free -h | 能查看系統狀態 |
 
+**真實案例閱讀：** Dirty Pipe（CVE-2022-0847）。重點是從檔案異常、最小重現、Page Cache 到 git bisect 的研究過程。
+
 ## 第三階段：網路基礎（第 9–12 週）
 
 | 週次 | 詳細內容 | 實作任務 | 驗收 |
@@ -28,6 +32,8 @@
 | 10 | IPv4、私有 IP、子網路遮罩、閘道器 | ipconfig /all、ip addr | 能讀懂 IP 設定 |
 | 11 | DHCP、DNS、路由表、名稱解析 | nslookup、ip route、route print | 能說明網域如何解析 |
 | 12 | TCP、UDP、連接埠、HTTP/HTTPS、TLS | ss -tuln、netstat -ano、Chrome Network、Wireshark | 能解釋請求和連接埠 |
+
+**真實案例閱讀：** HTTP Request Smuggling。重點是前端代理和後端對 HTTP 訊息邊界的不同理解。實驗只在 PortSwigger Academy 指定 Lab 中進行。
 
 ## 第四階段：Python 程式與安全概念（第 13–16 週）
 
@@ -39,6 +45,8 @@
 | 14 | if/elif/else、for、while、list、tuple、dict、set、函式 | 寫事件等級統計函式 | 能解釋控制流程、資料結構和 return |
 | 15 | pathlib、文字檔、JSON、CSV、例外處理、Regex、Counter、ipaddress | 完成離線日誌分析器 | 能讀取虛構日誌、統計事件並驗證 IP |
 | 16 | CIA、威脅、漏洞、風險、資產、驗證和授權 | 分析虛構帳號安全案例 | 能區分威脅、漏洞、影響和風險 |
+
+**真實案例閱讀：** dav1d Fuzzing（CVE-2024-1580）。重點是 Fuzzer 的測試限制、輸入尺寸、執行緒配置、覆蓋率和 Sanitizer。
 
 ## 第五階段：工具與 Web 安全（第 17–20 週）
 
@@ -64,7 +72,7 @@
 - 第二次：跟著操作，逐條理解命令或程式。
 - 第三次：不看答案，自己重做。
 - 第四次：整理錯誤並回答驗收題。
-- 第五次（可選）：在外部平台做相關小練習。
+- 第五次（可選）：閱讀一段真實漏洞研究文章，記錄「線索、假設、證據、根因、修補」。
 
 ## 晉級條件
 
@@ -73,3 +81,17 @@
 ## 24 週之後
 
 再延伸至 Web/API 安全、Windows/Active Directory、內網安全、SOC/SIEM、雲端安全、C 語言、記憶體和漏洞研究。綜合網路安全是長期方向，不需要一次全部學會。
+
+## 研究員閱讀方法
+
+讀真實漏洞文章時，不要只看最後的 CVE 和 PoC。每篇至少整理：
+1. 研究員最初看到什麼線索？
+2. 他提出了哪些假設？
+3. 哪些假設被證據排除？
+4. 他如何縮小搜尋範圍？
+5. 最小重現是什麼？
+6. 根因位於哪個元件或程式路徑？
+7. 修補改變了什麼？
+8. 是否還有相似變體？
+
+完整研究流程見 [真實漏洞研究方法](VULNERABILITY-RESEARCH-PLAYBOOK.md)。
