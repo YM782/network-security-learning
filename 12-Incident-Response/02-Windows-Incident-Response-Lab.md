@@ -18,7 +18,7 @@
 
 以系統管理員 PowerShell 執行：
 
-`powershell
+```powershell
 $CaseId = "IR-LAB-001"
 $Evidence = "C:\IR-Lab-Evidence\$CaseId"
 
@@ -27,13 +27,13 @@ Get-Date -Format o | Out-File "$Evidence\collection-time.txt"
 hostname | Out-File "$Evidence\hostname.txt"
 whoami /all | Out-File "$Evidence\identity.txt"
 ipconfig /all | Out-File "$Evidence\network-config.txt"
-`
+```
 
 不要把真實使用者名稱、內網 IP、公司網域或其他敏感資訊上傳到公開倉庫。
 
 ## 3. Collect Host Baseline（收集主機基礎資訊）
 
-`powershell
+```powershell
 Get-ComputerInfo |
   Select-Object CsName,WindowsProductName,WindowsVersion,OsBuildNumber |
   Export-Csv "$Evidence\host-info.csv" -NoTypeInformation -Encoding UTF8
@@ -46,13 +46,13 @@ Get-Service |
 Get-Process |
   Select-Object Name,Id,CPU,StartTime |
   Export-Csv "$Evidence\processes.csv" -NoTypeInformation -Encoding UTF8
-`
+```
 
 觀察主機名稱、作業系統版本、執行中的服務、程序 PID 與啟動時間。不要只依程序名稱判斷惡意性；應搭配執行路徑、數位簽章、父程序與其他日誌。
 
 ## 4. Collect Network State（收集網路狀態）
 
-`powershell
+```powershell
 Get-NetIPConfiguration |
   Format-List * |
   Out-File "$Evidence\ip-configuration.txt"
@@ -63,7 +63,7 @@ Get-NetTCPConnection |
 
 Get-DnsClientCache |
   Export-Csv "$Evidence\dns-cache.csv" -NoTypeInformation -Encoding UTF8
-`
+```
 
 DNS 快取與網路連線資料是調查線索，不應單獨作為攻擊定論。
 
@@ -80,7 +80,7 @@ DNS 快取與網路連線資料是調查線索，不應單獨作為攻擊定論�
 
 查詢最近 24 小時：
 
-`powershell
+```powershell
 $Since = (Get-Date).AddHours(-24)
 
 $Events = Get-WinEvent -FilterHashtable @{
@@ -92,7 +92,7 @@ $Events = Get-WinEvent -FilterHashtable @{
 $Events |
   Select-Object TimeCreated,Id,RecordId,ProviderName,Message |
   Export-Csv "$Evidence\security-events.csv" -NoTypeInformation -Encoding UTF8
-`
+```
 
 若沒有 4688，先確認 Process Creation 稽核是否啟用。不要為了產生事件而在正式設備上任意修改稽核政策。
 
@@ -100,30 +100,30 @@ $Events |
 
 在自有實驗機建立一筆明確標示為測試的 Application Log 事件：
 
-`powershell
+```powershell
 eventcreate /T INFORMATION /ID 100 /L APPLICATION /SO IR-Lab /D "Benign incident response training event"
-`
+```
 
 查詢該事件：
 
-`powershell
+```powershell
 Get-WinEvent -FilterHashtable @{
   LogName = "Application"
   ProviderName = "IR-Lab"
   Id = 100
   StartTime = (Get-Date).AddHours(-1)
 } | Select-Object TimeCreated,Id,ProviderName,Message
-`
+```
 
 此測試事件不代表發生安全事件，只用來練習日誌讀取、時間線與報告流程。
 
 ## 7. Hash and Preserve Evidence（計算雜湊並保存證據）
 
-`powershell
+```powershell
 Get-ChildItem $Evidence -File |
   Get-FileHash -Algorithm SHA256 |
   Export-Csv "$Evidence\sha256-manifest.csv" -NoTypeInformation -Encoding UTF8
-`
+```
 
 雜湊清單本身也需要保存與保護。正式鑑識中，應將證據副本存放在受限權限、具備存取紀錄的儲存位置。
 
