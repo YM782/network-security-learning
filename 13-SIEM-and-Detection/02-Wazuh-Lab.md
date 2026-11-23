@@ -38,7 +38,7 @@ Wazuh 官方 Quickstart 對 1–25 個 Agent 的 all-in-one 部署，建議約 4
 
 安裝受支援的 Ubuntu Server，設定主機名稱與靜態 IP。完成後檢查：
 
-`bash
+```bash
 hostnamectl
 ip address
 ip route
@@ -46,7 +46,7 @@ resolvectl status
 timedatectl
 df -h
 free -h
-`
+```
 
 先建立 VMware Snapshot。確認磁碟空間與時間同步正常，再進行安裝。
 
@@ -58,10 +58,10 @@ free -h
 
 官方 Quickstart 範例：
 
-`bash
+```bash
 curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh
 sudo bash ./wazuh-install.sh -a
-`
+```
 
 這會安裝 Wazuh Indexer、Wazuh Server 與 Wazuh Dashboard。安裝完成後，終端機會顯示 Dashboard 位址與登入資訊。
 
@@ -76,14 +76,14 @@ sudo bash ./wazuh-install.sh -a
 
 在 WAZUH01 執行：
 
-`bash
+```bash
 sudo systemctl status wazuh-manager
 sudo systemctl status wazuh-indexer
 sudo systemctl status wazuh-dashboard
 sudo systemctl --failed
 df -h
 free -h
-`
+```
 
 服務名稱或管理方式可能依 Wazuh 版本與部署方式不同。若服務不存在，先檢查安裝摘要與該版本官方文件，不要直接重複執行安裝腳本。
 
@@ -96,11 +96,11 @@ https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-age
 
 常見服務檢查：
 
-`powershell
+```powershell
 Get-Service WazuhSvc
 Start-Service WazuhSvc
 Get-Service WazuhSvc
-`
+```
 
 確認 Agent 已成功註冊、狀態顯示 Active，且 WAZUH01 與 WIN-CLIENT01 在隔離網路中可正常通訊。不要把註冊 Token、密碼或 Agent Key 提交到 GitHub。
 
@@ -110,19 +110,19 @@ Wazuh Agent 可收集 Windows Event Channel。若需要明確指定 Security 日
 
 設定概念範例（放在 ossec_config 區塊內，先備份原檔）：
 
-`xml
+```xml
 <localfile>
   <location>Security</location>
   <log_format>eventchannel</log_format>
 </localfile>
-`
+```
 
 完成後重新啟動 Agent：
 
-`powershell
+```powershell
 Restart-Service WazuhSvc
 Get-Service WazuhSvc
-`
+```
 
 不要覆蓋整份原始設定檔。只新增必要設定，並確認 XML 結構正確。
 
@@ -134,24 +134,24 @@ Sysmon 是 Microsoft Sysinternals 工具，可記錄程序建立、網路連線�
 
 在自己的 Windows 測試 VM 中，下載 Sysmon，閱讀授權與說明，使用可信任設定檔。安裝範例：
 
-`powershell
+```powershell
 .\Sysmon64.exe -accepteula -i .\sysmonconfig.xml
-`
+```
 
 在 Wazuh Agent 的 ossec.conf 中，備份後於 ossec_config 區塊內加入：
 
-`xml
+```xml
 <localfile>
   <location>Microsoft-Windows-Sysmon/Operational</location>
   <log_format>eventchannel</log_format>
 </localfile>
-`
+```
 
 重新啟動 Agent：
 
-`powershell
+```powershell
 Restart-Service WazuhSvc
-`
+```
 
 注意：Sysmon Event ID 3（Network Connection）與 Event ID 7（Image Loaded）可能需要在設定檔中明確啟用，且會增加資料量。先從必要事件開始，再逐步擴充。
 
@@ -193,9 +193,9 @@ Restart-Service WazuhSvc
 | 告警過多 | 規則門檻或事件來源過廣 | Rule ID、頻率與誤報分析 |
 
 Windows Agent 常見日誌位置：
-`text
+```text
 C:\Program Files (x86)\ossec-agent\ossec.log
-`
+```
 
 ## 12. Lab Deliverables（實驗成果）
 
