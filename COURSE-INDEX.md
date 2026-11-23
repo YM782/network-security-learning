@@ -25,11 +25,11 @@
 - [Security Labs（網路安全實驗室）](10-Security-Labs/README.md)：VMware Host-only、Docker、WebGoat 與 Juice Shop 隔離靶場。
 - [Troubleshooting（故障排查手冊）](11-Troubleshooting/README.md)：系統、網路、Docker、VMware 與 Burp Suite 常見問題。
 
-## Planned Courses（後續課程）
+## Future Expansion（後續擴充方向）
 
-- `04-Programming/`：Python、Bash、PowerShell、SQL 與 C 語言。
-- `05-Cybersecurity-Fundamentals/`：安全原則、密碼學、認證與風險。
-- `06-Network-Analysis/`：Wireshark、Nmap 與網路流量分析。
+- `12-Incident-Response/`：資安事件應變、證據保全與數位鑑識。
+- `13-SIEM-and-Detection/`：集中式日誌、SIEM、告警分析與威脅偵測。
+- `14-Cloud-Security/`：雲端身分、網路、儲存與組態安全。
 
 ## Reference（參考）
 
