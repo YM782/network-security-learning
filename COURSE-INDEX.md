@@ -12,6 +12,9 @@
 - [Cybersecurity Fundamentals（網路安全基礎原理）](05-Cybersecurity-Fundamentals/README.md)：CIA、身分驗證、授權、密碼學、弱點與風險。
 - [Network Analysis（網路流量分析與資產識別）](06-Network-Analysis/README.md)：Wireshark、Nmap、封包過濾、服務辨識與實驗紀錄。
 - [Web Application Security（Web 應用程式安全）](07-Web-Security/README.md)：SQL Injection、XSS、CSRF、IDOR、SSRF、檔案上傳與 API 安全。
+- [Active Directory Domain Services（Active Directory 網域服務）](09-Active-Directory/README.md)：網域、樹系、DNS、Kerberos、LDAP、SMB、OU、群組與 GPO。
+- [Active Directory Lab Setup（AD 隔離實驗室建置）](09-Active-Directory/02-Lab-Setup.md)：VMware Host-only、Windows Server、網域控制站與用戶端加入網域。
+- [AD Defensive Audit and Troubleshooting（AD 防禦稽核與故障排查）](09-Active-Directory/03-Defensive-Audit-and-Troubleshooting.md)：帳號、權限、SPN、GPO、事件日誌與網域健康檢查。
 
 ## Authorized Testing and Practical Labs（授權測試與實作）
 
@@ -26,7 +29,6 @@
 - `04-Programming/`：Python、Bash、PowerShell、SQL 與 C 語言。
 - `05-Cybersecurity-Fundamentals/`：安全原則、密碼學、認證與風險。
 - `06-Network-Analysis/`：Wireshark、Nmap 與網路流量分析。
-- `09-Active-Directory/`：Windows 網域與企業內網安全（下一階段課程）。
 
 ## Reference（參考）
 
