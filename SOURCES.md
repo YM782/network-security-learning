@@ -1,54 +1,53 @@
-# Network Security Sources（网络安全资料来源）
+# Network Security Sources（網路安全資料來源）
 
-This index links to original repositories and official documentation. The study notes in this repository should be original summaries with attribution, not copied course content.
-本索引指向原始仓库和官方文档。本仓库中的学习笔记应为注明来源的原创总结，不应直接复制课程内容。
+以下連結指向原始 GitHub 專案或官方文件。本倉庫的學習筆記應為附有來源的原創摘要，不直接複製他人的整套課程。
 
-## Computer science and operating systems（计算机科学与操作系统）
+## Computer Science and Operating Systems（計算機科學與作業系統）
 
-| Resource（资源） | Original source（原始来源） | Purpose（用途） |
+| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
 |---|---|---|
-| OSSU Computer Science（计算机科学自学课程） | https://github.com/ossu/computer-science | Broad CS curriculum: systems, algorithms, networking（计算机科学课程体系：系统、算法和网络） |
-| Linux Journey（Linux 学习课程） | https://github.com/labex-labs/linuxjourney | Linux command line, system administration, and fundamentals（Linux 命令行、系统管理和基础知识） |
-| Learn Python（Python 学习项目） | https://github.com/trekhleb/learn-python | Python examples and exercises（Python 示例和练习） |
-| OverTheWire Bandit（Linux 入门闯关） | https://overthewire.org/wargames/bandit/ | SSH, shell, file permissions, and command-line practice（SSH、Shell、文件权限和命令行练习） |
+| OSSU Computer Science（計算機科學自學課程） | https://github.com/ossu/computer-science | 系統、演算法、網路等計算機科學課程 |
+| Linux Journey（Linux 學習課程） | https://github.com/labex-labs/linuxjourney | Linux 命令列、系統管理與基礎知識 |
+| Learn Python（Python 學習專案） | https://github.com/trekhleb/learn-python | Python 範例與練習 |
+| OverTheWire Bandit（Linux 入門闖關） | https://overthewire.org/wargames/bandit/ | SSH、Shell、檔案權限與命令列練習 |
 
-## General cybersecurity（综合网络安全）
+## General Cybersecurity（綜合網路安全）
 
-| Resource（资源） | Original source（原始来源） | Purpose（用途） |
+| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
 |---|---|---|
-| The Art of Hacking / h4cker（黑客技术综合资料） | https://github.com/The-Art-of-Hacking/h4cker | Broad cybersecurity references, labs, scripts, and learning material（综合安全参考、实验、脚本和学习材料） |
-| Awesome Penetration Testing（渗透测试资源大全） | https://github.com/enaqx/awesome-pentest | Curated books, tools, and learning resources（书籍、工具和学习资源导航） |
-| OWASP Cheat Sheet Series（OWASP 安全指导手册） | https://github.com/OWASP/CheatSheetSeries | Secure development and defensive guidance（安全开发和防御指导） |
+| The Art of Hacking / h4cker（綜合資安資料） | https://github.com/The-Art-of-Hacking/h4cker | 網路安全參考資料、實驗、腳本與學習內容 |
+| Awesome Penetration Testing（滲透測試資源大全） | https://github.com/enaqx/awesome-pentest | 書籍、工具與學習資源索引 |
+| OWASP Cheat Sheet Series（OWASP 安全指引） | https://github.com/OWASP/CheatSheetSeries | 安全開發與防禦指引 |
 
-## Network and web security（网络与 Web 安全）
+## Network and Web Security（網路與 Web 安全）
 
-| Resource（资源） | Original source（原始来源） | Purpose（用途） |
+| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
 |---|---|---|
-| Wireshark Documentation（Wireshark 官方文档） | https://www.wireshark.org/docs/ | Packet capture and protocol analysis（抓包与协议分析） |
-| Nmap Reference Guide（Nmap 参考指南） | https://nmap.org/book/man.html | Authorized host and service discovery（授权环境中的主机和服务识别） |
-| OWASP Web Security Testing Guide（Web 安全测试指南） | https://github.com/OWASP/wstg | Structured web application testing methodology（Web 应用系统化测试方法） |
-| OWASP WebGoat（Web 漏洞教学靶场） | https://github.com/WebGoat/WebGoat | Guided lessons in a deliberately vulnerable application（故意存在漏洞的应用教学） |
-| OWASP Juice Shop（综合 Web 漏洞靶场） | https://github.com/juice-shop/juice-shop | Hands-on web security challenges（Web 安全实战挑战） |
-| PortSwigger Web Security Academy（Web 安全学院） | https://portswigger.net/web-security | Free lessons and interactive web security labs（免费课程和交互式 Web 安全实验） |
-| PayloadsAllTheThings（漏洞测试技术参考） | https://github.com/swisskyrepo/PayloadsAllTheThings | Vulnerability concepts and test references（漏洞原理和测试参考） |
+| Wireshark Documentation（Wireshark 官方文件） | https://www.wireshark.org/docs/ | 封包擷取與協定分析 |
+| Nmap Reference Guide（Nmap 參考指南） | https://nmap.org/book/man.html | 授權環境中的主機與服務識別 |
+| OWASP Web Security Testing Guide（Web 安全測試指南） | https://github.com/OWASP/wstg | Web 應用程式系統化測試方法 |
+| OWASP WebGoat（Web 弱點教學靶場） | https://github.com/WebGoat/WebGoat | 在故意存在弱點的應用程式中進行教學 |
+| OWASP Juice Shop（綜合 Web 弱點靶場） | https://github.com/juice-shop/juice-shop | Web 安全實作挑戰 |
+| PortSwigger Web Security Academy（Web 安全學院） | https://portswigger.net/web-security | 免費課程與互動式 Web 安全實驗 |
+| PayloadsAllTheThings（弱點測試技術參考） | https://github.com/swisskyrepo/PayloadsAllTheThings | 弱點原理與測試參考 |
 
-## Windows and Active Directory（Windows 与活动目录）
+## Windows and Active Directory（Windows 與 Active Directory）
 
-| Resource（资源） | Original source（原始来源） | Purpose（用途） |
+| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
 |---|---|---|
-| GOAD — Game of Active Directory（活动目录实验环境） | https://github.com/Orange-Cyberdefense/GOAD | Isolated Active Directory learning lab（隔离的活动目录学习环境） |
-| InternalAllTheThings（内网安全技术参考） | https://github.com/swisskyrepo/InternalAllTheThings | Windows and enterprise network security reference（Windows 和企业内网安全参考） |
+| GOAD — Game of Active Directory（Active Directory 實驗環境） | https://github.com/Orange-Cyberdefense/GOAD | 隔離的 Active Directory 學習靶場 |
+| InternalAllTheThings（企業內網技術參考） | https://github.com/swisskyrepo/InternalAllTheThings | Windows 與企業內網安全參考 |
 
-## Source-use and safety rules（来源与安全规则）
+## Source-use and Safety Rules（來源與安全規則）
 
-1. Prefer official documentation for tool syntax and security guidance（工具语法和安全建议优先查官方文档）.
-2. Record the exact repository, author or organization, and access date（记录仓库、作者或组织以及访问日期）.
-3. Check license terms before copying code, diagrams, or course material（复制代码、图表或课程内容前检查许可证）.
-4. Use WebGoat, Juice Shop, GOAD, and similar intentionally vulnerable systems only in isolated labs（WebGoat、Juice Shop、GOAD 等脆弱环境只在隔离靶场中使用）.
-5. Do not commit secrets, credentials, tokens, private keys, or VPN subscription links（不要提交秘密、凭据、令牌、私钥或 VPN 订阅链接）.
-6. Recheck project activity and version numbers before relying on a tool in a real assessment（真实测试前重新核对项目活跃度和版本）.
+1. 工具語法與安全建議優先參考官方文件。
+2. 記錄原始倉庫、作者或組織，以及查閱日期。
+3. 複製程式碼、圖表或課程內容前，先確認授權條款。
+4. WebGoat、Juice Shop、GOAD 等故意存在弱點的系統，只能在隔離靶場中使用。
+5. 不要將密碼、權杖、私鑰或 VPN 訂閱網址提交到 Git。
+6. 真正執行安全測試前，重新確認專案狀態、版本與測試授權。
 
-## Verification log（核对记录）
+## Verification Log（來源核對紀錄）
 
-- Initial repository links checked: 2026-11-23（首次核对日期：2026-11-23）.
-- This date records link verification only; it is not a guarantee that every external project is actively maintained or suitable for every environment（该日期仅表示核对过链接，不代表所有项目都持续维护或适用于所有环境）.
+- Initial links checked: 2026-11-23（首次連結核對日期：2026-11-23）。
+- 此日期僅代表曾核對連結，不保證所有外部專案都持續維護或適用於所有環境。
