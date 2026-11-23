@@ -27,6 +27,11 @@
 - [ ] 能解釋 Fuzzing、種子資料、覆蓋率和 Sanitizer。
 - [ ] 能完成離線日誌分析和輸入邊界檢查練習。
 
+## 快速複習文件
+
+- [Python 基本語法速覽](01-Python-Basics.md)
+- [讀取文字檔、JSON 和日誌速覽](02-Read-Logs-and-JSON.md)
+
 ## Python 與真實漏洞研究
 
 Python 常用於自動化資料處理、產生測試輸入、分析結果和建立研究輔助工具。但許多底層記憶體漏洞發生在 C/C++、核心或原生函式庫中，Python 並不會自動替代 C 語言、除錯器或 Sanitizer。
@@ -54,6 +59,7 @@ Python 常用於自動化資料處理、產生測試輸入、分析結果和建�
 - [Python 官方下載頁](https://www.python.org/downloads/)
 - [Python 3 官方教學](https://docs.python.org/3/tutorial/)
 - [Python 標準函式庫](https://docs.python.org/3/library/)
+- [Python 虛擬環境 venv](https://docs.python.org/3/library/venv.html)
 - [Google OSS-Fuzz](https://github.com/google/oss-fuzz)
 - [LLVM LibFuzzer](https://llvm.org/docs/LibFuzzer.html)
 

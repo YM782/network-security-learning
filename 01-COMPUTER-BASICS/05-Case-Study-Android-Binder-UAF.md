@@ -63,56 +63,56 @@ free(object) 之後，這塊記憶體已經不再屬於原本物件的有效生�
 
 ## 三、Binder 案例的真正根因
 
-Project Zero 的技術分析指出：
+Project Zero 的技術分析把問題定位在 Binder 驅動程式中的物件生命週期：
 
-1. Binder 核心物件 binder_thread 內含有一個 wait queue。
-2. epoll 可以透過 Binder 的 poll 行為取得這個 wait queue 的參照。
-3. Binder thread 結束時，相關釋放流程會釋放 binder_thread。
-4. 但 epoll 仍可能保留指向原本 wait queue 的參照。
-5. 後續清理或操作如果再使用這個已失效的參照，就會觸發 UAF。
+1. `binder_thread` 結構內嵌一個 `wait_queue_head_t wait`。
+2. Binder 的 `binder_poll()` 會把這個 wait queue 提供給 `epoll` 監看。
+3. 當執行 `BINDER_THREAD_EXIT` ioctl 時，`binder_thread_release()` 會釋放包含 wait queue 的 `binder_thread`。
+4. 但 epoll 監看項目仍可能保留指向該 wait queue 的參照。
+5. 後續移除 epoll watch 時，清理路徑會呼叫 `remove_wait_queue()`，其參數仍指向已釋放的 wait queue。
+6. KASAN 報告的 UAF 發生在 `remove_wait_queue()` 使用已失效的 `q`，例如存取 `q->lock`。
 
-重點不是背住 binder_thread、epoll 等名稱，而是理解：
+更精確地說，這不是「epoll 一般都會保留失效指標」；問題在於 Binder 提供給 poll/epoll 的 wait queue，其生命週期沒有依照核心 poll wait queue 的預期規則處理。Project Zero 指出，Binder 的這條路徑需要妥善處理 `POLLFREE` 等生命週期通知。
 
-**物件已經釋放，不代表所有其他元件都已經停止引用它。**
+**研究重點：** 不只是「物件被 free 了」，還要找出哪個子系統持有參照、哪個清理路徑會再次使用它，以及物件釋放前是否通知所有持有者。
 
-這就是物件生命週期（Object Lifetime）和參照管理（Reference Management）問題。
+## 四、Project Zero 如何從線索定位問題？
 
-## 四、研究人員如何找到它？
+這裡要區分兩件事：**原始錯誤由 syzkaller 找到；Project Zero 後來根據在野利用線索，重新確認它的安全影響並追查受影響設備。**
 
-這是本案例最值得學習的地方。
+### 第一步：整理利用線索
 
-### 第一步：取得線索，而不是立即寫利用程式
+2019 年夏末，Google TAG、Android Security 和 Project Zero 收到有關 Android 零日利用的線索。線索包括：
+- 問題是可從 Chrome renderer 沙箱觸及的核心 UAF。
+- Pixel 1、Pixel 2 受影響，Pixel 3、Pixel 3a 不受影響。
+- 線索指出某個上游核心修補已在 Linux 4.14 出現，但當時沒有 CVE。
+- `CONFIG_DEBUG_LIST` 等核心配置會影響利用條件。
 
-Project Zero 收到與 Android 零日漏洞有關的線索，其中包含：
-- 某些舊款 Pixel 設備受影響，較新設備不受影響。
-- 問題與 Linux Kernel 版本及修補紀錄有關。
-- 漏洞類型可能是 UAF。
-- 問題能從受限制的應用程式環境觸及。
+Project Zero 當時沒有拿到實際利用樣本；研究員是根據線索、行銷材料、受影響設備清單和程式碼分析，判斷這個漏洞很可能正在被利用。
 
-這些資訊讓研究人員知道應該優先檢查核心，而不是把所有 Android App 都當成搜尋起點。
+### 第二步：比較 Pixel 2 和 Pixel 3 的核心程式碼
 
-### 第二步：縮小程式碼範圍
+研究員先嘗試其他候選問題，後來才把注意力轉向 Binder。接著比較 Pixel 2 與 Pixel 3 的 `drivers/android/binder.c` 和變更紀錄。
 
-研究人員比較不同設備的核心版本、Binder 驅動程式和修補紀錄。
+其中一個提交特別突出：
+- 提交說明明確提到修復 use-after-free；
+- 修補來自上游；
+- 修補只進入特定核心版本分支。
 
-這種方法叫版本差異分析（Version Diffing）：
+### 第三步：用所有線索交叉驗證
 
-- 哪些程式碼在舊設備存在？
-- 哪些程式碼在新設備已改變？
-- 哪個修補紀錄提到 use-after-free？
-- 修補是否只進入某些核心分支？
+研究員再把候選修補與最初收到的設備、核心配置和利用條件逐項比對，並檢查 Pixel 2 到 Pixel 3 之間其他約 25 項 Binder 變更。這個候選問題與線索吻合。
 
-### 第三步：驗證假設
+這是很好的研究方法：**不要只因為提交訊息裡出現 UAF 就認定找到了漏洞；要讓程式碼、版本差異、配置和外部線索彼此吻合。**
 
-研究人員把每個線索與候選程式碼逐一比對，而不是因為看到某個可疑函式就認定它是漏洞。
+### 第四步：追溯原始發現和修補落差
 
-### 第四步：追查漏洞歷史
-
-原始問題早在 2017 年就由 syzkaller 找到，2018 年已有相關修補，但修補沒有完整進入所有已上市設備的安全更新流程。
+這個 UAF 最早由 syzkaller/syzbot 在 2017 年 11 月回報，2018 年 2 月已有 Linux 及 Android 核心修補。但修補沒有被納入 Android 月度安全公告，因而沒有及時到達許多已上市設備。
 
 這提醒我們：
-
-**找到漏洞、修好上游程式碼、讓所有使用者取得修補，是三件不同的事。**
+- 找到程式錯誤，不代表它已被辨識為安全漏洞；
+- 上游核心有修補，不代表所有廠商產品都已合併；
+- 有修補提交，不代表使用者設備已收到更新。
 
 ## 五、你應該從這個案例學到什麼？
 

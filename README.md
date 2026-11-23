@@ -28,7 +28,7 @@
 | 01 電腦基礎 | Android Binder UAF（CVE-2019-2215） | 記憶體生命週期、版本差異、變體分析 |
 | 02 Windows / VMware / Kali | PrintNightmare（CVE-2021-34527） | 服務、權限邊界、修補與配置 |
 | 03 Linux | Dirty Pipe（CVE-2022-0847） | Page Cache、最小重現、git bisect |
-| 04 網路 | HTTP Request Smuggling | 代理鏈、協議解析差異、低風險驗證 |
+| 04 網路 | HTTP Request Smuggling（漏洞類別研究，非單一 CVE） | 代理鏈、協議解析差異、低風險驗證 |
 | 05 Python | dav1d Fuzzing（CVE-2024-1580） | 測試空間、輸入邊界、覆蓋率、Sanitizer |
 
 **建議先讀原理，再讀案例；先理解根因，再看 PoC。** 不要把能執行別人的 PoC 當成掌握漏洞。

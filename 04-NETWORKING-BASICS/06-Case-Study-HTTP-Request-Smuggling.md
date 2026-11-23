@@ -8,7 +8,9 @@
 
 [HTTP Desync Attacks: Request Smuggling Reborn — PortSwigger Research](https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn)
 
-研究員 James Kettle 以真實案例說明 HTTP Request Smuggling 的研究方法、檢測策略、風險控制和防禦方式。文章不是只列 Payload，而是解釋如何理解多層 HTTP 基礎設施，以及如何避免在測試時影響其他使用者。
+這是 James Kettle 於 2019 年發表的真實研究文章，後續有更新。文章分析了多個真實網站和基礎設施中的 HTTP 去同步問題，並提出降低誤報和減少影響其他使用者風險的檢測思路。
+
+**分類提醒：** HTTP Request Smuggling 是一整類協議解析差異漏洞，不是單一產品的一個 CVE。本課研究的是這個漏洞類別和研究方法；不會把它冒充成一個有固定 CVE 編號的個案。
 
 ## 二、先理解現代網站的架構
 
@@ -37,34 +39,34 @@
 
 ## 三、HTTP Request Smuggling 是什麼？
 
-HTTP Request Smuggling（HTTP 請求走私）是一類請求解析差異問題。
+HTTP Request Smuggling（HTTP 請求走私）是一類 HTTP 去同步（Desynchronization）問題，常見於請求經過反向代理、負載平衡器或其他前端元件，再交給後端伺服器處理的架構。
 
-假設前端代理和後端伺服器對同一段 HTTP 資料的結束位置有不同理解：
+核心條件是：**同一段 HTTP 資料，在前端和後端被解析成不同的請求邊界。**
 
-- 前端認為第一個請求已經結束。
-- 後端卻認為後面還有一段資料屬於同一個請求。
-- 下一段資料因此可能被重新解讀。
+例如：
+- 前端認為某個請求已經結束；
+- 後端卻認為資料還沒有結束，或把後續位元組當成另一個請求；
+- 連線上的請求佇列因此失去同步。
 
-問題核心是：
-
-**同一條連線上的 HTTP 訊息，前端和後端必須對邊界有一致的理解。**
-
-如果不一致，就可能形成 HTTP Desynchronization（HTTP 去同步化）。
+這不是單純「HTTP 標頭寫錯」；真正要研究的是整條代理鏈中不同解析器的行為差異。
 
 ## 四、為什麼 Content-Length 和 Transfer-Encoding 值得研究？
 
-HTTP/1.1 使用不同方式描述訊息長度，例如：
-- Content-Length：指出訊息主體的長度。
-- Transfer-Encoding：指定訊息傳輸編碼方式，例如 chunked。
+HTTP/1.1 常見的訊息長度資訊包括：
+- `Content-Length`：表示訊息主體的位元組長度；
+- `Transfer-Encoding: chunked`：表示主體使用分塊傳輸編碼。
 
-如果代理和後端對這些標頭的處理方式不一致，就可能形成解析差異。
+研究文章常用以下名稱描述前後端的解析差異：
 
-常見研究分類包括：
-- CL.TE：前端與後端對 Content-Length、Transfer-Encoding 的優先理解不同。
-- TE.CL：兩層系統的理解方向相反。
-- TE.TE：兩層系統對 Transfer-Encoding 標頭的處理方式不一致。
+| 分類 | 常見含義 |
+|---|---|
+| CL.TE | 前端按 Content-Length 判斷邊界，後端按 Transfer-Encoding 判斷 |
+| TE.CL | 前端按 Transfer-Encoding 判斷，後端按 Content-Length 判斷 |
+| TE.TE | 兩端都支援 Transfer-Encoding，但對混淆、重複或格式異常的標頭處理不同 |
 
-這些名稱描述的是不同元件對請求邊界的解析差異，不是只要看到某個標頭就能判定漏洞。
+這些標籤是分類方式，不是看到某個標頭就能直接判定漏洞。實際上還要檢查代理是否正規化標頭、是否拒絕歧義請求，以及 HTTP/2 到 HTTP/1.1 的協議轉換是否產生新的解析差異。
+
+本課主要解釋經典 HTTP/1.1 CL/TE 類型；HTTP/2 downgrade 和其他新型 desync 技術屬於後續進階內容。
 
 ## 五、研究員如何思考和發現？
 

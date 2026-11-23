@@ -32,7 +32,7 @@
 | [Bad Binder — Project Zero](https://projectzero.google/2019/11/bad-binder-android-in-wild-exploit.html) | CVE-2019-2215，Android Binder UAF | 從線索、版本差異和核心程式碼縮小範圍 | 01 |
 | [PrintNightmare — Microsoft MSRC](https://www.microsoft.com/en-us/msrc/blog/2021/07/clarified-guidance-for-cve-2021-34527-windows-print-spooler-vulnerability) | CVE-2021-34527，Windows Print Spooler | 服務權限、信任邊界、修補和配置 | 02 |
 | [Dirty Pipe — Max Kellermann](https://dirtypipe.cm4all.com/) | CVE-2022-0847，Linux Kernel | 從檔案異常、最小重現到 git bisect | 03 |
-| [HTTP Desync Attacks — PortSwigger](https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn) | HTTP Request Smuggling | 多層代理、協議解析差異和安全驗證 | 04 |
+| [HTTP Desync Attacks — PortSwigger](https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn) | HTTP Request Smuggling（漏洞類別研究，並非單一 CVE） | 多層代理、協議解析差異和安全驗證 | 04 |
 | [Effective Fuzzing — Project Zero](https://projectzero.google/2024/10/effective-fuzzing-dav1d-case-study.html) | CVE-2024-1580，dav1d 整數溢位 | Fuzzer 配置、輸入邊界、覆蓋率和 Sanitizer | 05 |
 | [Baron Samedit — Qualys](https://blog.qualys.com/vulnerabilities-threat-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit) | CVE-2021-3156，sudo Heap Overflow | 命令列參數解析和記憶體邊界 | 03 |
 | [Practical Web Cache Poisoning — PortSwigger](https://portswigger.net/research/practical-web-cache-poisoning) | Web Cache Poisoning | 找出未納入 Cache Key 的輸入及其影響 | 04 |

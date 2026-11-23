@@ -6,14 +6,17 @@
 
 ## 一、真實案例概覽
 
-PrintNightmare 是 2021 年 Windows Print Spooler（列印多工緩衝處理器）相關安全事件。CVE-2021-34527 被列為遠端程式碼執行漏洞。NVD 說明指出，漏洞與 Print Spooler 服務不正確地執行高權限檔案操作有關，成功利用可能取得 SYSTEM 權限。
+PrintNightmare 是 2021 年 Windows Print Spooler（列印多工緩衝處理器）相關安全事件。這裡聚焦 **CVE-2021-34527**，其正式分類是遠端程式碼執行（RCE）；在符合條件的系統上，攻擊可能使程式碼以 SYSTEM 權限執行。
+
+**先分清 CVE-2021-1675 和 CVE-2021-34527：** 兩者都涉及 Print Spooler，時間接近、技術領域相似，但 Microsoft 和 CERT/CC 明確指出它們是相似但不同的漏洞，不能把兩個 CVE 當成同一個問題。當時媒體和公開討論有時會把「PrintNightmare」當作整個事件的統稱，因此閱讀資料時一定要核對 CVE 編號。
 
 先閱讀：
 - [Microsoft MSRC：CVE-2021-34527 指引](https://www.microsoft.com/en-us/msrc/blog/2021/07/clarified-guidance-for-cve-2021-34527-windows-print-spooler-vulnerability)
 - [NIST NVD：CVE-2021-34527](https://nvd.nist.gov/vuln/detail/cve-2021-34527)
-- [CERT/CC：VU#383432](https://kb.cert.org/vuls/id/383432)
+- [CERT/CC：VU#383432，Print Spooler / AddPrinterDriverEx 分析](https://kb.cert.org/vuls/id/383432)
+- [CVE.org：CVE-2021-34527](https://www.cve.org/CVERecord?id=2021-34527)
 
-注意：這些是漏洞公告和事後技術分析，不是完整的原始發現日記。我們不會把公開資料沒有說明的研究過程編造成故事。
+本案例使用的是官方公告和 CERT/CC 的事後技術分析，不是完整的原始研究日記。以下會把「公開資料確認的技術事實」和「我們用來學習的通用分析流程」分開，不會編造研究員沒有公開的發現時間線。
 
 ## 二、先理解 Windows 服務
 
@@ -43,20 +46,38 @@ Windows Service（Windows 服務）是可以在背景執行、通常不需要使
 
 ## 三、PrintNightmare 的安全問題
 
-Print Spooler 負責處理列印相關工作。列印系統涉及列印工作、驅動程式、遠端管理介面和檔案操作。
+Print Spooler 不只是接收列印工作。它還提供安裝和管理印表機及驅動程式的介面，因此會碰到高權限檔案操作。
 
-研究這類系統時，需要追問：
+CERT/CC 的技術說明指出，研究這條攻擊面時要特別注意印表機驅動程式安裝介面，例如 `RpcAddPrinterDriverEx()`，以及相關的非同步 RPC 路徑。該介面會接收描述驅動程式的資料；如果服務對呼叫者權限、驅動程式來源和檔案操作的限制不充分，就可能讓由高權限執行的 Print Spooler（`spoolsv.exe`）載入攻擊者控制的 DLL。
 
-1. 哪些使用者可以向服務提交請求？
-2. 請求是否來自遠端？
-3. 服務用哪個帳戶執行？
-4. 使用者是否能控制檔案路徑、驅動程式或其他輸入？
-5. 服務是否在執行高權限檔案操作之前完成驗證？
-6. 低權限輸入是否能影響高權限操作？
+把信任邊界畫清楚：
 
-CVE-2021-34527 的公開描述指出，Print Spooler 不正確地執行特權檔案操作，可能造成 SYSTEM 層級的程式碼執行。
+    已驗證的低權限使用者
+              |
+              v
+    印表機驅動程式安裝 RPC 介面
+              |
+              v
+    Print Spooler（高權限服務）
+              |
+              v
+    驅動程式檔案處理 / DLL 載入
+              |
+              v
+        SYSTEM 權限執行
 
-不要把「列印服務存在」直接等同於「系統一定可被攻擊」。漏洞是否適用，還取決於系統版本、修補狀態、服務配置、政策和實際攻擊條件。
+CERT/CC 描述的情境包括：遠端已驗證使用者透過 SMB/RPC 發出相關請求，可能讓服務以 SYSTEM 權限執行任意 DLL；在某些條件下，本機未提權使用者也可能造成權限提升。**不要把它簡化成「任何網路匿名使用者都能直接取得 SYSTEM」**；帳號、服務狀態、系統修補和 Point and Print 政策都會影響實際可利用性。
+
+### Point and Print 設定扮演什麼角色？
+
+Microsoft 在 2021 年 7 月的補充指引中特別提醒：安全更新不會自動改寫既有登錄檔設定。管理員還需要檢查：
+
+- `NoWarningNoElevationOnInstall`
+- `UpdatePromptSettings`
+
+Microsoft 指引要求這些值設為 `0` 或未定義（預設安全狀態）。CERT/CC 也指出，將 `NoWarningNoElevationOnInstall` 設成非零值可能使系統處於不安全配置。
+
+這些設定是重要的風險／緩解條件，但不要把「Point and Print 登錄值」直接等同於漏洞的全部根因。要分開分析程式本身的權限檢查，以及部署環境如何配置這些政策。
 
 ## 四、研究員的分析思路：從服務到權限邊界
 
@@ -106,7 +127,7 @@ CVE-2021-34527 的公開描述指出，Print Spooler 不正確地執行特權檔
 
 Microsoft 特別提醒，安裝安全更新後仍要檢查文件所列的 Point and Print 政策值。這說明修補程式和安全配置檢查不能互相取代。
 
-## 五、在自己的 Windows 10 電腦做唯讀檢查
+## 五、在自己的 Windows 測試主機做唯讀檢查
 
 以下命令只讀取本機資訊，不會嘗試利用漏洞，也不會修改系統。
 
@@ -200,6 +221,7 @@ Microsoft 特別提醒，安裝安全更新後仍要檢查文件所列的 Point 
 - 有漏洞公告不等於所有 Windows 版本都受影響。
 - 安裝更新不代表所有安全政策都已正確。
 - Point and Print 配置是重要的風險因素，但不能把每一項緩解設定都誤稱為漏洞根因。
+- CVE-2021-1675 和 CVE-2021-34527 不能混為一談；檢查公告、補丁和測試結果時要使用精確 CVE 編號。
 - 不要在真實設備上為了驗證而執行公開 PoC。
 
 ## 十、本課驗收
