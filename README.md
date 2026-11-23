@@ -1,56 +1,70 @@
-# Network Security Learning（網路安全學習）
 
-> A bilingual, source-linked curriculum from computer fundamentals to authorized security testing.
-> 從計算機底層到授權安全測試的中英雙語系統課程，保留每份資料的原始來源。
+# 網路安全學習路線｜從零基礎到綜合網路安全
 
-## Learning Objective（學習目標）
+> **本倉庫重新整理：初學者優先。** 不要求你一開始就懂程式、Linux、網路或駭客工具。請照順序學習，不必一次看完整個倉庫。
 
-建立完整能力：理解電腦與網路的運作原理、分析系統與流量、理解漏洞成因、在授權靶場驗證問題、排查故障，並撰寫專業安全報告。
+## 你的學習目標
 
-本倉庫用於防禦性學習與安全教育。所有掃描與漏洞驗證都必須限定在自己擁有或已取得明確授權的系統。
+從計算機和作業系統基礎開始，逐步掌握：
 
-## Repository Map（資料夾導覽）
+- Windows、VMware、Kali Linux 的日常使用
+- Linux 命令列與 Windows PowerShell
+- 電腦網路、IP、DNS、TCP/UDP、HTTP/HTTPS
+- Python 與 Web 基礎
+- 資訊安全基本概念與安全防護
+- Wireshark、Nmap、Burp Suite、Goby 等工具
+- Web 安全、漏洞驗證、滲透測試流程與報告
+- 後續再進入 Windows/Active Directory、內網安全、SIEM、事件應變與雲端安全
 
-| Folder / file（英文名稱） | 中文說明 |
-|---|---|
-| `01-Computer-Fundamentals/` | 計算機組成、CPU、記憶體、程序、執行緒與作業系統原理 |
-| `02-Linux-Windows/` | Linux、Windows、Shell、權限、服務與日誌 |
-| `03-Computer-Networking/` | OSI、TCP/IP、DNS、ARP、路由、交換與 TLS |
-| `04-Programming/` | Python、Bash、PowerShell、SQL 與 C 語言基礎 |
-| `05-Cybersecurity-Fundamentals/` | 安全原則、密碼學、認證、風險與漏洞管理 |
-| `06-Network-Analysis/` | Wireshark、Nmap、流量分析與資產識別 |
-| `07-Web-Security/` | HTTP、API、身分認證、SQL Injection、XSS、SSRF 等 |
-| `08-Penetration-Testing/` | 授權測試流程、範圍管理、驗證與報告；另含 Burp Suite 與 Metasploit 詳細手冊 |
-| `09-Active-Directory/` | AD DS 架構、DNS、Kerberos、LDAP、SMB、GPO、FSMO、複寫、隔離實驗與防禦稽核 |
-| `10-Security-Labs/` | WebGoat、Juice Shop、GOAD 等隔離靶場 |
-| `11-Troubleshooting/` | 系統、網路、虛擬機、Docker 與工具故障排查 |
-| `12-Incident-Response/` | 資安事件分級、調查、證據保全、遏止、根除與復原 |
-| `13-SIEM-and-Detection/` | Wazuh、Microsoft Sentinel、KQL、日誌收集與偵測工程 |
-| `14-Cloud-Security/` | AWS、Azure、IAM、雲端網路、資料保護與安全稽核 |
-| `SOURCES.md` | 原始 GitHub 專案、官方文件與課程來源 |
-| `STUDY-ROADMAP.md` | 12 個月主線與延伸學習階段 |
+## 從這裡開始
 
-以上為目前倉庫的課程結構。各章節逐步補充原創筆記、可重現實驗、預期輸出、故障排查與原始資料來源。
+| 順序 | 課程 | 你會學會什麼 |
+|---|---|---|
+| 00 | [如何使用本課程](00-START-HERE/README.md) | 學習方法、節奏、實驗紀錄方式 |
+| 01 | [認識電腦](01-COMPUTER-BASICS/README.md) | CPU、記憶體、硬碟、作業系統的基本用途 |
+| 02 | [Windows、VMware 與 Kali](02-WINDOWS-VMWARE-KALI/README.md) | 認識自己的電腦和安全實驗環境 |
+| 03 | [Linux 入門](03-LINUX-BASICS/README.md) | 目錄、檔案、命令、權限和軟體安裝 |
+| 04 | [網路基礎](04-NETWORKING-BASICS/README.md) | IP、MAC、DNS、連接埠、TCP/UDP、HTTP |
+| 05 | [程式設計入門](05-PROGRAMMING-BASICS/README.md) | 讀懂簡單 Python、HTML 與 HTTP |
+| 06 | [網路安全入門](06-CYBERSECURITY-FUNDAMENTALS/README.md) | 威脅、漏洞、風險、加密與防護 |
+| 07 | [安全工具入門](07-SECURITY-TOOLS/README.md) | 了解工具用途，先在自己的環境練習 |
+| 08 | [Web 安全](08-WEB-SECURITY/README.md) | 網站如何運作，以及常見安全問題 |
+| 09 | [滲透測試入門](09-PENTESTING-BASICS/README.md) | 授權、範圍、測試流程、證據與報告 |
+| 10 | [防禦與監控](10-DEFENSIVE-SECURITY/README.md) | Windows 日誌、防火牆、告警與事件處理 |
+| 11 | [初級實驗清單](11-PRACTICE-LABS/README.md) | 每一階段都能實際操作的練習 |
+| 12 | [故障排查手冊](12-TROUBLESHOOTING/README.md) | 常見錯誤如何逐步定位 |
+| 13 | [進階資料庫](13-ADVANCED-LATER/README.md) | 等基礎完成後再使用的專業資源 |
 
-## Learning Principles（學習原則）
+完整進度安排請看 [24 週學習路線](STUDY-ROADMAP.md)，外部資料請看 [資料來源與使用順序](SOURCES.md)。
 
-1. Understand the mechanism before memorizing commands（先理解原理，再記憶命令）。
-2. Pair each theory topic with a reproducible lab（每個理論主題都搭配可重現的實驗）。
-3. Record expected output, actual output, and troubleshooting steps（記錄預期輸出、實際輸出與排錯步驟）。
-4. Prefer official documentation and original repositories（優先使用官方文件與原始專案）。
-5. Never test third-party systems without explicit authorization（未經明確授權，不測試第三方系統）。
+## 每一課固定採用這個教學格式
 
-## Lab Safety（實驗安全）
+1. **先用白話解釋**：這是什麼？它解決什麼問題？
+2. **生活例子**：用容易理解的例子建立概念。
+3. **必要英文詞彙**：英文名稱旁邊附繁體中文。
+4. **操作前準備**：說明在哪個系統、哪個視窗操作。
+5. **逐條命令解釋**：每個參數的意思都要說清楚。
+6. **預期觀察**：說明可能看到什麼；實際輸出可能因版本不同而不同。
+7. **常見錯誤**：如何判斷、如何安全排查。
+8. **小練習與驗收**：確認理解後才進入下一課。
 
-- Use VMware host-only or another isolated virtual network for vulnerable machines（脆弱靶機使用 VMware Host-only 或其他隔離網路）。
-- Take snapshots before risky changes（進行高風險變更前建立快照）。
-- Do not expose WebGoat, Juice Shop, GOAD, or other intentionally vulnerable labs to the public internet（不要將故意存在漏洞的靶場暴露到公開網際網路）。
-- Use only test accounts and synthetic data（只使用測試帳號與虛構資料）。
-- Keep credentials, tokens, subscription links, and private keys out of Git（不要將密碼、權杖、訂閱連結與私鑰提交到 Git）。
+## 適合目前的學習節奏
 
-## Start Here（從這裡開始）
+- 每次 30–45 分鐘即可，不需要每天完成很多章。
+- 每一課最多先學 2–4 個新概念。
+- 每次只執行一小組命令，先理解輸出再繼續。
+- 一個章節可以重複學幾天，不以速度判斷能力。
+- 先能說清楚「這個命令做什麼」，再記住命令。
+- 不需要現在就學組合語言、CPU 微架構、核心原始碼或漏洞利用細節。
 
-1. Open [COURSE-INDEX.md](COURSE-INDEX.md)（課程索引）查看已建立的課程。
-2. Read [STUDY-ROADMAP.md](STUDY-ROADMAP.md)（12 個月學習路線）。
-3. Review [SOURCES.md](SOURCES.md)（原始資料來源）。
-4. Begin with computer fundamentals and Linux, not exploitation tools（先從計算機基礎與 Linux 開始，不要一開始就學漏洞利用工具）。
+## 實驗安全規則
+
+- 只測試自己的電腦、自己的虛擬機，或明確授權的靶場。
+- 不掃描、不登入、不測試陌生網站、公司網路或他人的設備。
+- 初期所有掃描和測試都限制在 localhost 或自己建立的隔離實驗環境。
+- 故意有漏洞的靶場必須隔離，不要暴露到公網，也不要接入公司或家庭重要設備所在的網路。
+- 不要把密碼、Token、VPN 訂閱連結、個人 IP、私人日誌或其他敏感資料上傳 GitHub。
+
+## 本倉庫的定位
+
+這是你的**繁體中文學習導航與實驗筆記**，不是把其他作者的整套教材複製進來。每個外部專案都會標示原始連結、用途、適合階段和注意事項；原始內容及授權仍歸原作者所有。

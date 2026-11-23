@@ -1,247 +1,80 @@
-# Network Security Study Roadmap（網路安全系統學習路線）
 
-本路線以每週約 10–12 小時為基準，規劃 12 個月。這是參考時程，不是保證；若尚未達到階段驗收標準，請延長該階段。
+# 24 週網路安全入門路線（可依進度延長）
 
-## Month 1 — Computer Fundamentals（第 1 個月：計算機底層）
+這不是考試倒數表。24 週是參考節奏；如果某一週需要兩週或三週，完全正常。**理解比趕進度重要。**
 
-**Theory（理論）**
-- CPU, registers, caches, RAM, storage, buses（CPU、暫存器、快取、記憶體、儲存裝置與匯流排）。
-- BIOS/UEFI and boot process（BIOS/UEFI 與開機流程）。
-- Processes, threads, virtual memory, paging（程序、執行緒、虛擬記憶體與分頁）。
-- Kernel mode, user mode, system calls, interrupts（核心模式、使用者模式、系統呼叫與中斷）。
-- Filesystems and drivers（檔案系統與驅動程式）。
+## 第一階段：認識電腦與操作環境（第 1–4 週）
 
-**Commands（命令）**
-```bash
-uname -a
-lscpu
-free -h
-lsblk
-ps aux
-journalctl -b
-```
+| 週次 | 學習內容 | 完成標準 |
+|---|---|---|
+| 第 1 週 | 電腦硬體、CPU、RAM、SSD、作業系統、軟體 | 能用自己的話說明各零件的工作 |
+| 第 2 週 | Windows 桌面、檔案、資料夾、工作管理員、設定 | 能找到程序、CPU、記憶體和磁碟使用情況 |
+| 第 3 週 | VMware、虛擬機、快照、NAT 與 Host-only | 能說明宿主機和虛擬機的差別 |
+| 第 4 週 | Kali 桌面、終端機、檔案管理、更新與關機 | 能正常開關 Kali，知道在哪裡輸入命令 |
 
-**Lab（實驗）：** 在自己的 Linux 虛擬機中檢查 CPU、記憶體、磁碟、程序與開機日誌。  
-**Checkpoint（驗收）：** 能解釋程式如何載入、排程並取得記憶體。
+**本階段先不學：** CPU 暫存器、組合語言、核心除錯、ELF 結構。
 
-## Month 2 — Linux and Windows Administration（第 2 個月：Linux 與 Windows 管理）
+## 第二階段：Linux 與命令列（第 5–8 週）
 
-- Users, groups, permissions, ACLs（使用者、群組、權限與 ACL）。
-- Processes, services, startup, scheduled tasks（程序、服務、啟動與排程工作）。
-- Filesystems, logs, package management（檔案系統、日誌與套件管理）。
-- PowerShell and Bash basics（PowerShell 與 Bash 基礎）。
+| 週次 | 學習內容 | 完成標準 |
+|---|---|---|
+| 第 5 週 | pwd、ls、cd、mkdir、touch、cat | 能查看位置、切換資料夾和建立檔案 |
+| 第 6 週 | cp、mv、rm、find、grep、less、man | 能管理檔案、搜尋內容、查命令說明 |
+| 第 7 週 | 使用者、群組、sudo、檔案權限 | 知道一般使用者與管理員權限的差別 |
+| 第 8 週 | apt、程序、服務、磁碟和網路資訊 | 能安裝套件、查看程序和基本系統狀態 |
 
-**Linux Commands（Linux 命令）**
-```bash
-id
-find
-grep
-chmod
-chown
-systemctl
-journalctl
-```
+搭配練習：OverTheWire Bandit 初級關卡。先學懂命令，再解關卡，不要為了通關抄答案。
 
-**Windows PowerShell**
-```powershell
-whoami /all
-Get-Process
-Get-Service
-Get-NetTCPConnection
-Get-NetIPConfiguration
-```
+## 第三階段：網路基礎（第 9–12 週）
 
-**Lab：** 建立測試使用者、調整檔案權限、檢查服務，並比較 Linux 與 Windows 日誌。  
-**Checkpoint：** 能排查簡單的權限或服務啟動問題。
+| 週次 | 學習內容 | 完成標準 |
+|---|---|---|
+| 第 9 週 | 網路、路由器、交換器、LAN、WAN、MAC | 能說明家中電腦如何連上路由器 |
+| 第 10 週 | IP、子網路遮罩、閘道器、DHCP | 能讀懂自己電腦的 IP 設定 |
+| 第 11 週 | DNS、連接埠、TCP、UDP | 能解釋網域名稱如何找到伺服器 |
+| 第 12 週 | HTTP、HTTPS、瀏覽器請求、Wireshark 入門 | 能觀察一次自己發起的正常網路請求 |
 
-## Month 3 — Computer Networking（第 3 個月：計算機網路）
+## 第四階段：程式與安全概念（第 13–16 週）
 
-- OSI and TCP/IP models（OSI 與 TCP/IP 模型）。
-- Ethernet, MAC, ARP, IPv4/IPv6, subnetting（乙太網路、MAC、ARP、IP 與子網路切割）。
-- DNS, DHCP, NAT, routing, switching（DNS、DHCP、NAT、路由與交換）。
-- TCP handshake, UDP, ports（TCP 交握、UDP 與連接埠）。
-- HTTP/HTTPS and TLS basics（HTTP/HTTPS 與 TLS 基礎）。
+| 週次 | 學習內容 | 完成標準 |
+|---|---|---|
+| 第 13 週 | Python 變數、字串、數字、輸入與輸出 | 能讀懂並修改簡單程式 |
+| 第 14 週 | if、for、while、函式、清單 | 能寫一個簡單的資料整理程式 |
+| 第 15 週 | HTML、表單、HTTP 請求與回應 | 能說明瀏覽器和網站伺服器如何互動 |
+| 第 16 週 | CIA、威脅、漏洞、風險、身分驗證 | 能區分威脅、漏洞和風險 |
 
-**Commands（命令）**
-```bash
-ip -br addr
-ip route
-ip neigh
-ss -tulpn
-nslookup example.com
-curl -I https://example.com
-```
+## 第五階段：安全工具與 Web 安全（第 17–20 週）
 
-**Lab：** 使用 Wireshark 擷取自己測試機產生的 DNS 與 TCP 交握封包。  
-**Checkpoint：** 能解釋瀏覽器如何解析網域並建立 HTTPS 連線。
+| 週次 | 學習內容 | 完成標準 |
+|---|---|---|
+| 第 17 週 | Wireshark：封包、來源、目的地、協定 | 能解釋一段自己產生的測試流量 |
+| 第 18 週 | Nmap：主機、連接埠與服務的基本概念 | 只對自己的 localhost 或隔離靶場做初步盤點 |
+| 第 19 週 | Burp Suite Community：Proxy、HTTP History | 能觀察自己測試網站的請求與回應 |
+| 第 20 週 | PortSwigger Academy 初級 Web 安全實驗 | 能寫出漏洞成因、影響和修復方向 |
 
-## Month 4 — Programming and Automation（第 4 個月：程式設計與自動化）
+## 第六階段：滲透測試流程與防禦（第 21–24 週）
 
-- Python basics, functions, modules, exceptions（Python 基礎、函式、模組與例外處理）。
-- File handling, regular expressions, JSON, CSV（檔案處理、正規表示式、JSON 與 CSV）。
-- Bash and PowerShell automation（Bash 與 PowerShell 自動化）。
-- SQL basics and C memory concepts（SQL 基礎與 C 語言記憶體概念）。
+| 週次 | 學習內容 | 完成標準 |
+|---|---|---|
+| 第 21 週 | 授權、範圍、測試規則、資產清單 | 能寫出一份簡單的測試範圍 |
+| 第 22 週 | 資訊蒐集、服務辨識、漏洞驗證概念 | 能在合法靶場記錄證據，不擴大測試範圍 |
+| 第 23 週 | Windows 安全、事件檢視器、防火牆與日誌 | 能找到基本系統事件並解釋時間和來源 |
+| 第 24 週 | 整理證據、風險說明、修復建議與報告 | 能完成一份簡單、可重現的實驗報告 |
 
-**Labs：** 建立日誌分析器、檔案完整性檢查器，以及整理自己實驗掃描結果的腳本。  
-**Checkpoint：** 能閱讀、修改並解釋一段小型程式。
+## 24 週之後：依興趣分支
 
-## Month 5 — Security Fundamentals（第 5 個月：網路安全基礎）
+基礎完成後，再選擇深入方向；綜合網路安全可以逐步接觸所有方向，但不必同時攻讀：
 
-- Confidentiality, integrity, availability（機密性、完整性與可用性）。
-- Authentication, authorization, least privilege（身分驗證、授權與最小權限）。
-- Hashing, symmetric and asymmetric cryptography（雜湊、對稱式與非對稱式密碼學）。
-- TLS certificates and digital signatures（TLS 憑證與數位簽章）。
-- CVE, CVSS, threat, vulnerability, risk（CVE、CVSS、威脅、弱點與風險）。
-- Firewalls, IDS/IPS, logging, incident response（防火牆、入侵偵測／防禦、日誌與事件應變）。
+1. **滲透測試**：Web、主機、網路服務、漏洞驗證。
+2. **內網安全**：Windows Server、Active Directory、DNS、LDAP、Kerberos。
+3. **防禦與 SOC**：Windows 日誌、Sysmon、Wazuh、SIEM、事件應變。
+4. **雲端安全**：身分權限、網路隔離、儲存安全、日誌監控。
+5. **進階底層**：C 語言、記憶體、組合語言、ELF/PE、除錯與漏洞研究。
 
-**Checkpoint：** 能說明 vulnerability、exploit、threat 與 risk 的差異。
+## 每週學習比例
 
-## Month 6 — Network Analysis and Asset Discovery（第 6 個月：網路分析與資產識別）
+- 40%：看課程與理解概念。
+- 40%：在自己的電腦或合法靶場操作。
+- 20%：整理筆記、錯誤原因和複習。
 
-- Wireshark display filters and protocol analysis（Wireshark 顯示過濾器與協定分析）。
-- Nmap host discovery and service identification in an owned lab（在自有靶場中進行主機探索與服務識別）。
-- DNS, HTTP, TLS, and packet troubleshooting（DNS、HTTP、TLS 與封包排錯）。
-- Read vendor advisories and map versions to known issues（閱讀廠商公告並核對軟體版本風險）。
-
-**Lab Command（實驗命令）**
-```bash
-nmap -sV -oN lab-scan.txt <LAB_TARGET_IP>
-```
-只將佔位符替換成自己隔離靶場中的目標 IP。不得將此命令用於未授權的第三方網路。
-
-**Checkpoint：** 能整理附有證據與範圍說明的資產及服務清單。
-
-## Month 7 — Web Foundations（第 7 個月：Web 基礎）
-
-- HTTP methods, headers, status codes（HTTP 方法、標頭與狀態碼）。
-- Cookies, sessions, authentication（Cookie、工作階段與身分驗證）。
-- HTML, JavaScript, browser security basics（HTML、JavaScript 與瀏覽器安全基礎）。
-- REST APIs, JSON, CORS（REST API、JSON 與 CORS）。
-- Reverse proxies and server-side request flow（反向代理與伺服器端請求流程）。
-
-**Lab：** 啟動本機 Juice Shop；使用瀏覽器開發者工具與 Burp Suite Community 分析請求、回應、Cookie 與 Session。先練習 Proxy、HTTP history 與 Repeater。  
-**Checkpoint：** 能解釋完整的 HTTP Request／Response 流程，並安全地將一筆本機靶場請求送到 Repeater。
-
-## Month 8 — Web Application Security（第 8 個月：Web 應用程式安全）
-
-學習以下弱點的成因、影響、驗證方式與防禦方法：
-
-- SQL injection（SQL 注入）。
-- Cross-site scripting / XSS（跨站指令碼）。
-- CSRF（跨站請求偽造）。
-- SSRF（伺服器端請求偽造）。
-- Broken access control / IDOR（存取控制缺陷／不安全直接物件參照）。
-- File upload and path traversal（檔案上傳與路徑遍歷）。
-- Authentication and session weaknesses（身分驗證與工作階段弱點）。
-- API security（API 安全）。
-
-**Labs：** 僅在指定教學環境中使用 WebGoat、OWASP Juice Shop 與 PortSwigger Academy；逐項學習 SQL Injection、XSS、CSRF、IDOR、SSRF、檔案上傳與 API 安全。  
-**Checkpoint：** 能解釋弱點根因、防禦方式，並撰寫包含前置條件、重現步驟、影響、證據與修復建議的報告。
-
-## Month 9 — Host Security（第 9 個月：主機安全）
-
-- Linux services, permissions, sudo, logs（Linux 服務、權限、sudo 與日誌）。
-- Windows accounts, services, registry, event logs（Windows 帳號、服務、登錄檔與事件日誌）。
-- Secure configuration and patch management（安全組態與修補程式管理）。
-- Backup, hardening, endpoint monitoring（備份、系統強化與端點監控）。
-
-**Checkpoint：** 強化一台測試虛擬機，並記錄設定變更前後的差異。
-
-## Month 10 — Active Directory and Enterprise Networks（第 10 個月：Active Directory 與企業網路）
-
-- AD DS hierarchy: objects, domains, trees, forests, OUs, sites, trusts（AD DS 階層：物件、網域、樹系、OU、站台與信任）。
-- FSMO roles, Global Catalog, replication topology and SYSVOL / DFSR（FSMO 角色、通用類別目錄、複寫拓樸與 SYSVOL／DFSR）。
-- Domain Controller, NTDS.dit, SYSVOL and Global Catalog（網域控制站、目錄資料庫、SYSVOL 與通用類別目錄）。
-- DNS SRV records and DC locator（DNS SRV 記錄與網域控制站探索）。
-- Kerberos tickets, TGT, TGS, SPN and time synchronization（Kerberos 票證、TGT、TGS、SPN 與時間同步）。
-- LDAP / LDAPS, SMB, NTFS permissions and Group Policy（LDAP／LDAPS、SMB、NTFS 權限與群組原則）。
-- Privileged groups, service accounts, Windows LAPS and security auditing（高權限群組、服務帳號、Windows LAPS 與安全稽核）。
-
-**Reading（閱讀）：** 先讀 [AD DS 核心架構](09-Active-Directory/README.md)，再讀 [AD 進階架構](09-Active-Directory/04-Advanced-Architecture.md)。
-
-**Labs（實驗）：** 依照 [AD Lab Setup](09-Active-Directory/02-Lab-Setup.md) 在 VMware Host-only 網路建立一台 Windows Server DC 與一台 Windows Pro 用戶端；完成網域加入、測試 OU／群組建立、GPO 套用、Kerberos 票證觀察及事件日誌檢查。再依照 [AD Defensive Audit](09-Active-Directory/03-Defensive-Audit-and-Troubleshooting.md) 完成權限與健康狀態稽核。  
-**Checkpoint：** 能畫出實驗網域拓樸、解釋 DNS 如何定位 DC、描述 Kerberos 票證流程，並提交包含命令輸出、預期結果、故障排查與修復建議的實驗報告。
-
-## Month 11 — Authorized End-to-end Assessment（第 11 個月：授權綜合安全測試）
-
-- Define scope, rules of engagement, and test accounts（定義測試範圍、測試規則與測試帳號）。
-- Inventory assets and services（盤點資產與服務）。
-- Validate findings safely with approved tools such as Burp Suite and carefully selected Metasploit auxiliary modules（使用 Burp Suite 與經過審查的 Metasploit 輔助模組，在授權範圍內安全驗證發現）。
-- Review module side effects and avoid disruptive tests unless explicitly approved（檢查模組副作用；除非明確核准，否則避免可能造成中斷的測試）。
-- Preserve evidence and avoid unnecessary impact（保留證據並避免不必要的影響）。
-- Prioritize risk and recommend remediation（排列風險優先順序並提出修復建議）。
-
-**Checkpoint：** 完成一份針對故意存在漏洞的靶場所撰寫的測試報告。
-
-## Month 12 — Reporting and Portfolio（第 12 個月：報告與作品集）
-
-完成以下成果：
-
-1. Lab topology（實驗網路拓樸）。
-2. System and network notes（系統與網路筆記）。
-3. Reproducible lab instructions（可重現的實驗步驟）。
-4. Troubleshooting records（故障排查紀錄）。
-5. Security findings and remediation guidance（安全發現與修復建議）。
-6. Final assessment report（最終安全測試報告）。
-
-## Extension Tracks（延伸學習階段）
-
-完成第 12 個月的授權測試與作品集後，可繼續以下三個階段。若每週只有 10–12 小時，建議每個階段安排 4–6 週，依實驗完成度調整。
-
-### Month 13 — Incident Response and Digital Forensics（第 13 個月：事件應變與數位鑑識）
-
-- NIST CSF 2.0 and SP 800-61 Rev.3（NIST 資安框架與事件應變指南）。
-- Incident triage, severity, evidence preservation and chain of custody（事件分流、分級、證據保全與證據保管鏈）。
-- Windows Event Log, PowerShell and Linux journal analysis（Windows 事件日誌、PowerShell 與 Linux 日誌分析）。
-- Containment, eradication, recovery and lessons learned（遏止、根除、復原與事後檢討）。
-
-**Lab：** 完成 [Windows Incident Response Lab](12-Incident-Response/02-Windows-Incident-Response-Lab.md)，提交時間線、雜湊清單與事件報告。  
-**Checkpoint：** 能區分事實、假設與已確認發現，並解釋為何證據保全與授權決策不可省略。
-
-### Month 14 — SIEM and Detection Engineering（第 14 個月：SIEM 與偵測工程）
-
-- Log sources, collection, parsing, normalization and enrichment（日誌來源、收集、解析、正規化與資料豐富化）。
-- Detection rules, correlation, false positives and coverage（偵測規則、事件關聯、誤報與覆蓋率）。
-- Wazuh architecture, Windows Agent and Sysmon（Wazuh 架構、Windows Agent 與 Sysmon）。
-- Microsoft Sentinel, KQL, analytics rules and incidents（Microsoft Sentinel、KQL、分析規則與事件案件）。
-- MTTD, MTTA, MTTR and log source health（偵測、確認、回應時間與日誌來源健康度）。
-
-**Lab：** 完成 [Wazuh SIEM Lab](13-SIEM-and-Detection/02-Wazuh-Lab.md)，收集 Windows Security 與 Sysmon 事件，撰寫一條偵測規則並分析誤報。  
-**Checkpoint：** 能說明 SIEM 資料流程，並從原始日誌走到可調查的告警。
-
-### Month 15 — Cloud Security（第 15 個月：雲端安全）
-
-- IaaS, PaaS, SaaS and shared responsibility（雲端服務模型與共同責任）。
-- AWS IAM, Azure Entra ID, RBAC, MFA and workload identities（AWS／Azure 身分、權限與工作負載身分）。
-- VPC／VNet, network segmentation and private access（雲端網路分段與私人存取）。
-- Storage security, encryption, secrets and key management（儲存安全、加密、秘密與金鑰管理）。
-- Cloud audit logs, threat detection, incident response and cost controls（雲端稽核日誌、威脅偵測、事件應變與成本控制）。
-
-**Lab：** 完成 [Cloud Security Lab](14-Cloud-Security/02-Cloud-Security-Lab.md)，選擇 AWS 或 Azure，完成身分、網路、儲存與日誌安全檢查。  
-**Checkpoint：** 能畫出雲端安全架構、解釋責任邊界，並提交不含任何秘密或真實資產資料的稽核報告。
-
-## Weekly Study Balance（每週時間分配）
-
-| Activity（學習內容） | Hours（小時） |
-|---|---:|
-| Theory and documentation（理論與文件） | 3 |
-| Commands and coding（命令與程式設計） | 2 |
-| Hands-on labs（實作實驗） | 4 |
-| Troubleshooting and notes（故障排查與筆記） | 2 |
-
-## Lab Report Template（實驗報告範本）
-
-每次實驗都記錄：
-
-- Objective（實驗目的）
-- Environment and network scope（實驗環境與網路範圍）
-- Theory（理論原理）
-- Commands and configuration（命令與設定）
-- Expected output（預期輸出）
-- Actual output（實際輸出）
-- Errors and troubleshooting（錯誤與排查）
-- Security impact（安全影響）
-- Defensive measures（防禦措施）
-- Sources（資料來源）
-
-未經明確授權，不掃描或利用任何第三方系統。故意存在漏洞的靶機必須隔離；不要將密碼、權杖、私鑰或 VPN 訂閱網址提交到 Git。
+若一個命令仍然不理解，就不要急著進入下一個命令。學習時可以把錯誤訊息和截圖放進實驗紀錄，但請先遮蔽帳號、IP、Token 和其他私人資訊。

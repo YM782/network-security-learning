@@ -1,126 +1,66 @@
-# Network Security Sources（網路安全資料來源）
 
-以下連結指向原始 GitHub 專案或官方文件。本倉庫的學習筆記應為附有來源的原創摘要，不直接複製他人的整套課程。
+# 網路安全學習資料來源（繁體中文導覽）
 
-## Computer Science and Operating Systems（計算機科學與作業系統）
+本頁把資料分成兩類：**GitHub 專案**與**GitHub 以外的學習網站**。不是每個資源都要從頭讀到尾；請依照建議階段使用。
 
-| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
-|---|---|---|
-| OSSU Computer Science（計算機科學自學課程） | https://github.com/ossu/computer-science | 系統、演算法、網路等計算機科學課程 |
-| Linux Journey（Linux 學習課程） | https://github.com/labex-labs/linuxjourney | Linux 命令列、系統管理與基礎知識 |
-| Learn Python（Python 學習專案） | https://github.com/trekhleb/learn-python | Python 範例與練習 |
-| OverTheWire Bandit（Linux 入門闖關） | https://overthewire.org/wargames/bandit/ | SSH、Shell、檔案權限與命令列練習 |
+## A. GitHub 優質專案
 
-## General Cybersecurity（綜合網路安全）
-
-| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
-|---|---|---|
-| The Art of Hacking / h4cker（綜合資安資料） | https://github.com/The-Art-of-Hacking/h4cker | 網路安全參考資料、實驗、腳本與學習內容 |
-| Awesome Penetration Testing（滲透測試資源大全） | https://github.com/enaqx/awesome-pentest | 書籍、工具與學習資源索引 |
-| OWASP Cheat Sheet Series（OWASP 安全指引） | https://github.com/OWASP/CheatSheetSeries | 安全開發與防禦指引 |
-
-## Network and Web Security（網路與 Web 安全）
-
-| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
-|---|---|---|
-| Wireshark Documentation（Wireshark 官方文件） | https://www.wireshark.org/docs/ | 封包擷取與協定分析 |
-| Nmap Reference Guide（Nmap 參考指南） | https://nmap.org/book/man.html | 授權環境中的主機與服務識別 |
-| OWASP Web Security Testing Guide（Web 安全測試指南） | https://github.com/OWASP/wstg | Web 應用程式系統化測試方法 |
-| OWASP WebGoat（Web 弱點教學靶場） | https://github.com/WebGoat/WebGoat | 在故意存在弱點的應用程式中進行教學 |
-| OWASP Juice Shop（綜合 Web 弱點靶場） | https://github.com/juice-shop/juice-shop | Web 安全實作挑戰 |
-| PortSwigger Web Security Academy（Web 安全學院） | https://portswigger.net/web-security | 免費課程與互動式 Web 安全實驗 |
-| Burp Suite Documentation（Burp Suite 官方文件） | https://portswigger.net/burp/documentation | Proxy、Repeater、設定與排錯 |
-| Burp Suite Community Edition（Burp Suite 社群版） | https://portswigger.net/burp/communitydownload | 官方下載與版本資訊 |
-| Metasploit Framework（Metasploit 官方原始碼） | https://github.com/rapid7/metasploit-framework | 模組化安全測試框架 |
-| Rapid7 Metasploit Documentation（Metasploit 官方文件） | https://docs.metasploit.com/ | Framework 使用方式與模組參考 |
-| PayloadsAllTheThings（弱點測試技術參考） | https://github.com/swisskyrepo/PayloadsAllTheThings | 弱點原理與測試參考 |
-
-## Windows and Active Directory（Windows 與 Active Directory）
-
-| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
-|---|---|---|
-| GOAD — Game of Active Directory（Active Directory 實驗環境） | https://github.com/Orange-Cyberdefense/GOAD | 隔離的 Active Directory 學習靶場 |
-| InternalAllTheThings（企業內網技術參考） | https://github.com/swisskyrepo/InternalAllTheThings | Windows 與企業內網安全參考 |
-| Microsoft Learn — Active Directory Domain Services（AD DS 官方文件） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/ | 網域、樹系、DC 與目錄服務 |
-| Microsoft Learn — Kerberos Authentication（Kerberos 驗證） | https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview | Kerberos 驗證與票證流程 |
-| Microsoft Learn — Windows LAPS（本機管理員密碼管理） | https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview | 管理本機管理員密碼 |
-| Microsoft Learn — Group Policy（群組原則） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview | GPO 管理與套用 |
-| Microsoft Learn — SMB Security（SMB 安全） | https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-security | SMB 安全設定與強化 |
-| Microsoft Learn — DCDiag（網域控制站診斷） | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dcdiag | DC 與 DNS 健康檢查 |
-| Microsoft Learn — Repadmin（AD 複寫診斷） | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/repadmin | 多 DC 複寫檢查 |
-| Microsoft Learn — Active Directory Replication（AD 目錄複寫） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/replication/active-directory-replication | 多 DC 複寫架構與診斷 |
-| Microsoft Learn — Group Managed Service Accounts（群組受管理服務帳號） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-managed-service-accounts/group-managed-service-accounts-overview | gMSA 密碼與服務身分管理 |
-| Microsoft Learn — AD DS Backup and Restore（AD DS 備份與還原） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/backup-restore/active-directory-domain-services-backup-and-restore | 系統狀態備份與復原 |
-| Microsoft Evaluation Center（Windows Server 評估中心） | https://www.microsoft.com/evalcenter/ | 下載合法評估媒體建立實驗 VM |
-
-## Incident Response and Digital Forensics（事件應變與數位鑑識）
-
-| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
-|---|---|---|
-| NIST SP 800-61 Rev.3（事件應變指南） | https://csrc.nist.gov/pubs/sp/800/61/r3/final | 事件應變與資安風險管理 |
-| NIST Cybersecurity Framework 2.0（資安框架） | https://www.nist.gov/cyberframework | Govern、Identify、Protect、Detect、Respond、Recover |
-| CISA Incident Response Playbooks（事件應變手冊） | https://www.cisa.gov/resources-tools/resources/federal-government-cybersecurity-incident-and-vulnerability-response-playbooks | 事件應變程序與演練參考 |
-| Microsoft Windows Security Auditing（Windows 安全稽核） | https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/ | Windows 安全事件與稽核政策 |
-
-## SIEM and Detection（SIEM 與威脅偵測）
-
-| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
-|---|---|---|
-| Wazuh Documentation（Wazuh 官方文件） | https://documentation.wazuh.com/current/ | 開源 SIEM／XDR 平台、Agent 與日誌分析 |
-| Wazuh Quickstart（Wazuh 快速安裝） | https://documentation.wazuh.com/current/quickstart.html | All-in-one 實驗部署 |
-| Microsoft Sentinel（Microsoft Sentinel 文件） | https://learn.microsoft.com/en-us/azure/sentinel/overview | 雲端 SIEM／SOAR、資料連接器與事件管理 |
-| Kusto Query Language（KQL 官方文件） | https://learn.microsoft.com/en-us/kusto/query/ | 日誌查詢與分析 |
-| Microsoft Sysinternals Sysmon（Sysmon 官方文件） | https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon | Windows 端點遙測 |
-| NIST SP 800-92（電腦安全日誌管理指南） | https://csrc.nist.gov/pubs/sp/800/92/final | 日誌管理規劃與保存 |
-
-## Cloud Security（雲端安全）
-
-| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
-|---|---|---|
-| AWS Well-Architected Security Pillar（AWS 安全支柱） | https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/ | AWS 身分、偵測、資料與基礎設施安全 |
-| AWS Shared Responsibility Model（AWS 共同責任模型） | https://aws.amazon.com/compliance/shared-responsibility-model/ | 雲端供應商與客戶責任分工 |
-| AWS IAM Best Practices（AWS IAM 最佳實務） | https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html | 最小權限與身分管理 |
-| Microsoft Azure Security（Azure 安全文件） | https://learn.microsoft.com/en-us/azure/security/ | Azure 安全架構與防護服務 |
-| Azure Shared Responsibility（Azure 共同責任模型） | https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility | IaaS、PaaS、SaaS 責任分工 |
-| Azure Security Best Practices（Azure 安全最佳實務） | https://learn.microsoft.com/en-us/azure/security/fundamentals/best-practices-and-patterns | 雲端身分、網路、資料與營運安全 |
-
-
-## Computer Fundamentals and Operating Systems（計算機底層與作業系統）
-
-| Resource（資源） | Original Source（原始來源） | Purpose（用途） | Used in this repository（本倉庫用途） |
+| 專案 | 中文說明 | 適合階段 | 正確用法 |
 |---|---|---|---|
-| Operating Systems: Three Easy Pieces（OSTEP） | https://pages.cs.wisc.edu/~remzi/OSTEP/ | Free textbook covering virtualization, concurrency, persistence and security（虛擬化、並行、持久化與安全） | Process、address space、memory、thread、I/O concepts（程序、位址空間、記憶體、執行緒與 I/O） |
-| MIT xv6 RISC-V Book | https://mit-pdos.github.io/xv6-riscv-book/ | Teaching OS text with source-code links and labs（教學作業系統教材、原始碼連結與實驗） | Kernel、system calls、traps、page tables、scheduling（核心、系統呼叫、中斷、頁表與排程） |
-| MIT xv6 RISC-V Source | https://github.com/mit-pdos/xv6-riscv | Small teaching kernel source code（小型教學核心原始碼） | Readable implementation reference; not a production OS（可讀的實作參考，並非正式生產環境作業系統） |
-| Intel 64 and IA-32 Software Developer Manuals | https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html | Processor architecture, instruction set and system programming reference（處理器架構、指令集與系統程式設計規格） | x86-64 registers、instructions、privilege and memory behavior（暫存器、指令、特權級與記憶體行為） |
-| Linux man-pages | https://man7.org/linux/man-pages/ | Linux system-call, library and command reference（Linux 系統呼叫、函式庫與命令參考） | Verify syscall and command behavior（核對系統呼叫與命令行為） |
-| Linux Kernel Documentation | https://docs.kernel.org/ | Official Linux kernel subsystem documentation（Linux 核心子系統官方文件） | Memory management and kernel concepts（記憶體管理與核心概念） |
-| System V ABI — ELF | https://refspecs.linuxfoundation.org/elf/elf.pdf | ELF object-file format specification（ELF 目標檔格式規格） | ELF headers、segments、sections and loading（ELF 標頭、段、區段與載入） |
-| GNU Binutils | https://sourceware.org/binutils/docs/ | Assembler, linker and binary inspection tools（組譯器、連結器與二進位檢查工具） | readelf and objdump exercises（readelf 與 objdump 實驗） |
-| GCC Documentation | https://gcc.gnu.org/onlinedocs/ | Compiler options and build stages（編譯器選項與建置流程） | Preprocessing、compilation and linking（預處理、編譯與連結） |
-| GDB Documentation | https://sourceware.org/gdb/documentation/ | Source-level and machine-level debugging（原始碼與機器層級除錯） | Debugging controlled local test programs（除錯本機自建測試程式） |
-| Microsoft Learn — Processes and Threads | https://learn.microsoft.com/en-us/windows/win32/procthread/about-processes-and-threads | Windows process and thread model（Windows 程序與執行緒模型） | Compare Windows and Linux process concepts（比較 Windows 與 Linux 程序概念） |
-| Microsoft Sysinternals | https://learn.microsoft.com/en-us/sysinternals/ | Official Windows diagnostics and inspection tools（Windows 官方診斷與檢查工具） | Process Explorer、Process Monitor、VMMap（程序、事件與記憶體觀察） |
-| Microsoft PE Format | https://learn.microsoft.com/en-us/windows/win32/debug/pe-format | Windows Portable Executable format（Windows PE 可攜式執行檔格式） | Compare ELF and PE concepts（比較 ELF 與 PE） |
+| [OSSU Computer Science](https://github.com/ossu/computer-science) | 開放式自學電腦科學課程，包含程式、系統、網路和資訊安全 | 中後期選讀 | 非初學者第一本教材。只挑與目前課程對應的章節，不必完成整個大學級課程 |
+| [The-Art-of-Hacking/h4cker](https://github.com/The-Art-of-Hacking/h4cker) | Omar Santos 維護的網路安全資源庫，涵蓋攻防、鑑識、雲端、應用程式安全、工具和實驗 | 全程查詢；中後期較有用 | 當作大型索引和參考書，不要從第一個資料夾一路讀到最後 |
+| [OWASP Web Security Testing Guide](https://github.com/OWASP/wstg) | OWASP 網站安全測試指南，介紹網站安全測試方法與檢查項目 | Web 安全階段 | 先學 HTTP，再依主題閱讀。穩定版 4.2 可作為固定參考；5.0 仍在開發 |
+| [OWASP Cheat Sheet Series](https://github.com/OWASP/CheatSheetSeries) | OWASP 安全速查表，說明常見應用程式安全問題和防護建議 | Web 安全與防禦階段 | 用來查「如何安全實作／修補」，不要當成零基礎主教材 |
+| [OWASP WebGoat](https://github.com/WebGoat/WebGoat) | OWASP 故意設計有漏洞的教學網站，透過課程學習網站安全 | Web 安全初中階 | 必須在本機隔離環境使用；預設限制在 localhost。依官方警告，不要讓脆弱靶場暴露到網際網路 |
+| [OWASP Juice Shop](https://github.com/juice-shop/juice-shop) | 故意有漏洞的網站安全訓練平台，含循序教學和挑戰 | Web 安全初中階 | 先用官方教學模式和初級題目。不要直接挑戰高難度題目 |
+| [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) | Web 安全與滲透測試常見測試字串、案例和參考資料 | 中後期 | 是參考手冊，不是初學課程。只在自己建立或明確授權的靶場閱讀和驗證 |
+| [InternalAllTheThings](https://github.com/swisskyrepo/InternalAllTheThings) | Active Directory 與企業內網安全測試速查資料 | 內網安全階段 | 先學 Windows、網路、網域、帳號與權限，再使用 |
+| [Orange-Cyberdefense/GOAD](https://github.com/Orange-Cyberdefense/GOAD) | Game of Active Directory：可練習企業網域安全的實驗室 | 進階內網階段 | 不適合現在直接安裝。需要多台虛擬機與資源；環境故意脆弱，必須完全隔離，絕不可暴露到公網 |
 
-### How these sources are used（來源如何整合）
+### GitHub 專案的使用優先順序
 
-- 原始教材用於核對概念、章節範圍與技術細節，不直接複製整套課程。
-- 每份中文教材應標明對應的原始章節或官方文件，並以自己的話解釋。
-- 每個實驗應提供環境、命令、觀察欄位、結果解釋、常見錯誤與驗收題。
-- 官方文件與教材可能更新；開始實驗前，應再次確認適用版本。
-- 本倉庫不宣稱所有列出的外部專案均持續維護；來源狀態與版本需在實際使用時核對。
+1. 先從本倉庫的 00–06 課程建立基礎。
+2. 到 h4cker 查找目前章節的延伸資源，但先不要下載大量工具。
+3. 到 OWASP WebGoat / Juice Shop 做受控網站練習。
+4. 學會 HTTP 與 Web 基礎後，再查 WSTG 和 Cheat Sheet Series。
+5. 學會 Windows 網域與基本網路後，才使用 InternalAllTheThings 和 GOAD。
+6. PayloadsAllTheThings 和 OSSU 都是後續參考資料，不要求初學者一次看完。
 
-## Source-use and Safety Rules（來源與安全規則）
+## B. GitHub 以外的優質學習網站
 
-1. 工具語法與安全建議優先參考官方文件。
-2. 記錄原始倉庫、作者或組織，以及查閱日期。
-3. 複製程式碼、圖表或課程內容前，先確認授權條款。
-4. WebGoat、Juice Shop、GOAD 等故意存在弱點的系統，只能在隔離靶場中使用。
-5. 不要將密碼、權杖、私鑰或 VPN 訂閱網址提交到 Git。
-6. 真正執行安全測試前，重新確認專案狀態、版本與測試授權。
+| 網站／課程 | 中文說明 | 費用與特點 | 建議順序 |
+|---|---|---|---|
+| [Cisco Networking Academy — Introduction to Cybersecurity](https://www.netacad.com/courses/introduction-to-cybersecurity) | 思科網路安全入門，介紹威脅、漏洞、隱私、防護與職涯 | 官方頁面標示免費、自學、初級，約 6 小時；提供繁體中文等多種語言 | 最先修讀 |
+| [Cisco Networking Academy — Networking Basics](https://www.netacad.com/courses/networking-basics) | 網路基礎，學習設備、媒介、協定、IP 和基本網路連線 | 自學課程；含練習與測驗，實際語言和開課形式以網站顯示為準 | 電腦基礎後 |
+| [TryHackMe — Pre Security](https://tryhackme.com/path/outline/presecurity) | 從零開始的互動式課程，包含電腦、作業系統、命令列、網路、Web 和安全入門 | 有引導式實驗；平台部分內容或功能可能受方案限制 | 最適合當作主線實作課 |
+| [TryHackMe — Cyber Security 101](https://tryhackme.com/path/outline/cybersecurity101) | 初級綜合安全課程，包含 Linux、Windows、網路、密碼學、攻防和防禦 | 比 Pre Security 更廣、更深入 | Pre Security 完成後 |
+| [OverTheWire — Bandit](https://overthewire.org/wargames/bandit/) | 透過 SSH 闖關練習 Linux 命令列 | 適合絕對初學者；每一關都會用到檔案和命令列基礎 | Linux 第 5–8 週 |
+| [PortSwigger Web Security Academy](https://portswigger.net/web-security/) | 專業 Web 安全學院，提供文章、互動實驗和進度追蹤 | 官方標示 100% 免費，適合循序練習網站漏洞 | HTTP 與 Burp 基礎後 |
+| [HTB Academy — Information Security Foundations](https://academy.hackthebox.com/path/preview/information-security-foundations) | Hack The Box 的資訊安全基礎課程，涵蓋網路、Linux、Windows、Web 等 | 有免費模組，也有使用學習點數或付費方案的內容 | 基礎穩定後作為第二套教材 |
+| [CyLab Security Academy](https://www.picoctf.org/) | 卡內基美隆大學的網路安全學習平台，承接 picoCTF 的教育資源 | 免費教育平台，透過 CTF 題目練習 | 完成基本命令列和安全概念後 |
 
-## Verification Log（來源核對紀錄）
+### 重要的網站更新提醒
 
-- Initial links checked: 2026-11-23（首次連結核對日期：2026-11-23）。
-- 此日期僅代表曾核對連結，不保證所有外部專案都持續維護或適用於所有環境。
+- TryHackMe 的舊版 Complete Beginner、Introduction to Cyber Security 等路徑已被新路徑取代；請優先使用目前的 Pre Security 和 Cyber Security 101，不要照著多年以前的影片找舊課程。
+- picoCTF 在 2026 年轉向 CyLab Security Academy 品牌。舊帳號和進度的遷移方式，請以平台目前公告為準。
+- HTB Academy 有免費和付費內容，不能把整個平台都當成免費課程。
+- PortSwigger Web Security Academy 的學習內容和互動實驗免費，但仍應只在其授權實驗環境內操作。
+
+## C. 我建議你實際只先用這 3 個網站
+
+不要一次註冊八個平台，先減少資訊量：
+
+1. **Cisco Introduction to Cybersecurity**：先建立網路安全的整體概念。
+2. **TryHackMe Pre Security**：跟著互動課程學電腦、作業系統、網路和 Web。
+3. **OverTheWire Bandit**：配合 Kali 練習 Linux 命令列。
+
+完成這三項的基礎內容後，再加入 PortSwigger Web Security Academy。
+
+## D. 如何判斷資料是否值得學
+
+- 優先選官方文件、知名大學、專業安全組織和原作者維護的專案。
+- 查看最後更新時間、版本、授權、Issue 和官方文件。
+- 不把星星數量當成教學品質的唯一指標。
+- 不把工具清單當成學習路線。
+- 不直接執行陌生 GitHub 專案中的安裝腳本或二進位檔。
+- 本倉庫以連結和中文導覽介紹原始資料，不複製整份受版權保護的教材。
