@@ -13,8 +13,9 @@
 3. [02 — Windows、VMware 與 Kali](02-WINDOWS-VMWARE-KALI/README.md)
 4. [03 — Linux 命令列入門](03-LINUX-BASICS/README.md)
 5. [04 — 電腦網路基礎](04-NETWORKING-BASICS/README.md)
-6. [24 週詳細學習路線](STUDY-ROADMAP.md)
-7. [資料來源和網站使用順序](SOURCES.md)
+6. [05 — Python 程式設計基礎](05-PROGRAMMING-BASICS/README.md)
+7. [24 週詳細學習路線](STUDY-ROADMAP.md)
+8. [資料來源和網站使用順序](SOURCES.md)
 
 ## 課程目錄
 
@@ -24,7 +25,7 @@
 | [02 Windows / VMware / Kali](02-WINDOWS-VMWARE-KALI/README.md) | 宿主機、虛擬機、快照、網路模式、Kali 檢查 | 現在 |
 | [03 Linux 入門](03-LINUX-BASICS/README.md) | 終端機、路徑、檔案、權限、程序和套件管理 | 基礎 |
 | [04 網路基礎](04-NETWORKING-BASICS/README.md) | 網路設備、IP、DNS、DHCP、路由、TCP/UDP、HTTP、Wireshark | 基礎 |
-| [05 程式設計](05-PROGRAMMING-BASICS/README.md) | Python、檔案、JSON、日誌 | 初級 |
+| [05 Python 程式設計](05-PROGRAMMING-BASICS/README.md) | Python 3、資料型別、控制流程、函式、檔案、JSON、CSV、Regex、離線日誌分析 | 初級 |
 | [06 安全概念](06-CYBERSECURITY-FUNDAMENTALS/README.md) | CIA、威脅、漏洞、風險、權限 | 初級 |
 | [07 安全工具](07-SECURITY-TOOLS/README.md) | Wireshark、Nmap、Burp、Goby 等 | 初級至中級 |
 | [08 Web 安全](08-WEB-SECURITY/README.md) | HTTP、Cookie、Session、常見漏洞 | 中級 |
@@ -36,7 +37,7 @@
 
 ## 教材重寫進度
 
-目前已完成前四個基礎模組的第一輪重寫。其他模組仍需逐篇擴充；未標記完成的內容仍屬初版筆記，不代表已達到完整教材標準。
+目前已完成前五個基礎模組的第一輪重寫，共 22 篇較完整的課程。其他模組仍需逐篇擴充；未標記完成的內容仍屬初版筆記，不代表已達到完整教材標準。
 
 | 模組 | 狀態 |
 |---|---|
@@ -44,7 +45,8 @@
 | 02 Windows / VMware / Kali | 已重寫 3 篇完整課程 |
 | 03 Linux 入門 | 已重寫 4 篇完整課程 |
 | 04 網路基礎 | 已重寫 5 篇完整課程 |
-| 05–10 | 待按順序深化 |
+| 05 Python 程式設計 | 已重寫 6 篇完整課程 |
+| 06–10 | 待按順序深化 |
 | 11–13 | 待按先修能力深化 |
 
 ## 每篇完整教材的最低標準
@@ -52,7 +54,7 @@
 1. 學習目標、先修知識和難度。
 2. 專有名詞中英對照與白話解釋。
 3. 技術原理、架構和工作流程。
-4. 命令逐條解析：用途、參數、執行位置、權限要求和風險。
+4. 命令或程式逐段解析：用途、參數、執行位置、權限要求和風險。
 5. 預期輸出及如何閱讀結果。
 6. 從準備環境到完成驗證的完整實驗。
 7. 常見錯誤、可能原因和安全排查步驟。
