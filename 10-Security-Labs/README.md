@@ -110,7 +110,14 @@ Host-only 網路通常讓宿主機與指定虛擬機互通，並將實驗網路�
 - 不要在實驗網域使用真實帳號、密碼或資料。
 - 需要更新時先關閉靶場服務，再使用受控方式處理；更新完成後恢復隔離。
 
-## 8. Troubleshooting（故障排查）
+## 8. Incident Response and SIEM Labs（事件應變與 SIEM 實驗）
+
+- [Windows Incident Response Lab](../12-Incident-Response/02-Windows-Incident-Response-Lab.md)：在自有 Windows VM 中收集主機、程序、網路與事件日誌，建立時間線與 SHA-256 證據清單。
+- [Wazuh SIEM Lab](../13-SIEM-and-Detection/02-Wazuh-Lab.md)：在隔離 Host-only 網路部署 Wazuh，收集 Windows Security 與 Sysmon 事件。
+
+請勿將 SIEM 管理介面或測試端點暴露至公共網際網路；不要把密碼、Token、Agent Key 或真實事件資料提交至 Git。
+
+## 9. Troubleshooting（故障排查）
 
 | 問題 | 檢查方式 |
 |---|---|
