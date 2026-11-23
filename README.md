@@ -47,6 +47,7 @@
 
 ## Start Here（從這裡開始）
 
-1. Read [STUDY-ROADMAP.md](STUDY-ROADMAP.md)（學習路線）。
-2. Review [SOURCES.md](SOURCES.md)（資料來源）。
-3. Begin with computer fundamentals and Linux, not exploitation tools（先從計算機基礎與 Linux 開始，不要一開始就學漏洞利用工具）。
+1. Open [COURSE-INDEX.md](COURSE-INDEX.md)（課程索引）查看已建立的課程。
+2. Read [STUDY-ROADMAP.md](STUDY-ROADMAP.md)（12 個月學習路線）。
+3. Review [SOURCES.md](SOURCES.md)（原始資料來源）。
+4. Begin with computer fundamentals and Linux, not exploitation tools（先從計算機基礎與 Linux 開始，不要一開始就學漏洞利用工具）。
