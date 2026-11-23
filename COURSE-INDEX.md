@@ -36,7 +36,7 @@
 
 ## Reference（參考）
 
-- [12-Month Study Roadmap（12 個月學習路線）](STUDY-ROADMAP.md)
+- [Study Roadmap（12 個月主線與延伸學習路線）](STUDY-ROADMAP.md)
 - [Sources（原始資料來源）](SOURCES.md)
 
 ## Lab Safety（實驗安全）
