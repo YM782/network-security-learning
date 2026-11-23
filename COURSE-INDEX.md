@@ -15,6 +15,7 @@
 - [Active Directory Domain Services（Active Directory 網域服務）](09-Active-Directory/README.md)：網域、樹系、DNS、Kerberos、LDAP、SMB、OU、群組與 GPO。
 - [Active Directory Lab Setup（AD 隔離實驗室建置）](09-Active-Directory/02-Lab-Setup.md)：VMware Host-only、Windows Server、網域控制站與用戶端加入網域。
 - [AD Defensive Audit and Troubleshooting（AD 防禦稽核與故障排查）](09-Active-Directory/03-Defensive-Audit-and-Troubleshooting.md)：帳號、權限、SPN、GPO、事件日誌與網域健康檢查。
+- [Advanced Active Directory Architecture（AD 進階架構）](09-Active-Directory/04-Advanced-Architecture.md)：FSMO、目錄複寫、站台、信任、Global Catalog、gMSA 與備份復原。
 
 ## Authorized Testing and Practical Labs（授權測試與實作）
 
