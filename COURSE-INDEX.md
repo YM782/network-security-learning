@@ -25,11 +25,14 @@
 - [Security Labs（網路安全實驗室）](10-Security-Labs/README.md)：VMware Host-only、Docker、WebGoat 與 Juice Shop 隔離靶場。
 - [Troubleshooting（故障排查手冊）](11-Troubleshooting/README.md)：系統、網路、Docker、VMware 與 Burp Suite 常見問題。
 
-## Future Expansion（後續擴充方向）
+## Security Operations and Cloud（資安營運與雲端安全）
 
-- `12-Incident-Response/`：資安事件應變、證據保全與數位鑑識。
-- `13-SIEM-and-Detection/`：集中式日誌、SIEM、告警分析與威脅偵測。
-- `14-Cloud-Security/`：雲端身分、網路、儲存與組態安全。
+- [Incident Response（資安事件應變與數位鑑識）](12-Incident-Response/README.md)：NIST CSF 2.0、事件分級、調查、證據保全、遏止、根除與復原。
+- [Windows Incident Response Lab（Windows 事件應變實驗）](12-Incident-Response/02-Windows-Incident-Response-Lab.md)：PowerShell、Windows Event Log、時間線與 SHA-256 證據管理。
+- [SIEM and Security Monitoring（SIEM 與安全監控）](13-SIEM-and-Detection/README.md)：日誌收集、正規化、偵測工程、Wazuh、Microsoft Sentinel 與 KQL。
+- [Wazuh SIEM Lab（Wazuh 安全監控實驗）](13-SIEM-and-Detection/02-Wazuh-Lab.md)：Ubuntu、Windows Agent、Sysmon 與事件調查。
+- [Cloud Security（雲端安全）](14-Cloud-Security/README.md)：AWS、Azure、IAM、網路、資料保護、日誌與共同責任模型。
+- [Cloud Security Lab（雲端安全實驗）](14-Cloud-Security/02-Cloud-Security-Lab.md)：雲端身分、網路、儲存、稽核與成本檢查。
 
 ## Reference（參考）
 
