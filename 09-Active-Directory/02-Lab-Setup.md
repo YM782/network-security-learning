@@ -60,10 +60,10 @@ Windows 10 已於 2025 年 10 月 14 日結束一般支援。若使用 Windows 1
 
 PowerShell 檢查：
 
-`powershell
+```powershell
 Get-NetIPConfiguration
 ipconfig /all
-`
+```
 
 不要直接複製範例 IP，先確認你的 VMware Host-only 網段確實使用相同子網路。
 
@@ -84,24 +84,24 @@ Get-NetIPConfiguration
 
 在全新 Windows Server VM 中，以系統管理員身分開啟 PowerShell：
 
-`powershell
+```powershell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
-`
+```
 
 檢查角色安裝結果：
 
-`powershell
+```powershell
 Get-WindowsFeature AD-Domain-Services
-`
+```
 
 接著在這台專用實驗伺服器上建立新的樹系：
 
-`powershell
+```powershell
 Install-ADDSForest `
   -DomainName "adlab.test" `
   -DomainNetbiosName "ADLAB" `
   -InstallDNS
-`
+```
 
 系統會要求設定 DSRM（Directory Services Restore Mode，目錄服務還原模式）密碼。請使用獨立、強度足夠的實驗密碼，安全保存，不要寫入 GitHub。
 
@@ -111,20 +111,20 @@ Install-ADDSForest `
 
 DC01 重新啟動後，以網域管理員登入，執行：
 
-`powershell
+```powershell
 Get-ADDomain
 Get-ADForest
 Get-ADDomainController -Filter *
 Get-Service DNS,NTDS,Netlogon
 dcdiag /test:dns
-`
+```
 
 檢查 DNS SRV 記錄：
 
-`powershell
+```powershell
 Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.adlab.test
 Resolve-DnsName -Type SRV _kerberos._tcp.adlab.test
-`
+```
 
 **預期結果：** 網域名稱應為 adlab.test，DC 名稱應指向你建立的伺服器，DNS、NTDS 與 Netlogon 等服務應正常運作。
 
@@ -132,14 +132,14 @@ Resolve-DnsName -Type SRV _kerberos._tcp.adlab.test
 
 先建立兩個 OU：
 
-`powershell
+```powershell
 New-ADOrganizationalUnit -Name "LabUsers" -Path "DC=adlab,DC=test"
 New-ADOrganizationalUnit -Name "LabComputers" -Path "DC=adlab,DC=test"
-`
+```
 
 建立一個虛構測試帳號：
 
-`powershell
+```powershell
 $Password = Read-Host "Enter a temporary lab password" -AsSecureString
 
 New-ADUser `
@@ -149,11 +149,11 @@ New-ADUser `
   -Path "OU=LabUsers,DC=adlab,DC=test" `
   -AccountPassword $Password `
   -Enabled $true
-`
+```
 
 建立一般測試安全群組：
 
-`powershell
+```powershell
 New-ADGroup `
   -Name "Lab-Helpdesk" `
   -SamAccountName "Lab-Helpdesk" `
@@ -163,7 +163,7 @@ New-ADGroup `
 
 Add-ADGroupMember -Identity "Lab-Helpdesk" -Members "lab.user01"
 Get-ADGroupMember -Identity "Lab-Helpdesk"
-`
+```
 
 以上命令只建立實驗帳號與一般測試群組。不要把一般測試帳號加入 Domain Admins。
 
@@ -177,12 +177,12 @@ Get-ADGroupMember -Identity "Lab-Helpdesk"
 
 先測試名稱解析：
 
-`powershell
+```powershell
 ipconfig /all
 Resolve-DnsName dc01.adlab.test
 Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.adlab.test
 nltest /dsgetdc:adlab.test
-`
+```
 
 如果 DNS 查詢失敗，先不要急著加入網域；先修正 DNS、IP 與網路介面設定。
 
@@ -196,29 +196,29 @@ Rename-Computer -NewName "CLIENT01" -Restart
 
 確認用戶端版本支援加入傳統 AD 網域，且 DNS 已指向 DC01。以系統管理員身分執行：
 
-`powershell
+```powershell
 Add-Computer `
   -DomainName "adlab.test" `
   -Credential (Get-Credential) `
   -Restart
-`
+```
 
 在認證視窗輸入實驗網域管理員帳號，例如 ADLAB\Administrator。不要把密碼直接寫進命令列或腳本。
 
 重新啟動後，可使用實驗網域帳號登入。完成後檢查：
 
-`powershell
+```powershell
 whoami
 whoami /all
 nltest /dsgetdc:adlab.test
 Test-ComputerSecureChannel -Verbose
-`
+```
 
 網域加入成功後，CLIENT01 的電腦帳號預設可能位於內建 Computers 容器。若要讓 GPO 套用到 LabComputers OU，請在 DC01 上以管理員身分將電腦物件移入該 OU：
 
 ```powershell
-Get-ADComputer -Identity "CLIENT01" |
-  Move-ADObject -TargetPath "OU=LabComputers,DC=adlab,DC=test"
+Move-ADObject -Identity (Get-ADComputer -Identity "CLIENT01").DistinguishedName `
+  -TargetPath "OU=LabComputers,DC=adlab,DC=test"
 ```
 
 先確認電腦物件名稱與目標 OU 正確；不要對正式環境的電腦物件執行此範例。
