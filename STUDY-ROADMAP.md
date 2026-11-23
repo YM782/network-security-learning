@@ -119,8 +119,8 @@ nmap -sV -oN lab-scan.txt <LAB_TARGET_IP>
 - REST APIs, JSON, CORS（REST API、JSON 與 CORS）。
 - Reverse proxies and server-side request flow（反向代理與伺服器端請求流程）。
 
-**Lab：** 使用瀏覽器開發者工具與 Burp Suite Community 分析本機示範應用程式的請求。  
-**Checkpoint：** 能解釋完整的 HTTP Request／Response 流程。
+**Lab：** 啟動本機 Juice Shop；使用瀏覽器開發者工具與 Burp Suite Community 分析請求、回應、Cookie 與 Session。先練習 Proxy、HTTP history 與 Repeater。  
+**Checkpoint：** 能解釋完整的 HTTP Request／Response 流程，並安全地將一筆本機靶場請求送到 Repeater。
 
 ## Month 8 — Web Application Security（第 8 個月：Web 應用程式安全）
 
@@ -135,8 +135,8 @@ nmap -sV -oN lab-scan.txt <LAB_TARGET_IP>
 - Authentication and session weaknesses（身分驗證與工作階段弱點）。
 - API security（API 安全）。
 
-**Labs：** 僅在指定教學環境中使用 WebGoat、OWASP Juice Shop 與 PortSwigger Academy。  
-**Checkpoint：** 能撰寫包含重現步驟、影響、證據與修復建議的弱點報告。
+**Labs：** 僅在指定教學環境中使用 WebGoat、OWASP Juice Shop 與 PortSwigger Academy；逐項學習 SQL Injection、XSS、CSRF、IDOR、SSRF、檔案上傳與 API 安全。  
+**Checkpoint：** 能解釋弱點根因、防禦方式，並撰寫包含前置條件、重現步驟、影響、證據與修復建議的報告。
 
 ## Month 9 — Host Security（第 9 個月：主機安全）
 
@@ -161,7 +161,8 @@ nmap -sV -oN lab-scan.txt <LAB_TARGET_IP>
 
 - Define scope, rules of engagement, and test accounts（定義測試範圍、測試規則與測試帳號）。
 - Inventory assets and services（盤點資產與服務）。
-- Validate findings safely（安全驗證發現的問題）。
+- Validate findings safely with approved tools such as Burp Suite and carefully selected Metasploit auxiliary modules（使用 Burp Suite 與經過審查的 Metasploit 輔助模組，在授權範圍內安全驗證發現）。
+- Review module side effects and avoid disruptive tests unless explicitly approved（檢查模組副作用；除非明確核准，否則避免可能造成中斷的測試）。
 - Preserve evidence and avoid unnecessary impact（保留證據並避免不必要的影響）。
 - Prioritize risk and recommend remediation（排列風險優先順序並提出修復建議）。
 
