@@ -140,7 +140,33 @@ repadmin /replsummary
 
 單一 DC 實驗室沒有複寫夥伴；只有多 DC 環境才可完整判讀複寫狀態。詳細命令、帳號與權限稽核請參閱 [AD Defensive Audit and Troubleshooting](../09-Active-Directory/03-Defensive-Audit-and-Troubleshooting.md)。
 
-## 9. Lab Report Template（故障紀錄範本）
+## 9. Incident Response and SIEM Troubleshooting（事件應變與 SIEM 排錯）
+
+| Symptom（現象） | First checks（優先檢查） |
+|---|---|
+| Windows 查不到 Security Event | 確認事件記錄是否存在、稽核政策是否啟用、權限是否足夠 |
+| PowerShell Get-WinEvent 回傳空結果 | 檢查 LogName、Event ID、時間範圍與時區 |
+| Wazuh Agent Disconnected | 檢查 Agent 服務、管理端位址、網路與 Agent Log |
+| Wazuh 沒有收到 Sysmon | 檢查 Sysmon/Operational 是否有事件、ossec.conf Event Channel 設定與 Agent 服務 |
+| SIEM 告警過多 | 檢查資料來源、規則門檻、去重、維護視窗與誤報 |
+| KQL 查詢沒有結果 | 確認 Connector、資料表、欄位名稱、時間範圍與資料延遲 |
+| 雲端登入日誌缺失 | 檢查租戶稽核設定、資料連接器、權限與保留期限 |
+
+詳細實驗請參閱 [Windows Incident Response Lab](../12-Incident-Response/02-Windows-Incident-Response-Lab.md) 與 [Wazuh SIEM Lab](../13-SIEM-and-Detection/02-Wazuh-Lab.md)。
+
+## 10. Cloud Security Troubleshooting（雲端安全排錯）
+
+| Symptom（現象） | First checks（優先檢查） |
+|---|---|
+| 雲端使用者無法存取資源 | 身分驗證、MFA、RBAC／IAM Policy、條件式存取與拒絕政策 |
+| VM 無法連線 | VPC／VNet、路由、Security Group／NSG、DNS 與服務監聽 |
+| 儲存服務存取被拒 | 資源政策、角色、公開存取設定、金鑰與網路限制 |
+| 雲端日誌沒有資料 | Audit Log 啟用狀態、Connector、權限、目的地與時間範圍 |
+| 帳單持續增加 | VM、磁碟、快照、公網 IP、日誌攝取與資料保留費用 |
+
+不要為了排錯而把資源改成公開或授予廣泛管理權限。每次調整都應記錄變更前後設定與回復方式。
+
+## 11. Lab Report Template（故障紀錄範本）
 
 ```text
 Date / 日期：
