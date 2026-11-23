@@ -151,13 +151,15 @@ nmap -sV -oN lab-scan.txt <LAB_TARGET_IP>
 
 - AD DS hierarchy: objects, domains, trees, forests, OUs, sites, trusts（AD DS 階層：物件、網域、樹系、OU、站台與信任）。
 - FSMO roles, Global Catalog, replication topology and SYSVOL / DFSR（FSMO 角色、通用類別目錄、複寫拓樸與 SYSVOL／DFSR）。
-- Domain Controller, NTDS.dit, SYSVOL, Global Catalog and FSMO roles（網域控制站、目錄資料庫、SYSVOL、通用類別目錄與 FSMO 角色）。
+- Domain Controller, NTDS.dit, SYSVOL and Global Catalog（網域控制站、目錄資料庫、SYSVOL 與通用類別目錄）。
 - DNS SRV records and DC locator（DNS SRV 記錄與網域控制站探索）。
 - Kerberos tickets, TGT, TGS, SPN and time synchronization（Kerberos 票證、TGT、TGS、SPN 與時間同步）。
 - LDAP / LDAPS, SMB, NTFS permissions and Group Policy（LDAP／LDAPS、SMB、NTFS 權限與群組原則）。
 - Privileged groups, service accounts, Windows LAPS and security auditing（高權限群組、服務帳號、Windows LAPS 與安全稽核）。
 
-**Labs：** 依照 [AD Lab Setup](09-Active-Directory/02-Lab-Setup.md) 在 VMware Host-only 網路建立一台 Windows Server DC 與一台 Windows Pro 用戶端；完成網域加入、測試 OU／群組建立、GPO 套用、Kerberos 票證觀察及事件日誌檢查。再依照 [AD Defensive Audit](09-Active-Directory/03-Defensive-Audit-and-Troubleshooting.md) 完成權限與健康狀態稽核。  
+**Reading（閱讀）：** 先讀 [AD DS 核心架構](09-Active-Directory/README.md)，再讀 [AD 進階架構](09-Active-Directory/04-Advanced-Architecture.md)。
+
+**Labs（實驗）：** 依照 [AD Lab Setup](09-Active-Directory/02-Lab-Setup.md) 在 VMware Host-only 網路建立一台 Windows Server DC 與一台 Windows Pro 用戶端；完成網域加入、測試 OU／群組建立、GPO 套用、Kerberos 票證觀察及事件日誌檢查。再依照 [AD Defensive Audit](09-Active-Directory/03-Defensive-Audit-and-Troubleshooting.md) 完成權限與健康狀態稽核。  
 **Checkpoint：** 能畫出實驗網域拓樸、解釋 DNS 如何定位 DC、描述 Kerberos 票證流程，並提交包含命令輸出、預期結果、故障排查與修復建議的實驗報告。
 
 ## Month 11 — Authorized End-to-end Assessment（第 11 個月：授權綜合安全測試）
