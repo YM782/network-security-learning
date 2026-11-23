@@ -9,16 +9,17 @@
 ## 從這裡開始
 
 1. [00 — 如何使用課程](00-START-HERE/README.md)
-2. [01 — 認識電腦（第一個已完整重寫的模組）](01-COMPUTER-BASICS/README.md)
-3. [24 週詳細學習路線](STUDY-ROADMAP.md)
-4. [資料來源和網站使用順序](SOURCES.md)
+2. [01 — 認識電腦](01-COMPUTER-BASICS/README.md)
+3. [02 — Windows、VMware 與 Kali](02-WINDOWS-VMWARE-KALI/README.md)
+4. [24 週詳細學習路線](STUDY-ROADMAP.md)
+5. [資料來源和網站使用順序](SOURCES.md)
 
 ## 課程目錄
 
 | 模組 | 內容 | 建議階段 |
 |---|---|---|
 | [01 電腦基礎](01-COMPUTER-BASICS/README.md) | CPU、RAM、SSD、作業系統、程序和工作管理員實驗 | 現在 |
-| [02 Windows / VMware / Kali](02-WINDOWS-VMWARE-KALI/README.md) | 宿主機、虛擬機、快照、網路模式 | 現在 |
+| [02 Windows / VMware / Kali](02-WINDOWS-VMWARE-KALI/README.md) | 宿主機、虛擬機、快照、網路模式、Kali 檢查 | 現在 |
 | [03 Linux 入門](03-LINUX-BASICS/README.md) | 終端機、路徑、檔案、權限、程序 | 基礎 |
 | [04 網路基礎](04-NETWORKING-BASICS/README.md) | IP、DNS、DHCP、路由、TCP/UDP、HTTP | 基礎 |
 | [05 程式設計](05-PROGRAMMING-BASICS/README.md) | Python、檔案、JSON、日誌 | 初級 |
@@ -33,12 +34,12 @@
 
 ## 教材重寫進度
 
-目前先完成第一個基礎模組的完整重寫，其餘模組仍需逐篇擴充。**未標記完成的內容仍屬初版筆記，不代表已達到完整教材標準。**
+目前先完成最前面的兩個基礎模組。其他模組仍需逐篇擴充；未標記完成的內容仍屬初版筆記，不代表已達到完整教材標準。
 
 | 模組 | 狀態 |
 |---|---|
 | 01 電腦基礎 | 已重寫 4 篇完整課程 |
-| 02 Windows / VMware / Kali | 待重寫 |
+| 02 Windows / VMware / Kali | 已重寫 3 篇完整課程 |
 | 03 Linux 入門 | 待重寫 |
 | 04 網路基礎 | 待重寫 |
 | 05–10 | 待按順序深化 |
