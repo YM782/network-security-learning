@@ -40,7 +40,7 @@
 
 以下範例只允許列出指定測試 S3 Bucket 的內容。請替換成自己的測試 Bucket 名稱，並閱讀 AWS IAM Policy 文件。
 
-`json
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -54,7 +54,7 @@
     }
   ]
 }
-`
+```
 
 這只是教學政策片段，不是完整帳號安全設定。還需要考慮信任政策、其他允許／拒絕政策、SCP、Permission Boundary、Session Policy 與資源政策。
 
