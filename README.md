@@ -1,55 +1,52 @@
-# Network Security Learning（网络安全学习）
+# Network Security Learning（網路安全學習）
 
 > A bilingual, source-linked curriculum from computer fundamentals to authorized security testing.
-> 从计算机底层到授权安全测试的中英双语系统学习路线，保留每份资料的原始来源。
+> 從計算機底層到授權安全測試的中英雙語系統課程，保留每份資料的原始來源。
 
-## Learning objective（学习目标）
+## Learning Objective（學習目標）
 
-Build the ability to explain how computers and networks work, analyze systems and traffic, understand vulnerabilities, test authorized lab targets, troubleshoot failures, and write professional reports.
-目标是能够解释计算机和网络的工作原理，分析系统与流量，理解漏洞，在授权靶场中验证问题、排查故障并编写专业报告。
+建立完整能力：理解電腦與網路的運作原理、分析系統與流量、理解漏洞成因、在授權靶場驗證問題、排查故障，並撰寫專業安全報告。
 
-This is a defensive and educational learning repository. All scanning and exploitation exercises must stay within systems you own or have explicit permission to test.
-本仓库用于防御性学习和安全教育。所有扫描与漏洞验证必须限定在自己拥有或明确获得授权的系统中。
+本倉庫用於防禦性學習與安全教育。所有掃描與漏洞驗證都必須限定在自己擁有或已取得明確授權的系統。
 
-## Repository map（仓库目录）
+## Repository Map（資料夾導覽）
 
-| Folder / file（英文名称） | 中文说明 |
+| Folder / file（英文名稱） | 中文說明 |
 |---|---|
-| `01-Computer-Fundamentals/` | 计算机组成、CPU、内存、进程、线程和操作系统原理 |
-| `02-Linux-Windows/` | Linux、Windows、Shell、权限、服务和日志 |
-| `03-Computer-Networking/` | OSI、TCP/IP、DNS、ARP、路由、交换和 TLS |
-| `04-Programming/` | Python、Bash、PowerShell、SQL 和 C 语言基础 |
-| `05-Cybersecurity-Fundamentals/` | 安全原则、密码学、认证、风险和漏洞管理 |
-| `06-Network-Analysis/` | Wireshark、Nmap、流量分析和资产识别 |
-| `07-Web-Security/` | HTTP、API、身份认证、SQL 注入、XSS、SSRF 等 |
-| `08-Penetration-Testing/` | 授权测试流程、范围管理、验证和报告 |
-| `09-Active-Directory/` | Windows 域、Kerberos、LDAP、SMB 和域安全 |
-| `10-Security-Labs/` | WebGoat、Juice Shop、GOAD 等隔离靶场 |
-| `11-Troubleshooting/` | 系统、网络、虚拟机、Docker 和工具故障排查 |
-| `SOURCES.md` | 原始 GitHub 项目、官方文档和课程来源 |
-| `STUDY-ROADMAP.md` | 12 个月学习路线和阶段验收 |
+| `01-Computer-Fundamentals/` | 計算機組成、CPU、記憶體、程序、執行緒與作業系統原理 |
+| `02-Linux-Windows/` | Linux、Windows、Shell、權限、服務與日誌 |
+| `03-Computer-Networking/` | OSI、TCP/IP、DNS、ARP、路由、交換與 TLS |
+| `04-Programming/` | Python、Bash、PowerShell、SQL 與 C 語言基礎 |
+| `05-Cybersecurity-Fundamentals/` | 安全原則、密碼學、認證、風險與漏洞管理 |
+| `06-Network-Analysis/` | Wireshark、Nmap、流量分析與資產識別 |
+| `07-Web-Security/` | HTTP、API、身分認證、SQL Injection、XSS、SSRF 等 |
+| `08-Penetration-Testing/` | 授權測試流程、範圍管理、驗證與報告 |
+| `09-Active-Directory/` | Windows 網域、Kerberos、LDAP、SMB 與網域安全 |
+| `10-Security-Labs/` | WebGoat、Juice Shop、GOAD 等隔離靶場 |
+| `11-Troubleshooting/` | 系統、網路、虛擬機、Docker 與工具故障排查 |
+| `SOURCES.md` | 原始 GitHub 專案、官方文件與課程來源 |
+| `STUDY-ROADMAP.md` | 12 個月學習路線與階段驗收 |
 
-The folders above are the planned structure. Add original notes, lab reports, and troubleshooting records as each stage is completed.
-以上为规划目录；随着学习进度逐步添加原创笔记、实验报告和故障记录。
+以上為規劃中的資料夾；隨著學習進度逐步加入原創筆記、實驗報告與故障紀錄。
 
-## Learning principles（学习原则）
+## Learning Principles（學習原則）
 
-1. Understand the mechanism before memorizing commands（先理解原理，再记忆命令）.
-2. Pair each theory topic with a reproducible lab（每个理论主题都配一个可复现实验）.
-3. Record expected output, actual output, and troubleshooting steps（记录预期输出、实际输出和排错过程）.
-4. Prefer official documentation and original repositories（优先官方文档和原始仓库）.
-5. Never test third-party systems without explicit authorization（未经明确授权，不测试第三方系统）.
+1. Understand the mechanism before memorizing commands（先理解原理，再記憶命令）。
+2. Pair each theory topic with a reproducible lab（每個理論主題都搭配可重現的實驗）。
+3. Record expected output, actual output, and troubleshooting steps（記錄預期輸出、實際輸出與排錯步驟）。
+4. Prefer official documentation and original repositories（優先使用官方文件與原始專案）。
+5. Never test third-party systems without explicit authorization（未經明確授權，不測試第三方系統）。
 
-## Lab safety（实验安全）
+## Lab Safety（實驗安全）
 
-- Use VMware host-only or another isolated virtual network for vulnerable machines（脆弱靶机使用 VMware Host-only 等隔离网络）.
-- Take snapshots before risky changes（高风险操作前创建快照）.
-- Do not expose WebGoat, Juice Shop, GOAD, or other intentionally vulnerable labs to the public internet（不要把故意存在漏洞的靶场暴露到公网）.
-- Use only test accounts and synthetic data（只使用测试账户和虚构数据）.
-- Keep credentials, tokens, subscription links, and private keys out of Git（不要把密码、令牌、订阅链接和私钥提交到 Git）.
+- Use VMware host-only or another isolated virtual network for vulnerable machines（脆弱靶機使用 VMware Host-only 或其他隔離網路）。
+- Take snapshots before risky changes（進行高風險變更前建立快照）。
+- Do not expose WebGoat, Juice Shop, GOAD, or other intentionally vulnerable labs to the public internet（不要將故意存在漏洞的靶場暴露到公開網際網路）。
+- Use only test accounts and synthetic data（只使用測試帳號與虛構資料）。
+- Keep credentials, tokens, subscription links, and private keys out of Git（不要將密碼、權杖、訂閱連結與私鑰提交到 Git）。
 
-## Start here（从这里开始）
+## Start Here（從這裡開始）
 
-1. Read [STUDY-ROADMAP.md](STUDY-ROADMAP.md)（学习路线）.
-2. Review [SOURCES.md](SOURCES.md)（资料来源）.
-3. Begin with computer fundamentals and Linux, not exploitation tools（从计算机基础和 Linux 开始，不要从漏洞利用工具开始）.
+1. Read [STUDY-ROADMAP.md](STUDY-ROADMAP.md)（學習路線）。
+2. Review [SOURCES.md](SOURCES.md)（資料來源）。
+3. Begin with computer fundamentals and Linux, not exploitation tools（先從計算機基礎與 Linux 開始，不要一開始就學漏洞利用工具）。
