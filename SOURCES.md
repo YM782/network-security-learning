@@ -53,6 +53,37 @@
 | Microsoft Learn — AD DS Backup and Restore（AD DS 備份與還原） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/backup-restore/active-directory-domain-services-backup-and-restore | 系統狀態備份與復原 |
 | Microsoft Evaluation Center（Windows Server 評估中心） | https://www.microsoft.com/evalcenter/ | 下載合法評估媒體建立實驗 VM |
 
+## Incident Response and Digital Forensics（事件應變與數位鑑識）
+
+| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
+|---|---|---|
+| NIST SP 800-61 Rev.3（事件應變指南） | https://csrc.nist.gov/pubs/sp/800/61/r3/final | 事件應變與資安風險管理 |
+| NIST Cybersecurity Framework 2.0（資安框架） | https://www.nist.gov/cyberframework | Govern、Identify、Protect、Detect、Respond、Recover |
+| CISA Incident Response Playbooks（事件應變手冊） | https://www.cisa.gov/resources-tools/resources/federal-government-cybersecurity-incident-and-vulnerability-response-playbooks | 事件應變程序與演練參考 |
+| Microsoft Windows Security Auditing（Windows 安全稽核） | https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/ | Windows 安全事件與稽核政策 |
+
+## SIEM and Detection（SIEM 與威脅偵測）
+
+| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
+|---|---|---|
+| Wazuh Documentation（Wazuh 官方文件） | https://documentation.wazuh.com/current/ | 開源 SIEM／XDR 平台、Agent 與日誌分析 |
+| Wazuh Quickstart（Wazuh 快速安裝） | https://documentation.wazuh.com/current/quickstart.html | All-in-one 實驗部署 |
+| Microsoft Sentinel（Microsoft Sentinel 文件） | https://learn.microsoft.com/en-us/azure/sentinel/overview | 雲端 SIEM／SOAR、資料連接器與事件管理 |
+| Kusto Query Language（KQL 官方文件） | https://learn.microsoft.com/en-us/kusto/query/ | 日誌查詢與分析 |
+| Microsoft Sysinternals Sysmon（Sysmon 官方文件） | https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon | Windows 端點遙測 |
+| NIST SP 800-92（電腦安全日誌管理指南） | https://csrc.nist.gov/pubs/sp/800/92/final | 日誌管理規劃與保存 |
+
+## Cloud Security（雲端安全）
+
+| Resource（資源） | Original Source（原始來源） | Purpose（用途） |
+|---|---|---|
+| AWS Well-Architected Security Pillar（AWS 安全支柱） | https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/ | AWS 身分、偵測、資料與基礎設施安全 |
+| AWS Shared Responsibility Model（AWS 共同責任模型） | https://aws.amazon.com/compliance/shared-responsibility-model/ | 雲端供應商與客戶責任分工 |
+| AWS IAM Best Practices（AWS IAM 最佳實務） | https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html | 最小權限與身分管理 |
+| Microsoft Azure Security（Azure 安全文件） | https://learn.microsoft.com/en-us/azure/security/ | Azure 安全架構與防護服務 |
+| Azure Shared Responsibility（Azure 共同責任模型） | https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility | IaaS、PaaS、SaaS 責任分工 |
+| Azure Security Best Practices（Azure 安全最佳實務） | https://learn.microsoft.com/en-us/azure/security/fundamentals/best-practices-and-patterns | 雲端身分、網路、資料與營運安全 |
+
 ## Source-use and Safety Rules（來源與安全規則）
 
 1. 工具語法與安全建議優先參考官方文件。
