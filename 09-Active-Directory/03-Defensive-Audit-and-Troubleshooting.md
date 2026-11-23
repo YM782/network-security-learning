@@ -8,14 +8,14 @@
 
 在網域控制站以系統管理員 PowerShell 或命令提示字元執行：
 
-`powershell
+```powershell
 Get-ADDomain
 Get-ADForest
 Get-ADDomainController -Filter *
 Get-Service DNS,NTDS,Netlogon,KDC
 dcdiag /v
 dcdiag /test:dns /v
-`
+```
 
 重點：
 - DC 是否正常回應。
@@ -25,10 +25,10 @@ dcdiag /test:dns /v
 
 多 DC 環境可檢查複寫：
 
-`powershell
+```powershell
 repadmin /replsummary
 repadmin /showrepl
-`
+```
 
 單一 DC 的實驗網域沒有第二台 DC 可供複寫，因此不要把沒有複寫夥伴誤判成故障。
 
@@ -36,32 +36,32 @@ repadmin /showrepl
 
 列出部分使用者：
 
-`powershell
+```powershell
 Get-ADUser -Filter * -ResultSetSize 30 -Properties Enabled,LastLogonDate |
   Select-Object Name,SamAccountName,Enabled,LastLogonDate
-`
+```
 
 列出停用帳號：
 
-`powershell
+```powershell
 Search-ADAccount -AccountDisabled -UsersOnly |
   Select-Object Name,SamAccountName
-`
+```
 
 找出長時間未登入的帳號（先將結果視為審查清單，不要自動刪除）：
 
-`powershell
+```powershell
 Search-ADAccount -AccountInactive -UsersOnly -TimeSpan 90.00:00:00 |
   Select-Object Name,SamAccountName,LastLogonDate
-`
+```
 
 列出密碼永不過期的帳號：
 
-`powershell
+```powershell
 Get-ADUser -Filter * -Properties PasswordNeverExpires,Enabled |
   Where-Object { $_.Enabled -and $_.PasswordNeverExpires } |
   Select-Object Name,SamAccountName,PasswordNeverExpires
-`
+```
 
 注意：服務帳號、緊急帳號與特定系統整合可能有例外，但必須有負責人、用途、風險接受紀錄與替代控制。不要只因為查詢結果出現帳號，就直接停用它。
 
@@ -69,17 +69,17 @@ Get-ADUser -Filter * -Properties PasswordNeverExpires,Enabled |
 
 檢查網域管理員群組：
 
-`powershell
+```powershell
 Get-ADGroupMember -Identity "Domain Admins" -Recursive |
   Select-Object Name,ObjectClass,SamAccountName
-`
+```
 
 檢查樹系管理員群組：
 
-`powershell
+```powershell
 Get-ADGroupMember -Identity "Enterprise Admins" -Recursive |
   Select-Object Name,ObjectClass,SamAccountName
-`
+```
 
 稽核問題：
 - 每個成員是否仍有業務需要？
@@ -94,11 +94,11 @@ Get-ADGroupMember -Identity "Enterprise Admins" -Recursive |
 
 SPN 用於將服務與網域帳號關聯。盤點 SPN 是了解服務依賴與帳號風險的一部分：
 
-`powershell
+```powershell
 Get-ADUser -LDAPFilter "(servicePrincipalName=*)" `
   -Properties ServicePrincipalName,PasswordLastSet,Enabled |
   Select-Object Name,SamAccountName,Enabled,PasswordLastSet,ServicePrincipalName
-`
+```
 
 審查重點：
 - 帳號是否仍被服務使用？
@@ -113,17 +113,17 @@ Get-ADUser -LDAPFilter "(servicePrincipalName=*)" `
 
 列出網域 GPO：
 
-`powershell
+```powershell
 Get-GPO -All |
   Select-Object DisplayName,Id,GpoStatus,CreationTime,ModificationTime
-`
+```
 
 檢查用戶端實際套用結果：
 
-`powershell
+```powershell
 gpresult /r
 gpresult /h "$env:TEMP\gpresult.html"
-`
+```
 
 審查：
 - 是否有未使用或重複的 GPO。
@@ -138,23 +138,23 @@ gpresult /h "$env:TEMP\gpresult.html"
 
 列出 SMB Shares：
 
-`powershell
+```powershell
 Get-SmbShare |
   Select-Object Name,Path,Description,EncryptData
-`
+```
 
 檢查指定共享權限：
 
-`powershell
+```powershell
 Get-SmbShareAccess -Name "LabShare"
-`
+```
 
 檢查 NTFS ACL：
 
-`powershell
+```powershell
 Get-Acl "C:\LabShare" | Format-List
 icacls C:\LabShare
-`
+```
 
 審查重點：
 - 是否有不必要的 Everyone／廣泛群組寫入權限。
@@ -187,23 +187,23 @@ icacls C:\LabShare
 
 查詢最近七天的帳號鎖定事件：
 
-`powershell
+```powershell
 Get-WinEvent -FilterHashtable @{
   LogName = 'Security'
   Id = 4740
   StartTime = (Get-Date).AddDays(-7)
 } -MaxEvents 50
-`
+```
 
 查詢最近七天的帳號建立事件：
 
-`powershell
+```powershell
 Get-WinEvent -FilterHashtable @{
   LogName = 'Security'
   Id = 4720
   StartTime = (Get-Date).AddDays(-7)
 } -MaxEvents 50
-`
+```
 
 若查不到事件，先檢查是否啟用了對應稽核子類別、是否有足夠權限，以及日誌是否已被覆寫。
 
@@ -211,13 +211,13 @@ Get-WinEvent -FilterHashtable @{
 
 在用戶端測試必要服務連通性：
 
-`powershell
+```powershell
 Test-NetConnection dc01.adlab.test -Port 53
 Test-NetConnection dc01.adlab.test -Port 88
 Test-NetConnection dc01.adlab.test -Port 389
 Test-NetConnection dc01.adlab.test -Port 445
 Test-NetConnection dc01.adlab.test -Port 9389
-`
+```
 
 以上主機名稱與網域名稱請替換為你的實驗環境。測試連接埠可連線，不代表整個 AD 已經健康；還需要檢查 DNS SRV、服務狀態、時間同步與驗證結果。
 
