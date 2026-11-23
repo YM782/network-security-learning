@@ -86,19 +86,19 @@ DNS 對 AD 非常重要。用戶端不只是查詢 DC 的主機名稱，也需�
 
 常見 AD SRV 記錄範例：
 
-`text
+```text
 _ldap._tcp.dc._msdcs.adlab.test
 _kerberos._tcp.adlab.test
-`
+```
 
 在網域用戶端執行：
 
-`powershell
+```powershell
 ipconfig /all
 Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.adlab.test
 Resolve-DnsName -Type SRV _kerberos._tcp.adlab.test
 nltest /dsgetdc:adlab.test
-`
+```
 
 **預期觀察：** DNS SRV 查詢應回傳實驗網域控制站的主機名稱與服務連接埠；nltest 應能找到網域控制站。
 
@@ -135,10 +135,10 @@ Kerberos 對時間差有容忍範圍。DC、用戶端與服務時間差異過大
 
 檢查命令：
 
-`powershell
+```powershell
 w32tm /query /status
 klist
-`
+```
 
 klist 可檢視目前登入工作階段的 Kerberos 票證資訊。不要將票證或認證材料上傳到公開倉庫。
 
@@ -154,9 +154,9 @@ LDAP（Lightweight Directory Access Protocol）用來查詢與管理目錄資料
 
 常見識別名稱（Distinguished Name，DN）：
 
-`text
+```text
 CN=Alex Chen,OU=LabUsers,DC=adlab,DC=test
-`
+```
 
 拆解：
 - CN：Common Name，物件名稱。
@@ -165,9 +165,9 @@ CN=Alex Chen,OU=LabUsers,DC=adlab,DC=test
 
 LDAP Filter 範例（查詢啟用中的使用者）：
 
-`text
+```text
 (&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))
-`
+```
 
 LDAP 查詢只應讀取完成管理或稽核工作所需的屬性。正式環境應依組織安全政策使用適當的 LDAP 簽署、通道繫結與 TLS 設定。
 
@@ -179,11 +179,11 @@ SMB（Server Message Block）常用於 Windows 檔案分享、印表機分享及
 
 檢查命令（在自有 Windows Server 上）：
 
-`powershell
+```powershell
 Get-SmbShare
 Get-SmbShareAccess -Name "LabShare"
 Get-Acl "C:\LabShare"
-`
+```
 
 安全建議：
 - 移除 Everyone 等不必要的廣泛授權。
@@ -198,9 +198,9 @@ Get-Acl "C:\LabShare"
 
 | Scope（範圍） | 主要用途 |
 |---|---|
-| Global（全域） | 組織同一網域中的使用者與群組 |
-| Domain Local（網域本機） | 將權限授予網域中的資源 |
-| Universal（通用） | 在多網域樹系中組織成員與權限 |
+| Global（全域） | 成員通常來自同一網域，可包含使用者與全域群組 |
+| Domain Local（網域本機） | 用於授予本網域資源權限，可納入來自受信任網域的帳號與群組 |
+| Universal（通用） | 可跨樹系網域組織成員，成員資訊會納入 Global Catalog 複寫 |
 
 常見設計思路：將使用者加入職務群組，再將職務群組加入資源權限群組。不要把一般員工直接加入 Domain Admins。
 
@@ -226,11 +226,11 @@ Group Policy Object（GPO）可集中設定 Windows 電腦與使用者環境，�
 
 檢查命令：
 
-`powershell
+```powershell
 gpresult /r
 gpresult /h "$env:TEMP\gpresult.html"
 gpupdate /force
-`
+```
 
 注意：gpupdate /force 會重新套用原則；在正式環境執行前應確認變更影響與維護窗口。
 
@@ -271,7 +271,7 @@ gpupdate /force
 
 以下命令主要用於讀取自己實驗網域的狀態。請在已安裝 RSAT Active Directory 模組的管理工作站，或網域控制站上執行。
 
-`powershell
+```powershell
 Import-Module ActiveDirectory
 Get-ADDomain
 Get-ADForest
@@ -282,11 +282,11 @@ Get-ADUser -Filter * -ResultSetSize 10 |
 Get-ADGroup -Filter * -ResultSetSize 10 |
   Select-Object Name, GroupScope, GroupCategory
 Get-ADDefaultDomainPasswordPolicy
-`
+```
 
 Windows 用戶端檢查：
 
-`powershell
+```powershell
 whoami /all
 nltest /dsgetdc:adlab.test
 klist
@@ -294,7 +294,7 @@ gpresult /r
 ipconfig /all
 Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.adlab.test
 Test-ComputerSecureChannel -Verbose
-`
+```
 
 將 adlab.test 替換成你自己的實驗網域名稱。
 
