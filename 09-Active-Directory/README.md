@@ -54,6 +54,26 @@ Domain Controller（DC）通常負責：
 
 不要直接複製、修改或刪除正在運作的 NTDS.dit。AD 備份與復原應使用支援的 System State／伺服器備份流程。
 
+### FSMO Roles（彈性單一主機作業角色）
+
+AD DS 使用五種 FSMO（Flexible Single Master Operations）角色，避免特定目錄操作同時由多台 DC 競爭執行：
+
+| Role（角色） | Scope（範圍） | 主要工作 |
+|---|---|---|
+| Schema Master（結構描述主機） | Forest-wide（整個樹系） | 控制 Schema 變更 |
+| Domain Naming Master（網域命名主機） | Forest-wide（整個樹系） | 管理樹系中的網域新增與移除 |
+| RID Master（RID 主機） | Domain-wide（單一網域） | 分配 RID Pool，協助產生唯一 SID |
+| PDC Emulator（PDC 模擬器） | Domain-wide（單一網域） | 密碼變更優先處理、帳號鎖定協調與時間階層等工作 |
+| Infrastructure Master（基礎架構主機） | Domain-wide（單一網域） | 更新跨網域物件參照 |
+
+查詢目前 FSMO 角色持有者：
+
+```cmd
+netdom query fsmo
+```
+
+FSMO 角色轉移或強制接管屬於管理變更，不要在一般練習中隨意執行。進行正式轉移前必須確認 DC 健康狀態、備份與復原方案。
+
 ## 3. DNS in Active Directory（Active Directory 中的 DNS）
 
 DNS 對 AD 非常重要。用戶端不只是查詢 DC 的主機名稱，也需要透過 SRV（Service）記錄尋找 LDAP、Kerberos 等服務。
