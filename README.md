@@ -21,7 +21,7 @@
 | `06-Network-Analysis/` | Wireshark、Nmap、流量分析與資產識別 |
 | `07-Web-Security/` | HTTP、API、身分認證、SQL Injection、XSS、SSRF 等 |
 | `08-Penetration-Testing/` | 授權測試流程、範圍管理、驗證與報告；另含 Burp Suite 與 Metasploit 詳細手冊 |
-| `09-Active-Directory/` | Windows 網域、Kerberos、LDAP、SMB 與網域安全 |
+| `09-Active-Directory/` | AD DS 架構、DNS、Kerberos、LDAP、SMB、GPO、隔離實驗與防禦稽核 |
 | `10-Security-Labs/` | WebGoat、Juice Shop、GOAD 等隔離靶場 |
 | `11-Troubleshooting/` | 系統、網路、虛擬機、Docker 與工具故障排查 |
 | `SOURCES.md` | 原始 GitHub 專案、官方文件與課程來源 |
