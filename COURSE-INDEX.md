@@ -11,9 +11,13 @@
 - [Programming for Cybersecurity（網路安全程式設計基礎）](04-Programming/README.md)：Python、Bash、PowerShell、SQL 與 C 語言。
 - [Cybersecurity Fundamentals（網路安全基礎原理）](05-Cybersecurity-Fundamentals/README.md)：CIA、身分驗證、授權、密碼學、弱點與風險。
 - [Network Analysis（網路流量分析與資產識別）](06-Network-Analysis/README.md)：Wireshark、Nmap、封包過濾、服務辨識與實驗紀錄。
+- [Web Application Security（Web 應用程式安全）](07-Web-Security/README.md)：SQL Injection、XSS、CSRF、IDOR、SSRF、檔案上傳與 API 安全。
 
-## Practical Labs and Operations（實驗與維運）
+## Authorized Testing and Practical Labs（授權測試與實作）
 
+- [Authorized Penetration Testing（授權滲透測試方法）](08-Penetration-Testing/README.md)：測試範圍、Rules of Engagement、資產盤點、弱點驗證、風險評估與報告。
+- [Burp Suite Community Guide（Burp Suite 實作手冊）](08-Penetration-Testing/Burp-Suite.md)：Proxy、HTTP history、Repeater、Decoder、Scope 與排錯。
+- [Metasploit Framework Guide（Metasploit 實驗手冊）](08-Penetration-Testing/Metasploit.md)：模組架構、msfconsole、參數檢查、工作區與安全實驗。
 - [Security Labs（網路安全實驗室）](10-Security-Labs/README.md)：VMware Host-only、Docker、WebGoat 與 Juice Shop 隔離靶場。
 - [Troubleshooting（故障排查手冊）](11-Troubleshooting/README.md)：系統、網路、Docker、VMware 與 Burp Suite 常見問題。
 
@@ -22,9 +26,7 @@
 - `04-Programming/`：Python、Bash、PowerShell、SQL 與 C 語言。
 - `05-Cybersecurity-Fundamentals/`：安全原則、密碼學、認證與風險。
 - `06-Network-Analysis/`：Wireshark、Nmap 與網路流量分析。
-- `07-Web-Security/`：Web 弱點原理與防禦。
-- `08-Penetration-Testing/`：授權測試方法與報告。
-- `09-Active-Directory/`：Windows 網域與企業內網安全。
+- `09-Active-Directory/`：Windows 網域與企業內網安全（下一階段課程）。
 
 ## Reference（參考）
 
