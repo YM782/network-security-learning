@@ -8,6 +8,10 @@
 - [Linux and Windows Fundamentals（Linux 與 Windows 基礎）](02-Linux-Windows/README.md)：使用者、群組、權限、程序、服務、網路與日誌。
 - [Computer Networking Fundamentals（計算機網路基礎）](03-Computer-Networking/README.md)：OSI、TCP/IP、MAC、IP、ARP、DNS、TCP/UDP、HTTP/HTTPS 與 Wireshark 實驗。
 
+- [Programming for Cybersecurity（網路安全程式設計基礎）](04-Programming/README.md)：Python、Bash、PowerShell、SQL 與 C 語言。
+- [Cybersecurity Fundamentals（網路安全基礎原理）](05-Cybersecurity-Fundamentals/README.md)：CIA、身分驗證、授權、密碼學、弱點與風險。
+- [Network Analysis（網路流量分析與資產識別）](06-Network-Analysis/README.md)：Wireshark、Nmap、封包過濾、服務辨識與實驗紀錄。
+
 ## Practical Labs and Operations（實驗與維運）
 
 - [Security Labs（網路安全實驗室）](10-Security-Labs/README.md)：VMware Host-only、Docker、WebGoat 與 Juice Shop 隔離靶場。
