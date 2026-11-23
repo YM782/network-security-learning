@@ -297,6 +297,8 @@ file /path/to/suspicious-file
 
 ## 10. Practical Lab（實驗任務）
 
+完整操作步驟請參閱 [02-Windows-Incident-Response-Lab.md](02-Windows-Incident-Response-Lab.md)。
+
 在自有 Windows VM：
 1. 記錄主機名稱、時間、使用者與 IP。
 2. 檢查程序與 TCP 連線。
