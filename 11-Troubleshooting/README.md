@@ -114,7 +114,33 @@ docker logs --tail 100 <CONTAINER_NAME>
 - 不要在日常主要瀏覽器中長期安裝測試代理憑證。
 - 先使用本機示範網站確認請求是否出現在 Proxy HTTP history。
 
-## 8. Lab Report Template（故障紀錄範本）
+## 8. Active Directory Troubleshooting（Active Directory 故障排查）
+
+若實驗網域出現登入、DNS、Kerberos 或 GPO 問題，請依序檢查用戶端 DNS、SRV 記錄、時間同步、DC 服務與事件日誌。不要一開始就重設電腦帳號或重建網域。
+
+用戶端常用檢查：
+
+```powershell
+ipconfig /all
+Resolve-DnsName -Type SRV _ldap._tcp.dc._msdcs.adlab.test
+nltest /dsgetdc:adlab.test
+w32tm /query /status
+klist
+gpresult /r
+Test-ComputerSecureChannel -Verbose
+```
+
+網域控制站常用檢查：
+
+```powershell
+Get-Service DNS,NTDS,Netlogon,KDC
+dcdiag /test:dns /v
+repadmin /replsummary
+```
+
+單一 DC 實驗室沒有複寫夥伴；只有多 DC 環境才可完整判讀複寫狀態。詳細命令、帳號與權限稽核請參閱 [AD Defensive Audit and Troubleshooting](../09-Active-Directory/03-Defensive-Audit-and-Troubleshooting.md)。
+
+## 9. Lab Report Template（故障紀錄範本）
 
 ```text
 Date / 日期：
