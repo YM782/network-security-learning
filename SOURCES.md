@@ -29,6 +29,10 @@
 | OWASP WebGoat（Web 弱點教學靶場） | https://github.com/WebGoat/WebGoat | 在故意存在弱點的應用程式中進行教學 |
 | OWASP Juice Shop（綜合 Web 弱點靶場） | https://github.com/juice-shop/juice-shop | Web 安全實作挑戰 |
 | PortSwigger Web Security Academy（Web 安全學院） | https://portswigger.net/web-security | 免費課程與互動式 Web 安全實驗 |
+| Burp Suite Documentation（Burp Suite 官方文件） | https://portswigger.net/burp/documentation | Proxy、Repeater、設定與排錯 |
+| Burp Suite Community Edition（Burp Suite 社群版） | https://portswigger.net/burp/communitydownload | 官方下載與版本資訊 |
+| Metasploit Framework（Metasploit 官方原始碼） | https://github.com/rapid7/metasploit-framework | 模組化安全測試框架 |
+| Rapid7 Metasploit Documentation（Metasploit 官方文件） | https://docs.metasploit.com/ | Framework 使用方式與模組參考 |
 | PayloadsAllTheThings（弱點測試技術參考） | https://github.com/swisskyrepo/PayloadsAllTheThings | 弱點原理與測試參考 |
 
 ## Windows and Active Directory（Windows 與 Active Directory）
