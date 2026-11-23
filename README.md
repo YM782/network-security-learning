@@ -20,7 +20,7 @@
 | `05-Cybersecurity-Fundamentals/` | 安全原則、密碼學、認證、風險與漏洞管理 |
 | `06-Network-Analysis/` | Wireshark、Nmap、流量分析與資產識別 |
 | `07-Web-Security/` | HTTP、API、身分認證、SQL Injection、XSS、SSRF 等 |
-| `08-Penetration-Testing/` | 授權測試流程、範圍管理、驗證與報告 |
+| `08-Penetration-Testing/` | 授權測試流程、範圍管理、驗證與報告；另含 Burp Suite 與 Metasploit 詳細手冊 |
 | `09-Active-Directory/` | Windows 網域、Kerberos、LDAP、SMB 與網域安全 |
 | `10-Security-Labs/` | WebGoat、Juice Shop、GOAD 等隔離靶場 |
 | `11-Troubleshooting/` | 系統、網路、虛擬機、Docker 與工具故障排查 |
