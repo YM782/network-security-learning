@@ -150,6 +150,7 @@ nmap -sV -oN lab-scan.txt <LAB_TARGET_IP>
 ## Month 10 — Active Directory and Enterprise Networks（第 10 個月：Active Directory 與企業網路）
 
 - AD DS hierarchy: objects, domains, trees, forests, OUs, sites, trusts（AD DS 階層：物件、網域、樹系、OU、站台與信任）。
+- FSMO roles, Global Catalog, replication topology and SYSVOL / DFSR（FSMO 角色、通用類別目錄、複寫拓樸與 SYSVOL／DFSR）。
 - Domain Controller, NTDS.dit, SYSVOL, Global Catalog and FSMO roles（網域控制站、目錄資料庫、SYSVOL、通用類別目錄與 FSMO 角色）。
 - DNS SRV records and DC locator（DNS SRV 記錄與網域控制站探索）。
 - Kerberos tickets, TGT, TGS, SPN and time synchronization（Kerberos 票證、TGT、TGS、SPN 與時間同步）。
