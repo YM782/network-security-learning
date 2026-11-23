@@ -84,6 +84,33 @@
 | Azure Shared Responsibility（Azure 共同責任模型） | https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility | IaaS、PaaS、SaaS 責任分工 |
 | Azure Security Best Practices（Azure 安全最佳實務） | https://learn.microsoft.com/en-us/azure/security/fundamentals/best-practices-and-patterns | 雲端身分、網路、資料與營運安全 |
 
+
+## Computer Fundamentals and Operating Systems（計算機底層與作業系統）
+
+| Resource（資源） | Original Source（原始來源） | Purpose（用途） | Used in this repository（本倉庫用途） |
+|---|---|---|---|
+| Operating Systems: Three Easy Pieces（OSTEP） | https://pages.cs.wisc.edu/~remzi/OSTEP/ | Free textbook covering virtualization, concurrency, persistence and security（虛擬化、並行、持久化與安全） | Process、address space、memory、thread、I/O concepts（程序、位址空間、記憶體、執行緒與 I/O） |
+| MIT xv6 RISC-V Book | https://mit-pdos.github.io/xv6-riscv-book/ | Teaching OS text with source-code links and labs（教學作業系統教材、原始碼連結與實驗） | Kernel、system calls、traps、page tables、scheduling（核心、系統呼叫、中斷、頁表與排程） |
+| MIT xv6 RISC-V Source | https://github.com/mit-pdos/xv6-riscv | Small teaching kernel source code（小型教學核心原始碼） | Readable implementation reference; not a production OS（可讀的實作參考，並非正式生產環境作業系統） |
+| Intel 64 and IA-32 Software Developer Manuals | https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html | Processor architecture, instruction set and system programming reference（處理器架構、指令集與系統程式設計規格） | x86-64 registers、instructions、privilege and memory behavior（暫存器、指令、特權級與記憶體行為） |
+| Linux man-pages | https://man7.org/linux/man-pages/ | Linux system-call, library and command reference（Linux 系統呼叫、函式庫與命令參考） | Verify syscall and command behavior（核對系統呼叫與命令行為） |
+| Linux Kernel Documentation | https://docs.kernel.org/ | Official Linux kernel subsystem documentation（Linux 核心子系統官方文件） | Memory management and kernel concepts（記憶體管理與核心概念） |
+| System V ABI — ELF | https://refspecs.linuxfoundation.org/elf/elf.pdf | ELF object-file format specification（ELF 目標檔格式規格） | ELF headers、segments、sections and loading（ELF 標頭、段、區段與載入） |
+| GNU Binutils | https://sourceware.org/binutils/docs/ | Assembler, linker and binary inspection tools（組譯器、連結器與二進位檢查工具） | readelf and objdump exercises（readelf 與 objdump 實驗） |
+| GCC Documentation | https://gcc.gnu.org/onlinedocs/ | Compiler options and build stages（編譯器選項與建置流程） | Preprocessing、compilation and linking（預處理、編譯與連結） |
+| GDB Documentation | https://sourceware.org/gdb/documentation/ | Source-level and machine-level debugging（原始碼與機器層級除錯） | Debugging controlled local test programs（除錯本機自建測試程式） |
+| Microsoft Learn — Processes and Threads | https://learn.microsoft.com/en-us/windows/win32/procthread/about-processes-and-threads | Windows process and thread model（Windows 程序與執行緒模型） | Compare Windows and Linux process concepts（比較 Windows 與 Linux 程序概念） |
+| Microsoft Sysinternals | https://learn.microsoft.com/en-us/sysinternals/ | Official Windows diagnostics and inspection tools（Windows 官方診斷與檢查工具） | Process Explorer、Process Monitor、VMMap（程序、事件與記憶體觀察） |
+| Microsoft PE Format | https://learn.microsoft.com/en-us/windows/win32/debug/pe-format | Windows Portable Executable format（Windows PE 可攜式執行檔格式） | Compare ELF and PE concepts（比較 ELF 與 PE） |
+
+### How these sources are used（來源如何整合）
+
+- 原始教材用於核對概念、章節範圍與技術細節，不直接複製整套課程。
+- 每份中文教材應標明對應的原始章節或官方文件，並以自己的話解釋。
+- 每個實驗應提供環境、命令、觀察欄位、結果解釋、常見錯誤與驗收題。
+- 官方文件與教材可能更新；開始實驗前，應再次確認適用版本。
+- 本倉庫不宣稱所有列出的外部專案均持續維護；來源狀態與版本需在實際使用時核對。
+
 ## Source-use and Safety Rules（來源與安全規則）
 
 1. 工具語法與安全建議優先參考官方文件。
