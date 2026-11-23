@@ -67,6 +67,19 @@ ipconfig /all
 
 不要直接複製範例 IP，先確認你的 VMware Host-only 網段確實使用相同子網路。
 
+在升級為網域控制站之前，先把伺服器電腦名稱設定為 DC01，並重新啟動：
+
+```powershell
+Rename-Computer -NewName "DC01" -Restart
+```
+
+重新啟動後，以系統管理員登入，再確認名稱與網路設定：
+
+```powershell
+hostname
+Get-NetIPConfiguration
+```
+
 ## 5. Install AD DS Role（安裝 AD DS 角色）
 
 在全新 Windows Server VM 中，以系統管理員身分開啟 PowerShell：
@@ -175,6 +188,12 @@ nltest /dsgetdc:adlab.test
 
 ## 9. Join CLIENT01 to the Domain（將用戶端加入網域）
 
+先在用戶端設定電腦名稱為 CLIENT01（若尚未設定），重新啟動後再加入網域：
+
+```powershell
+Rename-Computer -NewName "CLIENT01" -Restart
+```
+
 確認用戶端版本支援加入傳統 AD 網域，且 DNS 已指向 DC01。以系統管理員身分執行：
 
 `powershell
@@ -194,6 +213,15 @@ whoami /all
 nltest /dsgetdc:adlab.test
 Test-ComputerSecureChannel -Verbose
 `
+
+網域加入成功後，CLIENT01 的電腦帳號預設可能位於內建 Computers 容器。若要讓 GPO 套用到 LabComputers OU，請在 DC01 上以管理員身分將電腦物件移入該 OU：
+
+```powershell
+Get-ADComputer -Identity "CLIENT01" |
+  Move-ADObject -TargetPath "OU=LabComputers,DC=adlab,DC=test"
+```
+
+先確認電腦物件名稱與目標 OU 正確；不要對正式環境的電腦物件執行此範例。
 
 ## 10. Group Policy Practice（群組原則練習）
 
