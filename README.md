@@ -24,8 +24,11 @@
 | `09-Active-Directory/` | AD DS 架構、DNS、Kerberos、LDAP、SMB、GPO、FSMO、複寫、隔離實驗與防禦稽核 |
 | `10-Security-Labs/` | WebGoat、Juice Shop、GOAD 等隔離靶場 |
 | `11-Troubleshooting/` | 系統、網路、虛擬機、Docker 與工具故障排查 |
+| `12-Incident-Response/` | 資安事件分級、調查、證據保全、遏止、根除與復原 |
+| `13-SIEM-and-Detection/` | Wazuh、Microsoft Sentinel、KQL、日誌收集與偵測工程 |
+| `14-Cloud-Security/` | AWS、Azure、IAM、雲端網路、資料保護與安全稽核 |
 | `SOURCES.md` | 原始 GitHub 專案、官方文件與課程來源 |
-| `STUDY-ROADMAP.md` | 12 個月學習路線與階段驗收 |
+| `STUDY-ROADMAP.md` | 12 個月主線與延伸學習階段 |
 
 以上為目前倉庫的課程結構。各章節逐步補充原創筆記、可重現實驗、預期輸出、故障排查與原始資料來源。
 
