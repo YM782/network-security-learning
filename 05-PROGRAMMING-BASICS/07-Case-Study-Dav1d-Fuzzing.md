@@ -215,7 +215,7 @@ Sanitizer 是編譯器提供的一組動態檢查工具。
 ## 十、本課延伸閱讀
 
 1. [Project Zero：Effective Fuzzing — Dav1d Case Study](https://projectzero.google/2024/10/effective-fuzzing-dav1d-case-study.html)
-2. [Project Zero：This Shouldn't Have Happened — Vulnerability Postmortem](https://projectzero.google/2021/12/this-shouldnt-have-happened.html)
+2. [Project Zero：This Shouldn't Have Happened — NSS BigSig（CVE-2021-43527）](https://projectzero.google/2021/12/this-shouldnt-have-happened.html) — 另一個獨立案例，研究既有 Fuzzer 為何漏掉缺少長度檢查的記憶體錯誤，重點是端到端測試、輸入尺寸限制和覆蓋率指標。
 3. [Google OSS-Fuzz](https://github.com/google/oss-fuzz)
 4. [LLVM LibFuzzer](https://llvm.org/docs/LibFuzzer.html)
 5. [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html)

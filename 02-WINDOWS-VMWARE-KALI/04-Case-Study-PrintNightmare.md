@@ -16,6 +16,8 @@ PrintNightmare 是 2021 年 Windows Print Spooler（列印多工緩衝處理器�
 - [CERT/CC：VU#383432，Print Spooler / AddPrinterDriverEx 分析](https://kb.cert.org/vuls/id/383432)
 - [CVE.org：CVE-2021-34527](https://www.cve.org/CVERecord?id=2021-34527)
 
+注意：CERT/CC VU#383432 是一份涵蓋 Print Spooler 相關公開利用與變體的綜合說明，正文也明確區分 CVE-2021-1675 和 CVE-2021-34527。不要把其中每個 PoC 細節自動歸到單一 CVE；本課用它來理解 Spooler、RPC 與驅動程式安裝介面的安全邊界，具體 CVE-2021-34527 的受影響性仍以 Microsoft/NVD 對該 CVE 的公告為準。
+
 本案例使用的是官方公告和 CERT/CC 的事後技術分析，不是完整的原始研究日記。以下會把「公開資料確認的技術事實」和「我們用來學習的通用分析流程」分開，不會編造研究員沒有公開的發現時間線。
 
 ## 二、先理解 Windows 服務

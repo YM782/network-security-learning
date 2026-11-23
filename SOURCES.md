@@ -36,7 +36,7 @@
 | [Effective Fuzzing — Project Zero](https://projectzero.google/2024/10/effective-fuzzing-dav1d-case-study.html) | CVE-2024-1580，dav1d 整數溢位 | Fuzzer 配置、輸入邊界、覆蓋率和 Sanitizer | 05 |
 | [Baron Samedit — Qualys](https://blog.qualys.com/vulnerabilities-threat-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit) | CVE-2021-3156，sudo Heap Overflow | 命令列參數解析和記憶體邊界 | 03 |
 | [Practical Web Cache Poisoning — PortSwigger](https://portswigger.net/research/practical-web-cache-poisoning) | Web Cache Poisoning | 找出未納入 Cache Key 的輸入及其影響 | 04 |
-| [This Shouldn't Have Happened — Project Zero](https://projectzero.google/2021/12/this-shouldnt-have-happened.html) | NSS Fuzzing Postmortem | 為什麼測試器沒有真正走到端到端程式路徑 | 05 |
+| [This Shouldn't Have Happened — Project Zero](https://projectzero.google/2021/12/this-shouldnt-have-happened.html) | NSS BigSig（CVE-2021-43527） | 端到端測試、輸入大小上限和覆蓋率指標如何影響 Fuzzing | 05 |
 
 閱讀時先看研究員如何提出假設、取得證據和縮小範圍；不要只複製文章中的 PoC。
 
