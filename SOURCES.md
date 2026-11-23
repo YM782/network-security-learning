@@ -48,6 +48,9 @@
 | Microsoft Learn — SMB Security（SMB 安全） | https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-security | SMB 安全設定與強化 |
 | Microsoft Learn — DCDiag（網域控制站診斷） | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dcdiag | DC 與 DNS 健康檢查 |
 | Microsoft Learn — Repadmin（AD 複寫診斷） | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/repadmin | 多 DC 複寫檢查 |
+| Microsoft Learn — Active Directory Replication（AD 目錄複寫） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/replication/active-directory-replication | 多 DC 複寫架構與診斷 |
+| Microsoft Learn — Group Managed Service Accounts（群組受管理服務帳號） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-managed-service-accounts/group-managed-service-accounts-overview | gMSA 密碼與服務身分管理 |
+| Microsoft Learn — AD DS Backup and Restore（AD DS 備份與還原） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/backup-restore/active-directory-domain-services-backup-and-restore | 系統狀態備份與復原 |
 | Microsoft Evaluation Center（Windows Server 評估中心） | https://www.microsoft.com/evalcenter/ | 下載合法評估媒體建立實驗 VM |
 
 ## Source-use and Safety Rules（來源與安全規則）
