@@ -41,6 +41,14 @@
 |---|---|---|
 | GOAD — Game of Active Directory（Active Directory 實驗環境） | https://github.com/Orange-Cyberdefense/GOAD | 隔離的 Active Directory 學習靶場 |
 | InternalAllTheThings（企業內網技術參考） | https://github.com/swisskyrepo/InternalAllTheThings | Windows 與企業內網安全參考 |
+| Microsoft Learn — Active Directory Domain Services（AD DS 官方文件） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/ | 網域、樹系、DC 與目錄服務 |
+| Microsoft Learn — Kerberos Authentication（Kerberos 驗證） | https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview | Kerberos 驗證與票證流程 |
+| Microsoft Learn — Windows LAPS（本機管理員密碼管理） | https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview | 管理本機管理員密碼 |
+| Microsoft Learn — Group Policy（群組原則） | https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview | GPO 管理與套用 |
+| Microsoft Learn — SMB Security（SMB 安全） | https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-security | SMB 安全設定與強化 |
+| Microsoft Learn — DCDiag（網域控制站診斷） | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dcdiag | DC 與 DNS 健康檢查 |
+| Microsoft Learn — Repadmin（AD 複寫診斷） | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/repadmin | 多 DC 複寫檢查 |
+| Microsoft Evaluation Center（Windows Server 評估中心） | https://www.microsoft.com/evalcenter/ | 下載合法評估媒體建立實驗 VM |
 
 ## Source-use and Safety Rules（來源與安全規則）
 
