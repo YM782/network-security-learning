@@ -115,7 +115,7 @@ DC01 重新啟動後，以網域管理員登入，執行：
 Get-ADDomain
 Get-ADForest
 Get-ADDomainController -Filter *
-Get-Service DNS,NTDS,Netlogon
+Get-Service DNS,NTDS,Netlogon,KDC
 dcdiag /test:dns
 ```
 
