@@ -101,7 +101,16 @@ Host-only 網路通常讓宿主機與指定虛擬機互通，並將實驗網路�
 
 若靶場需要下載更新，請先停止靶場服務，再以受控方式暫時使用 NAT 取得更新；完成後恢復隔離設定。
 
-## 7. Troubleshooting（故障排查）
+## 7. Active Directory Mini Lab（Active Directory 迷你實驗）
+
+若要練習 Windows 企業網域，請使用獨立的 VMware Host-only 網路，建立專用 Windows Server DC 與 Windows Pro 用戶端。完整步驟請見 [Active Directory Lab Setup](../09-Active-Directory/02-Lab-Setup.md)。
+
+- 不要將 DC 或故意存在弱點的 VM 設為 Bridged。
+- 不要將實驗網域接入公司網路或公開 Wi-Fi。
+- 不要在實驗網域使用真實帳號、密碼或資料。
+- 需要更新時先關閉靶場服務，再使用受控方式處理；更新完成後恢復隔離。
+
+## 8. Troubleshooting（故障排查）
 
 | 問題 | 檢查方式 |
 |---|---|
